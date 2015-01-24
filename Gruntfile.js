@@ -42,10 +42,8 @@ module.exports = function(grunt) {
         },
         'divshot:push': {
             production: {
-                // options
             },
             staging: {
-                // options
             }
         },
         htmlmin: {
@@ -66,6 +64,32 @@ module.exports = function(grunt) {
             htmlFiles: {
                 src: 'src/index.html',
                 dest: 'dist/index.html'
+            }
+        },
+        svgmin: {
+            options: {
+                plugins: [{
+                    removeViewBox: false
+                }]
+            },
+            svgFiles: {
+                files: {
+                    'dist/svg/card.svg': 'dist/svg/card.svg'
+                }
+            }
+        },
+        svgstore: {
+            options: {
+                prefix: 'card-',
+                svg: {
+                    viewBox: '0 0 195 293',
+                    xmlns: 'http://www.w3.org/2000/svg'
+                }
+            },
+            svgFiles: {
+                files: {
+                    'dist/svg/card.svg': ['src/svg/*.svg']
+                }
             }
         },
         uglify: {
@@ -100,6 +124,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-divshot');
     grunt.loadNpmTasks('grunt-htmlrefs');
+    grunt.loadNpmTasks('grunt-svgmin');
+    grunt.loadNpmTasks('grunt-svgstore');
 
     /*===============================================================
      Tasks Aliases
@@ -113,7 +139,9 @@ module.exports = function(grunt) {
         'cssmin',
         'uglify',
         'htmlrefs',
-        'htmlmin'
+        'htmlmin',
+        'svgstore',
+        'svgmin'
     ]);
     grunt.registerTask('default', [
         'deploy'

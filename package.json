@@ -29,7 +29,9 @@
         "grunt-divshot": "^1.0.0",
         "grunt-htmlrefs": "^0.5.0",
         "grunt-remove-logging": "^0.2.0",
-        "grunt-string-replace": "^1.0.0"
+        "grunt-string-replace": "^1.0.0",
+        "grunt-svgmin": "^2.0.0",
+        "grunt-svgstore": "^0.5.0"
     },
     "peerDependencies": {
         "grunt-cli": "1.4.x"
