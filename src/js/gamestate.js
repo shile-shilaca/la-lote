@@ -51,7 +51,8 @@ app.factory('gameState', function ($rootScope, $http, $interval) {
         shoutCards: function () {
             var me = this;
             var loop = $interval(function () {
-                if (!me.pullCard()) {
+                var card = me.pullCard();
+                if (!card) {
                     this.started = false;
 
                     // triggers the ranOutOfCards event
@@ -61,7 +62,7 @@ app.factory('gameState', function ($rootScope, $http, $interval) {
                     return;
                 }
 
-                console.log("broadcast", me.pullCard());
+                console.log("broadcast", card);
             }, 100);
         }
     };
