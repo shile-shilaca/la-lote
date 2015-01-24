@@ -4,7 +4,9 @@ Loteria Mexicana.
 
 **Author:** Shile Shilaca Team
 
-**URL:** [http://ss15-shile-shilaca.divshot.io]()
+**URL:** [la-lote.com]()
+
+**Divshot URL:** [http://ss15-shile-shilaca.divshot.io]()
 
 ## License
 
