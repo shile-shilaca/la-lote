@@ -169,7 +169,9 @@ module.exports = function(grunt) {
         uglify: {
             options: {
                 beautify: false,
-                compress: false,
+                compress: {
+                    drop_console: true
+                },
                 mangle: false,
                 preserveComments: false,
                 report: 'min'
