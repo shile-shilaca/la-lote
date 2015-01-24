@@ -32,6 +32,13 @@ module.exports = function(grunt) {
                 files: [
                     {
                         expand: true,
+                        cwd: 'src/audio',
+                        filter: 'isFile',
+                        src: ['**'],
+                        dest: 'dist/audio'
+                    },
+                    {
+                        expand: true,
                         cwd: 'src/bower_components',
                         filter: 'isFile',
                         src: ['**'],
