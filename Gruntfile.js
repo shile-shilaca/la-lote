@@ -97,6 +97,8 @@ module.exports = function(grunt) {
         },
         'divshot-push': {
             development: {
+            },
+            production: {
             }
         },
         htmlmin: {
@@ -145,7 +147,11 @@ module.exports = function(grunt) {
         },
         svgstore: {
             options: {
-                prefix: 'card-',
+                formatting: {
+                    indent_size : 4
+                },
+                includeTitleElement: false,
+                prefix: 'card',
                 svg: {
                     viewBox: '0 0 195 293',
                     xmlns: 'http://www.w3.org/2000/svg'
@@ -198,9 +204,13 @@ module.exports = function(grunt) {
     grunt.registerTask('svgsprite', [
         'svgstore'
     ]);
-    grunt.registerTask('deploy', [
+    grunt.registerTask('deploydev', [
         'dist',
-        'divshot-push'
+        'divshot-push:development'
+    ]);
+    grunt.registerTask('deployprod', [
+        'dist',
+        'divshot-push:production'
     ]);
     grunt.registerTask('dist', [
         'clean',
@@ -214,6 +224,6 @@ module.exports = function(grunt) {
         'copy'
     ]);
     grunt.registerTask('default', [
-        'deploy'
+        'dist'
     ]);
 };
