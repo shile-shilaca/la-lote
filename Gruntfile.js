@@ -136,6 +136,7 @@ module.exports = function(grunt) {
         svgmin: {
             options: {
                 plugins: [{
+                    cleanupIDs: false,
                     removeViewBox: false
                 }]
             },
@@ -149,6 +150,7 @@ module.exports = function(grunt) {
         svgstore: {
             options: {
                 formatting: {
+                    indent_char: " ",
                     indent_size : 4
                 },
                 includeTitleElement: false,
