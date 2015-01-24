@@ -46,6 +46,13 @@ module.exports = function(grunt) {
                     },
                     {
                         expand: true,
+                        cwd: 'src/img',
+                        filter: 'isFile',
+                        src: ['**'],
+                        dest: 'dist/img'
+                    },
+                    {
+                        expand: true,
                         cwd: 'src/js/vendor',
                         filter: 'isFile',
                         src: ['**'],
@@ -119,7 +126,8 @@ module.exports = function(grunt) {
                     stripWhitespace: true
                 },
                 files: {
-                    'dist/data/data.es.json': 'src/data/cards.es.json'
+                    'dist/data/data.en.json': 'src/data/data.en.json',
+                    'dist/data/data.es.json': 'src/data/data.en.json'
                 }
             }
         },
