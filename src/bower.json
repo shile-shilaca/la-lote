@@ -1,0 +1,26 @@
+{
+  "name": "La Loteria",
+  "version": "0.0.0",
+  "homepage": "https://github.com/staticshowdown/ss15-shile-shilaca",
+  "authors": [
+    "Hugo Habel <hugohabel@gmail.com>",
+    "Eduardo Lopez <eduardo.logri89@gmail.com>",
+    "Mauricio Zaragoza <mauriciozaragoza@gmail.com>",
+    "Antonio Aguilar <huhgawz@gmail.com>"
+  ],
+  "description": "Static Showdown 2015",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "core-image": "Polymer/core-image#~0.5.4",
+    "paper-button": "Polymer/paper-button#~0.5.4",
+    "paper-ripple": "Polymer/paper-ripple#~0.5.4"
+  }
+}
