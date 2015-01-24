@@ -1,6 +1,218 @@
 {
     "01": {
-        "name": "The RoosterEl Gallo",
+        "name": "The Rooster",
         "riddle": "The one that sang to St. Peter will sing for him again"
+    },
+    "02": {
+        "name": "The Devil",
+        "riddle": "Behave yourself so that the little red one doesn't carry you off"
+    },
+    "03": {
+        "name": "The Lady",
+        "riddle": "Refined walking along the entire main street"
+    },
+    "04": {
+        "name": "The Dandy",
+        "riddle": "Don Ferruco in the Alameda wanted to toss away his cane"
+    },
+    "05": {
+        "name": "The Umbrella",
+        "riddle": "For the sun and the rain"
+    },
+    "06": {
+        "name": "The Mermaid",
+        "riddle": "Don't get dizzy with the songs of the mermaid"
+    },
+    "07": {
+        "name": "The Ladder",
+        "riddle": "Climb me step by step You don't try to hop up"
+    },
+    "08": {
+        "name": "The Bottle",
+        "riddle": "The tool of the drunk"
+    },
+    "09": {
+        "name": "The Barrel",
+        "riddle": "The bricklayer drank so much, he ended up like a barrel"
+    },
+    "10": {
+        "name": "The Tree",
+        "riddle": "He who nears a good tree, good shade blankets him"
+    },
+    "11": {
+        "name": "The Melon",
+        "riddle": "Give it to me or take it away"
+    },
+    "12": {
+        "name": "The Brave Man",
+        "riddle": "Why do you flee, coward? Having such a good dagger"
+    },
+    "13": {
+        "name": "The Bonnet",
+        "riddle": "Put the bonnet on the baby, lest he catch a cold"
+    },
+    "14": {
+        "name": "The Death",
+        "riddle": "Death, lank and skinny"
+    },
+    "15": {
+        "name": "the Pear",
+        "riddle": "He who waits despairs"
+    },
+    "16": {
+        "name": "The Flag",
+        "riddle": "Green, white, and red, the soldier's flag"
+    },
+    "17": {
+        "name": "The Mandolin",
+        "riddle": "Simon the mariachi is there playing his mandolin"
+    },
+    "18": {
+        "name": "The Cello",
+        "riddle": "Growing it reached the heavens, and since it wasn't a violin, it had to be a cello"
+    },
+    "19": {
+        "name": "The Heron",
+        "riddle": "At the other side of the river I have my sand bank, where my darling brunette sits, she has a nose as a heron beak"
+    },
+    "20": {
+        "name": "The Bird",
+        "riddle": "You have me hopping here and there, like a bird on a branch"
+    },
+    "21": {
+        "name": "The Hand",
+        "riddle": "The hand of a criminal"
+    },
+    "22": {
+        "name": "The Boot",
+        "riddle": "A boot just like the other"
+    },
+    "23": {
+        "name": "The Moon",
+        "riddle": "The lamp of lovers"
+    },
+    "24": {
+        "name": "The Parrot",
+        "riddle": "Parrot parrot, put out your claw and start to talk"
+    },
+    "25": {
+        "name": "the Drunkard",
+        "riddle": "I cannot put up with the foolish drunk"
+    },
+    "26": {
+        "name": "The Negro",
+        "riddle": "He who ate the sugar"
+    },
+    "27": {
+        "name": "The Heart",
+        "riddle": "Do not miss me, darling, I'll be back by bus "
+    },
+    "28": {
+        "name": "The Watermelon",
+        "riddle": "Juan's swollen belly was due to eating too much watermelon"
+    },
+    "29": {
+        "name": "the Drum",
+        "riddle": "Do not wrinkle, old leather, I want you for a drum"
+    },
+    "30": {
+        "name": "The Shrimp",
+        "riddle": "The shrimp that falls asleep is carried away by the water's current"
+    },
+    "31": {
+        "name": "The Arrows",
+        "riddle": "The Indian Adán's arrows, where they hit, they strike"
+    },
+    "32": {
+        "name": "The Musician",
+        "riddle": "The rubber-lips musician does not want to play any more"
+    },
+    "33": {
+        "name": "The Spider",
+        "riddle": "Beat it silly, do not let it reach me!"
+    },
+    "34": {
+        "name": "The Soldier",
+        "riddle": "One, two and three, the soldier heads to headquarters"
+    },
+    "35": {
+        "name": "The Star",
+        "riddle": "The guide of the sailors"
+    },
+    "36": {
+        "name": "The Billycan",
+        "riddle": "I do not pay much attention to you "
+    },
+    "37": {
+        "name": "The World",
+        "riddle": "This world is a sphere and we are too many"
+    },
+    "38": {
+        "name": "The Apache",
+        "riddle": "Ah, Chihuahua! So many Apaches with pants and huarache"
+    },
+    "39": {
+        "name": "The Cactus",
+        "riddle": "The cactus only receives attention when it bears fruit"
+    },
+    "40": {
+        "name": "The Scorpion",
+        "riddle": "He who stings with his tail receives a beating"
+    },
+    "41": {
+        "name": "The Rose",
+        "riddle": "Rosita, Rosaura, come here, I want you now"
+    },
+    "42": {
+        "name": "The Skull",
+        "riddle": "While passing by the cemetery, I found a skull"
+    },
+    "43": {
+        "name": "The Bell",
+        "riddle": "You with the bell and I with your sister"
+    },
+    "44": {
+        "name": "The Water Pitcher",
+        "riddle": "The water pitches goes to the water so often, it breaks and wets your slip"
+    },
+    "45": {
+        "name": "The Deer",
+        "riddle": "It jumps around searching, but sees nothing"
+    },
+    "46": {
+        "name": "The Sun",
+        "riddle": "The Sun is the blanket of the poor"
+    },
+    "47": {
+        "name": "The Crown",
+        "riddle": "The hat of the kings"
+    },
+    "48": {
+        "name": "The Canoe",
+        "riddle": "Lupita rows and rows, sitting in her little boat"
+    },
+    "49": {
+        "name": "The Pine Tree",
+        "riddle": "Fresh and pleasantly scented, beautiful all the time"
+    },
+    "50": {
+        "name": "The Fish",
+        "riddle": "This one dies by its mouth, even if it was mute in life"
+    },
+    "51": {
+        "name": "The Palm Tree",
+        "riddle": "Palmer, climb the palm tree and bring me a real coconut"
+    },
+    "52": {
+        "name": "The Flowerpot",
+        "riddle": "He who is born to be a plant pot will not leave the hallway"
+    },
+    "53": {
+        "name": "The Harp",
+        "riddle": "My mother-in-law's old harp is no longer fit to play"
+    },
+    "54": {
+        "name": "The Frog",
+        "riddle": "When she saw the green frog, how high your sister jumped!"
     }
 }

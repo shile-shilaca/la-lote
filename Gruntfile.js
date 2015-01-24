@@ -112,6 +112,17 @@ module.exports = function(grunt) {
                 dest: 'dist/index.html'
             }
         },
+        jsonmin: {
+            jsonFiles: {
+                options: {
+                    stripComments: true,
+                    stripWhitespace: true
+                },
+                files: {
+                    'dist/data/data.es.json': 'src/data/cards.es.json'
+                }
+            }
+        },
         svgmin: {
             options: {
                 plugins: [{
@@ -134,7 +145,7 @@ module.exports = function(grunt) {
             },
             svgFiles: {
                 files: {
-                    'src/svg/card.svg': ['src/svg/card.svg', 'src/svg/*.svg']
+                    'src/svg/card.svg': ['src/svg/cards/*.svg']
                 }
             }
         },
@@ -168,6 +179,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-divshot');
     grunt.loadNpmTasks('grunt-htmlrefs');
+    grunt.loadNpmTasks('grunt-jsonmin');
     grunt.loadNpmTasks('grunt-svgmin');
     grunt.loadNpmTasks('grunt-svgstore');
 
@@ -186,6 +198,7 @@ module.exports = function(grunt) {
         'clean',
         'htmlrefs',
         'htmlmin',
+        'jsonmin',
         'cssmin',
         'uglify',
         'svgsprite',
