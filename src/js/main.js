@@ -68,12 +68,23 @@ app.controller('createController', ['$scope', '$location',
 ]);
 
 // Game Controller
-app.controller('gameController', ['$scope', '$location', '$document',
-    function ($scope, $location, $document) {
+app.controller('gameController', ['$scope', '$location', '$document', '$timeout',
+    function ($scope, $location, $document, $timeout) {
         // Go to (Exit or Loteria)
         $scope.goTo = function (location) {
             $location.path('/' + location);
         };
+
+        var riddle = new Audio('audio/cards/riddle/19.es.mp3');
+        riddle.play();
+        riddle.addEventListener('ended', function () {
+            $timeout(function () {
+                var name = new Audio('audio/cards/name/19.es.mp3');
+                name.play();
+            }, 500);
+        });
+
+
 
         // Card click listener
         var onCardClick = function (e) {
