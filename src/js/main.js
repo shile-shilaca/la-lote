@@ -12,6 +12,14 @@ app.config(function ($routeProvider) {
         templateUrl : './templates/create.tpl.html',
         controller  : 'createController'
     })
+    .when('/game', {
+        templateUrl : './templates/game.tpl.html',
+        controller  : 'gameController'
+    })
+    .when('/winner', {
+        templateUrl : './templates/winner.tpl.html',
+        controller  : 'winnerController'
+    })
     /** Error View **/
     .when('/error', {
         templateUrl : './templates/error.tpl.html'
@@ -50,7 +58,27 @@ app.controller('homeController', ['$scope', '$location', '$anchorScroll',
 ]);
 
 // Create Game Controller
-app.controller('createController', ['$scope',
+app.controller('createController', ['$scope', '$location',
+    function ($scope, $location) {
+        // Go to (Start Game or Exit)
+        $scope.goTo = function (location) {
+            $location.path('/' + location);
+        }
+    }
+]);
+
+// Game Controller
+app.controller('gameController', ['$scope', '$location',
+    function ($scope, $location) {
+        // Go to (Exit or Loteria)
+        $scope.goTo = function (location) {
+            $location.path('/' + location);
+        }
+    }
+]);
+
+// Winner Controller
+app.controller('winnerController', ['$scope',
     function ($scope) {
 
     }
