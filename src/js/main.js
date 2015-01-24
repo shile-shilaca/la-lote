@@ -77,6 +77,8 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
         }, false);
         //backgroundAudio.play();
 
+        $scope.cardsSelected = 0;
+
         // Go to (Exit or Loteria)
         $scope.goTo = function (location) {
             $location.path('/' + location);
@@ -91,6 +93,8 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
             }, 500);
         });
 
+        $scope.cards = [1, 5, 8, 3, 2, 9, 10, 16, 12, 4, 6, 11, 7, 13, 15, 14];
+
         $scope.nextCard = function () {
             var currentCard = document.getElementById('current-card');
             currentCard.classList.add('animated', 'flipOutY');
@@ -103,7 +107,8 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
         };
 
         // Card click listener
-        var onCardClick = function (e) {
+        $scope.onCardClick = function ($event) {
+            var e = $event;
             var card = e.target;
             var bean = card.$.bean;
             // Firefox
@@ -118,14 +123,20 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
 
             card.classList.toggle("active");
             bean.classList.toggle("active");
+
+            if (bean.classList.contains('active')) {
+                $scope.cardsSelected++;
+            } else {
+                $scope.cardsSelected--;
+            }
         };
-        // Get cards
+        /*// Get cards
         var cards = document.getElementsByTagName('lottery-card');
         // Assign event listener
         for (var i = 0, l = cards.length; i < l; i++) {
             var card = cards[i];
             card.addEventListener('click', onCardClick, false);
-        }
+        }*/
     }
 ]);
 
