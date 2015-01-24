@@ -113,7 +113,7 @@ module.exports = function(grunt) {
             },
             svgFiles: {
                 files: {
-                    'dist/svg/card.svg': 'dist/svg/card.svg'
+                    'dist/svg/card.svg': 'src/svg/card.svg'
                 }
             }
         },
@@ -127,7 +127,7 @@ module.exports = function(grunt) {
             },
             svgFiles: {
                 files: {
-                    'dist/svg/card.svg': ['src/svg/*.svg']
+                    'src/svg/card.svg': ['src/svg/card.svg', 'src/svg/*.svg']
                 }
             }
         },
@@ -141,11 +141,7 @@ module.exports = function(grunt) {
             },
             jsFiles: {
                 options: {
-                    banner: '<%= vars.banner %>' + grunt.util.linefeed,
-                    mangle: {
-                        except: [
-                        ]
-                    }
+                    banner: '<%= vars.banner %>' + grunt.util.linefeed
                 },
                 files: {
                     'dist/js/app.min.js': 'src/js/*.js'
@@ -172,6 +168,9 @@ module.exports = function(grunt) {
      Tasks Aliases
      ===============================================================*/
 
+    grunt.registerTask('svgsprite', [
+        'svgstore'
+    ]);
     grunt.registerTask('deploy', [
         'dist',
         'divshot-push'
@@ -182,7 +181,7 @@ module.exports = function(grunt) {
         'htmlmin',
         'cssmin',
         'uglify',
-        'svgstore',
+        'svgsprite',
         'svgmin',
         'copy'
     ]);
