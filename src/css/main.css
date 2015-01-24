@@ -21,7 +21,8 @@ a:link, a:visited, a:active, a:hover {
 .menu > div {
     position: fixed;
 }
-.menu h1 {
+.menu h1,
+#create-main h1 {
   font-family: 'flash';
   font-weight: bold;
   font-size: 2.5em;
@@ -71,6 +72,56 @@ a:link, a:visited, a:active, a:hover {
 }
 /** End Home **/
 
+/** Create New Game **/
+#create-main h1 {
+  text-align: center;
+}
+#create-main .game-code {
+    font-size: 1.8em;
+    text-align: center;
+    letter-spacing: 5px;
+}
+paper-input-decorator /deep/ .label-text,
+paper-input-decorator[focused] /deep/ .floated-label .label-text,
+paper-input-decorator.invalid[focused] /deep/ .floated-label .label-text {
+    color: #E92476;
+}
+paper-input-decorator /deep/ .focused-underline {
+    background-color: #E92476;
+}
+#create-main strong {
+    font-size: 1.4em;
+}
+#create-main .footer {
+    font-family: 'flash';
+    text-align: center;
+    font-size: 1.3em;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
+}
+#players-list ul {
+    list-style: none;
+    padding: 0;
+}
+#players-list ul > li {
+    background: #F18CB8;
+    padding: 15px 10px;
+    margin-bottom: 5px;
+    color: #BE5B85;
+    border-radius: 3px;
+    -webkit-box-shadow: 2px 2px 2px 0 rgba(50, 50, 50, 0.75);
+       -moz-box-shadow: 2px 2px 2px 0 rgba(50, 50, 50, 0.75);
+            box-shadow: 2px 2px 2px 0 rgba(50, 50, 50, 0.75);
+}
+#players-list ul > li.active {
+    background: #ffffff;
+    padding: 0 10px;
+}
+#players-list .custom-input {
+    color: #333333;
+}
+/** End Create New Game **/
+
 
 /** General **/
 .button {
@@ -83,6 +134,11 @@ a:link, a:visited, a:active, a:hover {
           box-shadow: 2px 2px 2px 0 rgba(50, 50, 50, 0.75);
   display: block;
   margin: 15px auto;
+  text-transform: uppercase;
+}
+.small-button {
+  display: inline-block;
+  width: 49.5%;
 }
 @font-face {
   font-family: 'flash';
