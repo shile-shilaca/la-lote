@@ -1,0 +1,25 @@
+.bean {
+    background-color: transparent;
+    position: relative;
+    visibility: hidden;
+}
+.bean.active {
+    visibility: visible;
+}
+.card {
+    width: 90px;
+    height: 135px;
+    border: 7px solid white;
+    -webkit-box-shadow: 2px 2px 2px 0 rgba(50, 50, 50, 0.75);
+       -moz-box-shadow: 2px 2px 2px 0 rgba(50, 50, 50, 0.75);
+            box-shadow: 2px 2px 2px 0 rgba(50, 50, 50, 0.75);
+    float: left;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+.card01 {
+    background: url('../svg/01.svg') no-repeat;
+}
+.card02 {
+    background: url('../svg/02.svg') no-repeat;
+}

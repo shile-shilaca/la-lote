@@ -53,7 +53,7 @@ app.controller('homeController', ['$scope', '$location', '$anchorScroll',
         // Go to (New Game or Join an Existing Game)
         $scope.goTo = function (location) {
             $location.path('/' + location);
-        }
+        };
     }
 ]);
 
@@ -63,16 +63,52 @@ app.controller('createController', ['$scope', '$location',
         // Go to (Start Game or Exit)
         $scope.goTo = function (location) {
             $location.path('/' + location);
-        }
+        };
     }
 ]);
 
 // Game Controller
-app.controller('gameController', ['$scope', '$location',
-    function ($scope, $location) {
+app.controller('gameController', ['$scope', '$location', '$document', '$timeout',
+    function ($scope, $location, $document, $timeout) {
         // Go to (Exit or Loteria)
         $scope.goTo = function (location) {
             $location.path('/' + location);
+        };
+
+        var riddle = new Audio('audio/cards/riddle/19.es.mp3');
+        riddle.play();
+        riddle.addEventListener('ended', function () {
+            $timeout(function () {
+                var name = new Audio('audio/cards/name/19.es.mp3');
+                name.play();
+            }, 500);
+        });
+
+
+
+        // Card click listener
+        var onCardClick = function (e) {
+            var card = e.target;
+            var bean = card.$.bean;
+            // Firefox
+            /*bean.style.top = (e.layerY) + 'px';
+            bean.style.left = (e.layerX) + 'px';*/
+            // Chrome
+            bean.style.top = e.target.offsetTop + 'px';
+            bean.style.left = e.target.offsetLeft + 'px';
+
+            var a = Math.random() * 360;
+            bean.style.transform = 'rotate(' + a + 'deg)';
+
+            card.classList.toggle("active");
+            bean.classList.toggle("active");
+        };
+        // Get cards
+        var cards = document.getElementsByTagName('lottery-card');
+        // Assign event listener
+        for (var i = 0, l = cards.length; i < l; i++) {
+            var card = cards[i];
+            card.addEventListener('click', onCardClick, false);
         }
     }
 ]);
