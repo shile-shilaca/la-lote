@@ -17,31 +17,31 @@
     margin-left: 5px;
     margin-top: 5px;
 }
-.card01 {
+.card1 {
     background: url('../svg/cards/01.svg') no-repeat;
 }
-.card02 {
+.card2 {
     background: url('../svg/cards/02.svg') no-repeat;
 }
-.card03 {
+.card3 {
     background: url('../svg/cards/03.svg') no-repeat;
 }
-.card04 {
+.card4 {
     background: url('../svg/cards/04.svg') no-repeat;
 }
-.card05 {
+.card5 {
     background: url('../svg/cards/05.svg') no-repeat;
 }
-.card06 {
+.card6 {
     background: url('../svg/cards/06.svg') no-repeat;
 }
-.card07 {
+.card7 {
     background: url('../svg/cards/07.svg') no-repeat;
 }
-.card08 {
+.card8 {
     background: url('../svg/cards/08.svg') no-repeat;
 }
-.card09 {
+.card9 {
     background: url('../svg/cards/09.svg') no-repeat;
 }
 .card10 {
@@ -64,4 +64,7 @@
 }
 .card16 {
     background: url('../svg/cards/16.svg') no-repeat;
+}
+.card19 {
+    background: url('../svg/cards/19.svg') no-repeat;
 }
