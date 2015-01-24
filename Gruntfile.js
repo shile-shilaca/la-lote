@@ -11,8 +11,8 @@ module.exports = function(grunt) {
 
         vars: {
             pkg: pkg,
-            versionAndBuild: 'v<%= vars.pkg.version %>-b<%= grunt.template.today("yyyy.mm.dd.HH.MM") %>',
-            banner: '/*! {{NAME}} {{VERSION}} {{AUTHOR}} */'
+            versionBuild: 'v<%= vars.pkg.version %>-b<%= grunt.template.today("yyyy.mm.dd.HH.MM") %>',
+            banner: '/*! <%= vars.pkg.name %> <%= vars.versionBuild %> <%= vars.pkg.author %> */'
         },
 
         /*===============================================================
@@ -27,6 +27,40 @@ module.exports = function(grunt) {
                 'dist'
             ]
         },
+        copy: {
+            toTmpFolder: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'src/js/vendor',
+                        filter: 'isFile',
+                        src: ['**'],
+                        dest: 'dist/js/vendor'
+                    },
+                    {
+                        expand: true,
+                        cwd: 'src/css/vendor',
+                        filter: 'isFile',
+                        src: ['**'],
+                        dest: 'dist/css/vendor'
+                    },
+                    {
+                        expand: true,
+                        cwd: 'src/css/fonts',
+                        filter: 'isFile',
+                        src: ['**'],
+                        dest: 'dist/css/fonts'
+                    },
+                    {
+                        expand: true,
+                        cwd: 'src/templates',
+                        filter: 'isFile',
+                        src: ['**'],
+                        dest: 'dist/templates'
+                    }
+                ]
+            }
+        },
         cssmin: {
             options: {
                 keepSpecialComments: 0,
@@ -37,7 +71,7 @@ module.exports = function(grunt) {
                     banner: '<%= vars.banner %>'
                 },
                 src: 'src/css/*.css',
-                dest: 'dist/css/*.min.css'
+                dest: 'dist/css/app.min.css'
             }
         },
         'divshot-push': {
@@ -106,7 +140,7 @@ module.exports = function(grunt) {
                     }
                 },
                 files: {
-                    'dist/js/main.min.js': 'src/js/*.js'
+                    'dist/js/app.min.js': 'src/js/*.js'
                 }
             }
         }
@@ -117,6 +151,7 @@ module.exports = function(grunt) {
      ===============================================================*/
 
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -135,6 +170,7 @@ module.exports = function(grunt) {
     ]);
     grunt.registerTask('dist', [
         'clean',
+        'copy',
         'cssmin',
         'uglify',
         'htmlrefs',
