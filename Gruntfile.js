@@ -40,10 +40,8 @@ module.exports = function(grunt) {
                 dest: 'dist/css/*.min.css'
             }
         },
-        'divshot:push': {
-            production: {
-            },
-            staging: {
+        'divshot-push': {
+            development: {
             }
         },
         htmlmin: {
@@ -132,7 +130,8 @@ module.exports = function(grunt) {
      ===============================================================*/
 
     grunt.registerTask('deploy', [
-        'dist'
+        'dist',
+        'divshot-push'
     ]);
     grunt.registerTask('dist', [
         'clean',

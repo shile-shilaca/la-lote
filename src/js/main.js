@@ -7,6 +7,11 @@ app.config(function ($routeProvider) {
         templateUrl : './templates/home.tpl.html',
         controller  : 'homeController'
     })
+    /** Join **/
+    .when('/create', {
+        templateUrl : './templates/create.tpl.html',
+        controller  : 'createController'
+    })
     /** Error View **/
     .when('/error', {
         templateUrl : './templates/error.tpl.html'
@@ -32,9 +37,21 @@ app.run(function ($rootScope, $location) {
 // Home Controller
 app.controller('homeController', ['$scope', '$location', '$anchorScroll',
     function ($scope, $location, $anchorScroll) {
+        // Scroll to section
         $scope.scrollTo = function (id) {
             $location.hash(id);
             $anchorScroll();
+        };
+        // Go to (New Game or Join an Existing Game)
+        $scope.goTo = function (location) {
+            $location.path('/' + location);
         }
+    }
+]);
+
+// Create Game Controller
+app.controller('createController', ['$scope',
+    function ($scope) {
+
     }
 ]);

@@ -21,6 +21,7 @@
   "dependencies": {
     "core-image": "Polymer/core-image#~0.5.4",
     "paper-button": "Polymer/paper-button#~0.5.4",
-    "paper-ripple": "Polymer/paper-ripple#~0.5.4"
+    "paper-ripple": "Polymer/paper-ripple#~0.5.4",
+    "paper-input": "Polymer/paper-input#~0.5.4"
   }
 }
