@@ -1,4 +1,4 @@
-var app = angular.module('lottery', ['ngRoute']);
+var app = angular.module('lottery', ['ngRoute', 'pusher-angular']);
 
 /** Routes Configuration **/
 app.config(function ($routeProvider) {
@@ -58,8 +58,48 @@ app.controller('homeController', ['$scope', '$location', '$anchorScroll',
 ]);
 
 // Create Game Controller
-app.controller('createController', ['$scope', '$location',
-    function ($scope, $location) {
+app.controller('createController', ['$scope', '$location', '$pusher',
+    function ($scope, $location, $pusher) {
+        function generateUUID() {
+            var d = new Date().getTime();
+            var uuid = 'xxxxx'.replace(/[xy]/g, function(c) {
+                var r = (d + Math.random() * 16) % 16 | 0;
+                d = Math.floor(d / 16);
+                return (c=='x' ? r : (r&0x3|0x8)).toString(16);
+            });
+            return uuid;
+        }
+        // UUID
+        $scope.uuid = generateUUID();
+        $scope.uuid = 12345;
+
+        var pusher = new Pusher('f5656bd4670f11759284', {
+            authEndpoint: 'http://127.0.0.1:5000/pusher/auth'
+        });
+
+        var myChannel = pusher.subscribe('private-' + $scope.uuid + '');
+        $scope.players = [];
+        $scope.playerName = null;
+
+        myChannel.bind('client-newplayer',
+            function(data) {
+                console.log(data);
+                $scope.$apply(function () {
+                    $scope.players.push(data);
+                });
+
+                console.log($scope.players);
+            }
+        );
+
+
+        $scope.addPlayer = function () {
+            console.log($scope.playerName);
+            var player = {};
+            player.name = $scope.playerName;
+            player.id = 100;
+            myChannel.trigger('client-newplayer', player);
+        };
         // Go to (Start Game or Exit)
         $scope.goTo = function (location) {
             $location.path('/' + location);

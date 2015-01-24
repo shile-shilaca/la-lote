@@ -4,23 +4,23 @@
         <!-- Join Message -->
         <section>
             <p>Friends can join at <strong>la-lote.com/join</strong> by entering this game code:</p>
-            <h2 class="game-code">TVRSZ</h2>
+            <h2 class="game-code">{{uuid}}</h2>
         </section>
         <!-- End Join Message -->
 
         <!-- Players List -->
+        {{players}}
         <section id="players-list">
             <ul>
                 <li class="active">
                     <paper-input-decorator class="custom-input" label="Your Name" floatinglabel layout vertical>
-                        <input is="core-input" placeholder="Your Name">
+                        <input is="core-input" placeholder="Your Name" ng-model="playerName" ng-blur="addPlayer()">
                     </paper-input-decorator>
                 </li>
-                <li>
-                    Evert
-                </li>
-                <li>
-                    Cheky
+            </ul>
+            <ul>
+                <li ng-repeat="player in players">
+                    {{player.name}}
                 </li>
             </ul>
             <paper-button class="button small-button">Exit</paper-button>

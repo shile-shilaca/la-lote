@@ -5,7 +5,6 @@
     "private": true,
     "description": "La Loteria Mexicana",
     "keywords": [
-        "hackathon",
         "la lote",
         "loteria mexicana",
         "mexico",
@@ -30,7 +29,6 @@
         "grunt-htmlrefs": "^0.5.0",
         "grunt-jsonmin": "^0.2.4",
         "grunt-remove-logging": "^0.2.0",
-        "grunt-string-replace": "^1.0.0",
         "grunt-svgmin": "^2.0.0",
         "grunt-svgstore": "^0.5.0"
     },

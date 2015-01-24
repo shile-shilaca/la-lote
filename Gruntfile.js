@@ -41,8 +41,22 @@ module.exports = function(grunt) {
                         expand: true,
                         cwd: 'src/bower_components',
                         filter: 'isFile',
-                        src: ['**'],
+                        src: ['**/*', '!**/*.md'],
                         dest: 'dist/bower_components'
+                    },
+                    {
+                        expand: true,
+                        cwd: 'src/css/fonts',
+                        filter: 'isFile',
+                        src: ['**'],
+                        dest: 'dist/css/fonts'
+                    },
+                    {
+                        expand: true,
+                        cwd: 'src/css/vendor',
+                        filter: 'isFile',
+                        src: ['**'],
+                        dest: 'dist/css/vendor'
                     },
                     {
                         expand: true,
@@ -57,46 +71,29 @@ module.exports = function(grunt) {
                         filter: 'isFile',
                         src: ['**'],
                         dest: 'dist/js/vendor'
-                    },
-                    {
-                        expand: true,
-                        cwd: 'src/css/vendor',
-                        filter: 'isFile',
-                        src: ['**'],
-                        dest: 'dist/css/vendor'
-                    },
-                    {
-                        expand: true,
-                        cwd: 'src/css/fonts',
-                        filter: 'isFile',
-                        src: ['**'],
-                        dest: 'dist/css/fonts'
-                    },
-                    {
-                        expand: true,
-                        cwd: 'src/templates',
-                        filter: 'isFile',
-                        src: ['**'],
-                        dest: 'dist/templates'
                     }
                 ]
             }
         },
         cssmin: {
             options: {
+                banner: '<%= vars.banner %>',
                 keepSpecialComments: 0,
                 report: 'min'
             },
             cssFiles: {
-                options: {
-                    banner: '<%= vars.banner %>'
-                },
-                src: 'src/css/*.css',
+                src: ['src/css/main.css'],
                 dest: 'dist/css/app.min.css'
+            },
+            webComponentsCssFiles: {
+                src: 'src/css/card.css',
+                dest: 'dist/css/card.css'
             }
         },
         'divshot-push': {
             development: {
+            },
+            production: {
             }
         },
         htmlmin: {
@@ -109,6 +106,11 @@ module.exports = function(grunt) {
                     removeRedundantAttributes: true
                 },
                 files: {
+                    'dist/custom_web_components/card.html': 'src/custom_web_components/card.html',
+                    'dist/templates/create.tpl.html': 'src/templates/create.tpl.html',
+                    'dist/templates/game.tpl.html': 'src/templates/game.tpl.html',
+                    'dist/templates/home.tpl.html': 'src/templates/home.tpl.html',
+                    'dist/templates/winner.tpl.html': 'src/templates/winner.tpl.html',
                     'dist/index.html': 'dist/index.html'
                 }
             }
@@ -134,18 +136,25 @@ module.exports = function(grunt) {
         svgmin: {
             options: {
                 plugins: [{
+                    cleanupIDs: false,
                     removeViewBox: false
                 }]
             },
             svgFiles: {
                 files: {
+                    'dist/svg/bean.svg': 'src/svg/bean.svg',
                     'dist/svg/card.svg': 'src/svg/card.svg'
                 }
             }
         },
         svgstore: {
             options: {
-                prefix: 'card-',
+                formatting: {
+                    indent_char: " ",
+                    indent_size : 4
+                },
+                includeTitleElement: false,
+                prefix: 'card',
                 svg: {
                     viewBox: '0 0 195 293',
                     xmlns: 'http://www.w3.org/2000/svg'
@@ -160,7 +169,9 @@ module.exports = function(grunt) {
         uglify: {
             options: {
                 beautify: false,
-                compress: false,
+                compress: {
+                    drop_console: true
+                },
                 mangle: false,
                 preserveComments: false,
                 report: 'min'
@@ -170,7 +181,7 @@ module.exports = function(grunt) {
                     banner: '<%= vars.banner %>' + grunt.util.linefeed
                 },
                 files: {
-                    'dist/js/app.min.js': 'src/js/*.js'
+                    'dist/js/app.min.js': ['src/js/main.js']
                 }
             }
         }
@@ -198,9 +209,13 @@ module.exports = function(grunt) {
     grunt.registerTask('svgsprite', [
         'svgstore'
     ]);
-    grunt.registerTask('deploy', [
+    grunt.registerTask('deploydev', [
         'dist',
-        'divshot-push'
+        'divshot-push:development'
+    ]);
+    grunt.registerTask('deployprod', [
+        'dist',
+        'divshot-push:production'
     ]);
     grunt.registerTask('dist', [
         'clean',
@@ -214,6 +229,6 @@ module.exports = function(grunt) {
         'copy'
     ]);
     grunt.registerTask('default', [
-        'deploy'
+        'dist'
     ]);
 };

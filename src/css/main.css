@@ -82,6 +82,7 @@ a:link, a:visited, a:active, a:hover {
     font-size: 1.8em;
     text-align: center;
     letter-spacing: 5px;
+    text-transform: uppercase;
 }
 paper-input-decorator /deep/ .label-text,
 paper-input-decorator[focused] /deep/ .floated-label .label-text,
