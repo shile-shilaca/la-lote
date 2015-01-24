@@ -32,6 +32,13 @@ module.exports = function(grunt) {
                 files: [
                     {
                         expand: true,
+                        cwd: 'src/bower_components',
+                        filter: 'isFile',
+                        src: ['**'],
+                        dest: 'dist/bower_components'
+                    },
+                    {
+                        expand: true,
                         cwd: 'src/js/vendor',
                         filter: 'isFile',
                         src: ['**'],
@@ -88,7 +95,7 @@ module.exports = function(grunt) {
                     removeRedundantAttributes: true
                 },
                 files: {
-                    'dist/index.html': 'src/index.html'
+                    'dist/index.html': 'dist/index.html'
                 }
             }
         },
@@ -136,7 +143,8 @@ module.exports = function(grunt) {
                 options: {
                     banner: '<%= vars.banner %>' + grunt.util.linefeed,
                     mangle: {
-                        except: []
+                        except: [
+                        ]
                     }
                 },
                 files: {
@@ -170,13 +178,13 @@ module.exports = function(grunt) {
     ]);
     grunt.registerTask('dist', [
         'clean',
-        'copy',
-        'cssmin',
-        'uglify',
         'htmlrefs',
         'htmlmin',
+        'cssmin',
+        'uglify',
         'svgstore',
-        'svgmin'
+        'svgmin',
+        'copy'
     ]);
     grunt.registerTask('default', [
         'deploy'
