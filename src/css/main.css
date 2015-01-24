@@ -1,0 +1,131 @@
+/** General Styles **/
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+body {
+  font-size: 1.4em;
+  background-color: #e92476;
+  color: #ffffff;
+  height: 100%;
+  font-family: 'montserrat';
+}
+a:link, a:visited, a:active, a:hover {
+  text-decoration: none;
+}
+/** End General Styles **/
+
+
+/** Home **/
+.menu > div {
+    position: fixed;
+}
+.menu h1 {
+  font-family: 'flash';
+  font-weight: bold;
+  font-size: 2.5em;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
+}
+.menu ul {
+  list-style: none;
+}
+.menu ul > li > a {
+  font-size: 2em;
+  color: #941349;
+  font-family: 'flash';
+}
+.menu ul > li.active > a {
+  color: #ffffff;
+}
+.menu ul > li > a:hover {
+  color: #ffffff;
+}
+
+#home-main section {
+  padding: 20px 5px;
+  border-bottom: 1px solid #ef6e9f;
+  border-top: 1px solid #ef6e9f;
+  margin-top: 200px;
+}
+#home-main section:first-of-type {
+  border-top: 0;
+  margin-top: 0;
+}
+#home-main section:last-of-type {
+  border-bottom: 0;
+  margin-bottom: 100px;
+}
+#home-main section > h1, #home-main section > p {
+  text-align: center;
+}
+#home-main section > h1 {
+  font-family: 'flash';
+  font-weight: bold;
+  font-size: 3em;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
+}
+#home-main section button {
+  display: block;
+  margin: 15px auto;
+}
+/** End Home **/
+
+
+/** General **/
+.button {
+  background: #cf266c;
+  border: 0;
+  padding: 5px 20px;
+  border-radius: 3px;
+  -webkit-box-shadow: 2px 2px 2px 0 rgba(50, 50, 50, 0.75);
+     -moz-box-shadow: 2px 2px 2px 0 rgba(50, 50, 50, 0.75);
+          box-shadow: 2px 2px 2px 0 rgba(50, 50, 50, 0.75);
+  display: block;
+  margin: 15px auto;
+}
+@font-face {
+  font-family: 'flash';
+  src: url('fonts/flashef-light-webfont.eot');
+  src: url('fonts/flashef-light-webfont.eot?#iefix') format('embedded-opentype'),
+  url('fonts/flashef-light-webfont.woff2') format('woff2'),
+  url('fonts/flashef-light-webfont.woff') format('woff'),
+  url('fonts/flashef-light-webfont.ttf') format('truetype'),
+  url('fonts/flashef-light-webfont.svg#flashefregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'flash';
+  src: url('fonts/flashef-bold-webfont.eot');
+  src: url('fonts/flashef-bold-webfont.eot?#iefix') format('embedded-opentype'),
+  url('fonts/flashef-bold-webfont.woff2') format('woff2'),
+  url('fonts/flashef-bold-webfont.woff') format('woff'),
+  url('fonts/flashef-bold-webfont.ttf') format('truetype'),
+  url('fonts/flashef-bold-webfont.svg#flashefregular') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'montserrat';
+  src: url('fonts/montserrat-regular-webfont.eot');
+  src: url('fonts/montserrat-regular-webfont.eot?#iefix') format('embedded-opentype'),
+  url('fonts/montserrat-regular-webfont.woff2') format('woff2'),
+  url('fonts/montserrat-regular-webfont.woff') format('woff'),
+  url('fonts/montserrat-regular-webfont.ttf') format('truetype'),
+  url('fonts/montserrat-regular-webfont.svg#montserratregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'montserrat';
+  src: url('fonts/montserrat-bold-webfont.eot');
+  src: url('fonts/montserrat-bold-webfont.eot?#iefix') format('embedded-opentype'),
+  url('fonts/montserrat-bold-webfont.woff2') format('woff2'),
+  url('fonts/montserrat-bold-webfont.woff') format('woff'),
+  url('fonts/montserrat-bold-webfont.ttf') format('truetype'),
+  url('fonts/montserrat-bold-webfont.svg#montserratbold') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+/** End General **/
