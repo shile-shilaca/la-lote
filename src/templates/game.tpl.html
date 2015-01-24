@@ -5,20 +5,20 @@
         <section id="board" class="clearfix">
             <lottery-card cardnumber="card01"></lottery-card>
             <lottery-card cardnumber="card02"></lottery-card>
-            <lottery-card cardnumber="card01"></lottery-card>
-            <lottery-card cardnumber="card02"></lottery-card>
-            <lottery-card cardnumber="card01"></lottery-card>
-            <lottery-card cardnumber="card01"></lottery-card>
-            <lottery-card cardnumber="card02"></lottery-card>
-            <lottery-card cardnumber="card01"></lottery-card>
-            <lottery-card cardnumber="card01"></lottery-card>
-            <lottery-card cardnumber="card02"></lottery-card>
-            <lottery-card cardnumber="card01"></lottery-card>
-            <lottery-card cardnumber="card01"></lottery-card>
-            <lottery-card cardnumber="card02"></lottery-card>
-            <lottery-card cardnumber="card01"></lottery-card>
-            <lottery-card cardnumber="card02"></lottery-card>
-            <lottery-card cardnumber="card01"></lottery-card>
+            <lottery-card cardnumber="card03"></lottery-card>
+            <lottery-card cardnumber="card04"></lottery-card>
+            <lottery-card cardnumber="card05"></lottery-card>
+            <lottery-card cardnumber="card06"></lottery-card>
+            <lottery-card cardnumber="card07"></lottery-card>
+            <lottery-card cardnumber="card08"></lottery-card>
+            <lottery-card cardnumber="card09"></lottery-card>
+            <lottery-card cardnumber="card10"></lottery-card>
+            <lottery-card cardnumber="card11"></lottery-card>
+            <lottery-card cardnumber="card12"></lottery-card>
+            <lottery-card cardnumber="card13"></lottery-card>
+            <lottery-card cardnumber="card14"></lottery-card>
+            <lottery-card cardnumber="card15"></lottery-card>
+            <lottery-card cardnumber="card16"></lottery-card>
         </section>
         <paper-button class="button small-button exit-button">Exit</paper-button>
         <paper-button class="button small-button" ng-click="goTo('winner')">Loteria</paper-button>
@@ -27,9 +27,10 @@
     <div class="col-lg-4 col-lg-push-2" id="game-card-main">
         <!-- Current Card -->
         <section>
-            <div class="current-card card01"></div>
+            <div class="current-card card01" id="current-card"></div>
             <h3>El Gallo</h3>
             <p>01/54</p>
+            <button class="button" ng-click="nextCard()">Next</button>
         </section>
         <!-- End Current Card -->
     </div>

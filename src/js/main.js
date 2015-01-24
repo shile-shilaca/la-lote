@@ -70,13 +70,20 @@ app.controller('createController', ['$scope', '$location',
 // Game Controller
 app.controller('gameController', ['$scope', '$location', '$document', '$timeout',
     function ($scope, $location, $document, $timeout) {
+        var backgroundAudio = new Audio('audio/bg.mp3');
+        backgroundAudio.addEventListener('ended', function () {
+            this.currentTime = 0;
+            this.play();
+        }, false);
+        //backgroundAudio.play();
+
         // Go to (Exit or Loteria)
         $scope.goTo = function (location) {
             $location.path('/' + location);
         };
 
         var riddle = new Audio('audio/cards/riddle/19.es.mp3');
-        riddle.play();
+        //riddle.play();
         riddle.addEventListener('ended', function () {
             $timeout(function () {
                 var name = new Audio('audio/cards/name/19.es.mp3');
@@ -84,7 +91,16 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
             }, 500);
         });
 
-
+        $scope.nextCard = function () {
+            var currentCard = document.getElementById('current-card');
+            currentCard.classList.add('animated', 'flipOutY');
+            $timeout(function () {
+                currentCard.classList.remove('animated', 'flipOutY');
+                currentCard.classList.remove('card01');
+                currentCard.classList.add('card02');
+                currentCard.classList.add('animated', 'flipInY');
+            }, 2000);
+        };
 
         // Card click listener
         var onCardClick = function (e) {
