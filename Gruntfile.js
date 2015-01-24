@@ -11,8 +11,8 @@ module.exports = function(grunt) {
 
         vars: {
             pkg: pkg,
-            versionAndBuild: 'v<%= vars.pkg.version %>-b<%= grunt.template.today("yyyy.mm.dd.HH.MM") %>',
-            banner: '/*! {{NAME}} {{VERSION}} {{AUTHOR}} */'
+            versionBuild: 'v<%= vars.pkg.version %>-b<%= grunt.template.today("yyyy.mm.dd.HH.MM") %>',
+            banner: '/*! <%= vars.pkg.name %> <%= vars.versionBuild %> <%= vars.pkg.author %> */'
         },
 
         /*===============================================================
@@ -27,6 +27,54 @@ module.exports = function(grunt) {
                 'dist'
             ]
         },
+        copy: {
+            toTmpFolder: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'src/audio',
+                        filter: 'isFile',
+                        src: ['**'],
+                        dest: 'dist/audio'
+                    },
+                    {
+                        expand: true,
+                        cwd: 'src/bower_components',
+                        filter: 'isFile',
+                        src: ['**'],
+                        dest: 'dist/bower_components'
+                    },
+                    {
+                        expand: true,
+                        cwd: 'src/js/vendor',
+                        filter: 'isFile',
+                        src: ['**'],
+                        dest: 'dist/js/vendor'
+                    },
+                    {
+                        expand: true,
+                        cwd: 'src/css/vendor',
+                        filter: 'isFile',
+                        src: ['**'],
+                        dest: 'dist/css/vendor'
+                    },
+                    {
+                        expand: true,
+                        cwd: 'src/css/fonts',
+                        filter: 'isFile',
+                        src: ['**'],
+                        dest: 'dist/css/fonts'
+                    },
+                    {
+                        expand: true,
+                        cwd: 'src/templates',
+                        filter: 'isFile',
+                        src: ['**'],
+                        dest: 'dist/templates'
+                    }
+                ]
+            }
+        },
         cssmin: {
             options: {
                 keepSpecialComments: 0,
@@ -37,7 +85,7 @@ module.exports = function(grunt) {
                     banner: '<%= vars.banner %>'
                 },
                 src: 'src/css/*.css',
-                dest: 'dist/css/*.min.css'
+                dest: 'dist/css/app.min.css'
             }
         },
         'divshot-push': {
@@ -54,7 +102,7 @@ module.exports = function(grunt) {
                     removeRedundantAttributes: true
                 },
                 files: {
-                    'dist/index.html': 'src/index.html'
+                    'dist/index.html': 'dist/index.html'
                 }
             }
         },
@@ -72,7 +120,7 @@ module.exports = function(grunt) {
             },
             svgFiles: {
                 files: {
-                    'dist/svg/card.svg': 'dist/svg/card.svg'
+                    'dist/svg/card.svg': 'src/svg/card.svg'
                 }
             }
         },
@@ -86,7 +134,7 @@ module.exports = function(grunt) {
             },
             svgFiles: {
                 files: {
-                    'dist/svg/card.svg': ['src/svg/*.svg']
+                    'src/svg/card.svg': ['src/svg/card.svg', 'src/svg/*.svg']
                 }
             }
         },
@@ -100,13 +148,10 @@ module.exports = function(grunt) {
             },
             jsFiles: {
                 options: {
-                    banner: '<%= vars.banner %>' + grunt.util.linefeed,
-                    mangle: {
-                        except: []
-                    }
+                    banner: '<%= vars.banner %>' + grunt.util.linefeed
                 },
                 files: {
-                    'dist/js/main.min.js': 'src/js/*.js'
+                    'dist/js/app.min.js': 'src/js/*.js'
                 }
             }
         }
@@ -117,6 +162,7 @@ module.exports = function(grunt) {
      ===============================================================*/
 
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -129,18 +175,22 @@ module.exports = function(grunt) {
      Tasks Aliases
      ===============================================================*/
 
+    grunt.registerTask('svgsprite', [
+        'svgstore'
+    ]);
     grunt.registerTask('deploy', [
         'dist',
         'divshot-push'
     ]);
     grunt.registerTask('dist', [
         'clean',
-        'cssmin',
-        'uglify',
         'htmlrefs',
         'htmlmin',
-        'svgstore',
-        'svgmin'
+        'cssmin',
+        'uglify',
+        'svgsprite',
+        'svgmin',
+        'copy'
     ]);
     grunt.registerTask('default', [
         'deploy'
