@@ -1,10 +1,10 @@
-# La-lote
+# la-lote
 
-Loteria Mexicana
+Loteria Mexicana.
 
-## Author
+**Author:** Shile Shilaca Team
 
-Shile Shilaca Tean
+**URL:** [http://ss15-shile-shilaca.divshot.io]()
 
 ## License
 
