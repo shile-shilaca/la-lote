@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 195 293" enable-background="new 0 0 195 293" xml:space="preserve">
+<g>
+	<rect fill="#886BAE" width="195" height="293"/>
+	<polygon fill="#533C82" points="97,32.5 58,61 58,92 97,92 136,92 136,61 	"/>
+	<g>
+		<circle fill="#43316D" cx="97" cy="91.4" r="40"/>
+		<path fill="#F5EDD9" d="M122,88.4C122,74.9,110.5,64,97,64S72,74.9,72,88.4V104h7v8h4.7c0,0,0-0.3,0-0.3c0-1.9,1.6-3.6,3.5-3.6
+			c1.9,0,3.5,1.7,3.5,3.6c0,0.1,0,0.3,0,0.3h2.5c0,0,0-0.3,0-0.3c0-1.9,1.6-3.6,3.5-3.6s3.5,1.7,3.5,3.6c0,0.1,0,0.3,0,0.3h3
+			c0,0,0-0.3,0-0.3c0-1.9,1.6-3.6,3.5-3.6c1.9,0,3.5,1.7,3.5,3.6c0,0.1,0,0.3,0,0.3h4.7v-8h7V88.4z"/>
+		<circle fill="#F6911D" cx="87.7" cy="91.4" r="5.3"/>
+		<circle fill="#F6911D" cx="106.3" cy="91.4" r="5.3"/>
+		<polygon fill="#43316D" points="100.1,99 96.7,104.8 93.4,99 		"/>
+	</g>
+	<polygon fill="#533C82" points="57,91.4 96.7,64 137,91.4 136.7,61 97,32.5 57.3,61 	"/>
+	<g>
+		<path fill="#F5EDD9" d="M66.1,151.9l13.2,13.2c0,0-27.2,19.8-41.6,48.2C37.7,213.3,31.3,186.7,66.1,151.9z"/>
+		
+			<rect x="109.1" y="131.4" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -103.4864 135.5754)" fill="#F6911D" width="5.7" height="122.5"/>
+	</g>
+	<g>
+		<path fill="#F5EDD9" d="M127.9,151.9l-13.2,13.2c0,0,27.2,19.8,41.6,48.2C156.3,213.3,162.7,186.7,127.9,151.9z"/>
+		
+			<rect x="80.3" y="131.4" transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 5.5778 387.724)" fill="#F6911D" width="5.7" height="122.5"/>
+	</g>
+</g>
+</svg>
