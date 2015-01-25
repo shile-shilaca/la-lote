@@ -149,12 +149,13 @@ module.exports = function(grunt) {
         },
         svgstack: {
             options: {
+                cleanup: ['viewBox'],
                 formatting: {
                     indent_char: " ",
                     indent_size : 4
                 },
                 includeTitleElement: false,
-                prefix: 'card',
+                prefix: 'c',
                 svg: {
                     viewBox: '0 0 195 293',
                     xmlns: 'http://www.w3.org/2000/svg'

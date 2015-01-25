@@ -77,8 +77,8 @@ module.exports = function(grunt) {
             cleanupAttributes = options.cleanup;
         }
 
-        this.files.forEach(function (file) {
-            var $resultDocument = cheerio.load('<svg><defs></defs></svg>', {xmlMode: true}),
+        this.files.forEach(function(file) {
+            var $resultDocument = cheerio.load('<svg><defs><style>.sprt{display:none;}.sprt:target{display:inline;}</style></defs></svg>', {xmlMode: true}),
                 $resultSvg = $resultDocument('svg'),
                 $resultDefs = $resultDocument('defs').first(),
                 iconNameViewBoxArray = [];  // Used to store information of all icons that are added
@@ -229,6 +229,8 @@ module.exports = function(grunt) {
                 // Generate group
                 var $res = cheerio.load('<g>' + $svg.html() + '</g>', {xmlMode: true});
                 var $g = $res('g').first();
+
+                $g.attr('class', 'sprt');
 
                 // Merge in g attributes from option
                 for (var attr in options.g) {
