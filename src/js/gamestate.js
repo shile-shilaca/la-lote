@@ -15,7 +15,6 @@ app.factory('gameState', function ($rootScope, $http, $interval) {
             players = {};
             currentGame = _.shuffle(cards);
             currentRoom = generateUID().toUpperCase();
-            this.started = true;
 
             // $rootScope.uuid = currentRoom;
 
@@ -24,7 +23,17 @@ app.factory('gameState', function ($rootScope, $http, $interval) {
 
         createOwnPlayer: function (name) {
             playerId = generateUID();
-            this.joinGame(playerId, name);
+
+            return {
+                id: playerId,
+                name: name,
+                board: _.chain(cards)
+                    .shuffle()
+                    .first(16)
+                    .value()
+            }
+
+            // this.joinGame(playerId, name);
         },
 
         getOwnPlayer: function () {

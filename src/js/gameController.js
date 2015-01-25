@@ -103,7 +103,10 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
 
         // Go to (Exit or Loteria)
         $scope.goTo = function (location) {
-            $location.path('/' + location);
+            $timeout(function() {
+                console.log('changing location');
+                $location.path('/' + location);
+            });
         };
     }
 ]);

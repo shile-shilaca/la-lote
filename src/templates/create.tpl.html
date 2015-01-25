@@ -4,7 +4,10 @@
         <!-- Join Message -->
         <section>
             <p>Friends can join at <strong>la-lote.com/join</strong> by entering this game code:</p>
-            <h2 class="game-code">{{uuid}}</h2>
+            <h2 class="game-code" ng-show="playerStatus == 'admin'">{{uuid}}</h2>
+            <paper-input-decorator class="custom-input" label="Room ID" floatinglabel layout vertical id="room-input-component">
+                <input is="core-input" ng-show="playerStatus == 'player'" placeholder="UUID" ng-model="uuid" ng-enter="setRoom()"/>
+            </paper-input-decorator>
         </section>
         <!-- End Join Message -->
 
