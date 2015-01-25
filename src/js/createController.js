@@ -1,5 +1,5 @@
-app.controller('createController', ['$scope', '$location', '$pusher', '$timeout', 'gameState', '$routeParams', '$rootScope',
-    function($scope, $location, $pusher, $timeout, gameState, $routeParams, $rootScope) {
+app.controller('createController', ['$scope', '$location', '$timeout', 'gameState', '$routeParams', '$rootScope',
+    function($scope, $location, $timeout, gameState, $routeParams, $rootScope) {
         // Player status
         if($routeParams.action === 'start') {
             $rootScope.playerStatus = 'admin';
@@ -16,6 +16,9 @@ app.controller('createController', ['$scope', '$location', '$pusher', '$timeout'
         // UID
         $scope.uuid = gameState.createGame();
         $scope.uuid = 12345;
+
+        // current player ID
+        $rootScope.uuid = generateUID();
 
 /*
         // Create Pusher room
@@ -35,28 +38,45 @@ app.controller('createController', ['$scope', '$location', '$pusher', '$timeout'
 */
 
         // Creatd Hydna channel/room
-        var channel = new HydnaChannel('la-lote.hydna.net/' + $scope.uuid + ' /hello-world', 'rwe');
+        var channel = new HydnaChannel('la-lote.hydna.net/' + $scope.uuid, 'rwe');
 
         // then register an event handler that alerts the data-part of messages
         // as they are received.
         channel.onmessage = function(event) {
-             console.log('channel.onmessage:', event.data);
+            var message = JSON.parse(event.data);
+
+            switch (message.action) {
+                case 'join':
+                // $rootscope.$broadcast("playerJoin");
+                console.log("joined", message.data);
+                gameState.joinGame(message.data.name);
+                break;
+
+                default:
+                console.log("default", message);
+                break;
+            }
+
         };
 
-        // finally we add an event handler that sends a message as soon as
-        // the channel has been opened.
-        channel.onopen = function() {
-            channel.send('Hello there!');
+        // the admin joins the game automatically
+        channel.onopen = function(event) {
+            if ($rootScope.playerStatus == 'admin') {
+                channel.send(JSON.stringify({
+                    action: "join",
+                    data: {
+                        id: $scope.playerId,
+                        name: "admin"
+                    }
+                }));
+            }
         };
-
 
         // New player submits his name
         $scope.addPlayer = function() {
             // Create player object
             var player = {};
             player.name = $scope.playerName;
-            player.id = generateUID();
-            $rootScope.uuid = player.id;
 
 /*
             // Trigger event
