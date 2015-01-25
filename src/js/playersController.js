@@ -11,8 +11,7 @@ app.controller('playersController', ['$scope', '$location', 'messageService', '$
             this.currentTime = 0;
             this.play();
         }, false);
-        // TODO: Decomment this line
-        //backgroundAudio.play();
+        backgroundAudio.play();
 
         $scope.hasPlayers = false;
 
@@ -49,8 +48,10 @@ app.controller('playersController', ['$scope', '$location', 'messageService', '$
          });
 
         $scope.$on('gamealreadystarted', function () {
+            // TODO: Create view for this
+
              console.log('Game has already started');
-             
+
              $timeout(function () {
                 $rootScope.toast = 'Game has already started';
                 $scope.goTo('/');
