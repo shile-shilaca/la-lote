@@ -1,7 +1,3 @@
-/*
-app.controller('createController', ['$scope', '$location', '$pusher', '$timeout', 'gameState', '$routeParams', '$rootScope',
-    function($scope, $location, $pusher, $timeout, gameState, $routeParams, $rootScope) {
-*/
 app.controller('createController', ['$scope', '$location', '$timeout', 'gameState', '$routeParams', '$rootScope',
     function($scope, $location, $timeout, gameState, $routeParams, $rootScope) {
         // Player status
@@ -20,6 +16,9 @@ app.controller('createController', ['$scope', '$location', '$timeout', 'gameStat
         // UID
         $scope.uuid = gameState.createGame();
         $scope.uuid = 12345;
+
+        // current player ID
+        $rootScope.uuid = generateUID();
 
         // TODO: Remove these lines
 /*
@@ -43,8 +42,6 @@ app.controller('createController', ['$scope', '$location', '$timeout', 'gameStat
         var channel = new HydnaChannel('la-lote.hydna.net/' + $scope.uuid, 'rwe');
         //console.dir(channel);
 
-        // then register an event handler that alerts the data-part of messages
-        // as they are received.
         channel.onmessage = function(event) {
             console.log('channel.onmessage:', JSON.parse(event.data));
         };
@@ -53,17 +50,32 @@ app.controller('createController', ['$scope', '$location', '$timeout', 'gameStat
         // the channel has been opened.
         channel.onopen = function() {
             console.log('channel.onopen');
-            channel.send(JSON.stringify({msg: 'Hello', action: 'createuser'}));
-        };
 
+            var message = JSON.parse(event.data);
+
+            switch (message.action) {
+                case 'join':
+                // $rootscope.$broadcast("playerJoin");
+                console.log("joined", message);
+                gameState.joinGame(message.data.id, message.data.name);
+                break;
+                default:
+                console.log("default", message);
+                break;
+            }
+        };
 
         // New player submits his name
         $scope.addPlayer = function() {
             // Create player object
             var player = {};
             player.name = $scope.playerName;
-            player.id = generateUID();
-            $rootScope.uuid = player.id;
+            player.id = $rootScope.uuid;
+
+            channel.send(JSON.stringify({
+                action: "join",
+                data: player
+            }));
 
 
             // TODO: Remove these lines
@@ -79,7 +91,6 @@ app.controller('createController', ['$scope', '$location', '$timeout', 'gameStat
                 nameInput.parentNode.removeChild(nameInput);
                 $scope.players.push(player);
             }, 1000);
-            gameState.joinGame(player.id, player.name);
         };
 
         // Go to (Start Game or Exit)
