@@ -132,6 +132,7 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
         };
 
         $scope.$on('win', function (e, player) {
+            $rootScope.winner = player.name;
             $scope.goTo('winner');
         });
 
@@ -143,16 +144,19 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
             if (player.id == ownPlayer.id) {
                 $rootScope.lostGame = (--ownPlayer.hp) <= 0;
                 $scope.hp = ownPlayer.hp;
+
+                showToaster('Do not try to cheat');
             }
         });
 
         $scope.$on('tie', function (e, player) {
             $interval.cancel(gamePlayInterval);
-            console.log("It's a tie!");
+            showToaster("It's a tie!");
         });
 
         $scope.$on('endgame', function (e, player) {
-            console.log("The host has left the game");
+            console.log("Host has left the game");
+            showToaster('Host has left the game');
             $scope.goTo('/');
         });
 
@@ -175,6 +179,12 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
 
         $scope.range = function (n) {
             return Array(n);
+        };
+
+        function showToaster(msg) {
+            var toaster = document.getElementById('toaster');
+            toaster.text = msg;
+            toaster.show();
         }
     }
 ]);
