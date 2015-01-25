@@ -2,6 +2,13 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
     function ($scope, $location, $document, $timeout, gameState, messageService, $rootScope, $interval) {
         $scope.currentPlayerName = gameState.currentPlayerName;
 
+        var backgroundAudio = new Audio('audio/bg.mp3');
+        backgroundAudio.addEventListener('ended', function() {
+            this.currentTime = 0;
+            this.play();
+        }, false);
+        backgroundAudio.play();
+
         var riddleSound = null,
             cardSound = null;
 
@@ -85,8 +92,16 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
         };
 
         if ($rootScope.playerStatus === 'admin') {
-            playCards();
+            var initSound = new Audio('audio/00.es.mp3');
+            initSound.play();
+            initSound.addEventListener('ended', function () {
+                $timeout(function () {
+                    playCards();
+                }, 1000);
+            });
         } else {
+            var initSound = new Audio('audio/00.es.mp3');
+            initSound.play();
             $scope.$on('playcard', function(e, card) {
                 // Flip current card
                 var currentCard = document.getElementById('current-card'),
@@ -157,6 +172,9 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
             }
             if (!cardSound.paused) {
                 cardSound.pause();
+            }
+            if (!backgroundAudio.paused) {
+                backgroundAudio.pause();
             }
         }
 
