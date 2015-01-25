@@ -16,6 +16,8 @@ app.controller('createController', ['$scope', '$location', '$timeout', 'gameStat
 
         $scope.canStartGame = false;
 
+        $rootScope.lostGame = false;
+
         // Player status
         if($routeParams.action === 'start') {
             $rootScope.playerStatus = 'admin';
@@ -49,13 +51,13 @@ app.controller('createController', ['$scope', '$location', '$timeout', 'gameStat
             messageService.connect($scope.uuid, $rootScope.playerStatus);
         };
 
-        $rootScope.$on('join', function (e, player) {
+        $scope.$on('join', function (e, player) {
             console.log("player ", player, " has joined");
             $scope.players.push(player);
             $scope.$apply();
         });
 
-        $rootScope.$on('start', function () {
+        $scope.$on('start', function () {
             gameState.started = true;
             $scope.goTo('game');
         });

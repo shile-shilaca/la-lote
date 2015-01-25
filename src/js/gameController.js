@@ -49,7 +49,7 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
 */
         }
 
-        $rootScope.$on('playcard', function (e, card) {
+        $scope.$on('playcard', function (e, card) {
             var data = {};
 
             if (playedCards.length > 0) {
@@ -90,16 +90,22 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
             messageService.loteria(gameState.getOwnPlayer());
         };
 
-        $rootScope.$on('win', function (e, player) {
+        $scope.$on('win', function (e, player) {
             $interval.cancel(gamePlayInterval);
             $scope.goTo('winner', player);
         });
 
-        $rootScope.$on('lose', function (e, player) {
-            console.log("You haven't won yet!");
+        $scope.$on('lose', function (e, player) {
+            console.log("player", player, " failed an attempt");
+            
+            var ownPlayer = gameState.getOwnPlayer();
+
+            if (player.id == ownPlayer.id) {
+                $rootScope.lostGame = (ownPlayer.hp--) == 0;
+            }
         });
 
-        $rootScope.$on('tie', function (e, player) {
+        $scope.$on('tie', function (e, player) {
             $interval.cancel(gamePlayInterval);
             console.log("It's a tie!");
         });
