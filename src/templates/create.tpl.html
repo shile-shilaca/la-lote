@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-lg-4 col-lg-push-4" id="create-main">
-        <h1>La <br/> Loteria <br/> Mexicana</h1>
+        <h1>La Lote</h1>
         <!-- Join Message -->
         <section>
             <p>Friends can join at <strong>la-lote.com/join</strong> by entering this game code:</p>
@@ -11,15 +11,15 @@
         <!-- Players List -->
         <section id="players-list">
             <paper-input-decorator class="custom-input" label="Your Name (press Enter when done)" floatinglabel layout vertical id="name-input-component">
-                <input is="core-input" placeholder="Your Name (press Enter when done)" ng-model="playerName" ng-enter="addPlayer()">
+                <input is="core-input" placeholder="Your Name (press Enter when done)" ng-model="playerName" ng-enter="addPlayer()"/>
             </paper-input-decorator>
             <ul>
                 <li ng-repeat="player in players">
                     {{player.name}}
                 </li>
             </ul>
-            <paper-button class="button small-button">Exit</paper-button>
-            <paper-button class="button small-button" ng-click="goTo('game')" ng-show="playerStatus == 'admin'" >Start</paper-button>
+            <paper-button class="button small-button" ng-click="goTo('home')">Exit</paper-button>
+            <paper-button class="button small-button" ng-click="goTo('')" ng-show="playerStatus == 'admin'">Start</paper-button>
         </section>
         <!-- End Players List -->
         <h4 class="footer">Shile <br/> Shilaca</h4>

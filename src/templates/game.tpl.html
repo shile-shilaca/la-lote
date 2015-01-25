@@ -5,7 +5,7 @@
         <section id="board" class="clearfix">
             <lottery-card ng-repeat="card in cards" cardnumber="card{{card}}" ng-click="onCardClick($event)"></lottery-card>
         </section>
-        <paper-button class="button small-button exit-button">Exit</paper-button>
+        <paper-button class="button small-button exit-button" ng-click="goTo('')">Exit</paper-button>
         <paper-button class="button small-button" ng-click="goTo('winner')" ng-class="{ 'disabled-button' : (cardsSelected < 16) }">Loteria</paper-button>
         <!-- End Players List -->
     </div>
