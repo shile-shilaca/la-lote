@@ -46,6 +46,72 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
         //     );
         // }
 
+        var playCards = function () {
+            var card = gameState.pullCard();
+            // Flip current card
+            var currentCard = document.getElementById('current-card'),
+                currentCardImage = document.getElementById('current-card-image');
+            currentCard.classList.add('animated', 'flipOutY');
+
+            $timeout(function() {
+                currentCard.classList.remove('animated', 'flipOutY');
+                currentCardImage.src = 'svg/cards/' + card + '.svg';
+                $scope.cardId = card;
+                currentCard.classList.add('animated', 'flipInY');
+            }, 500);
+
+            messageService.playCard(card);
+
+            var riddle = new Audio('audio/cards/riddle/' + card + '.es.mp3');
+            riddle.play();
+            riddle.addEventListener('ended', function () {
+                $timeout(function() {
+                    var name = new Audio('audio/cards/name/' + card + '.es.mp3');
+                    name.play();
+                    name.addEventListener('ended', function () {
+                        $timeout(function () {
+                            playCards();
+                        }, 1000);
+                    })
+                }, 1000);
+            });
+
+            var cardName = $rootScope.cardData[card].name;
+            //console.log('cardName:', cardName);
+            $scope.cardName = cardName;
+        };
+
+        if ($rootScope.playerStatus === 'admin') {
+            playCards();
+        } else {
+            $scope.$on('playcard', function(e, card) {
+                // Flip current card
+                var currentCard = document.getElementById('current-card'),
+                    currentCardImage = document.getElementById('current-card-image');
+                currentCard.classList.add('animated', 'flipOutY');
+
+                $timeout(function() {
+                    currentCard.classList.remove('animated', 'flipOutY');
+                    currentCardImage.src = 'svg/cards/' + card + '.svg';
+                    $scope.cardId = card;
+                    currentCard.classList.add('animated', 'flipInY');
+                }, 500);
+
+                var riddle = new Audio('audio/cards/riddle/' + card + '.es.mp3');
+                riddle.play();
+                riddle.addEventListener('ended', function () {
+                    $timeout(function() {
+                        var name = new Audio('audio/cards/name/' + card + '.es.mp3');
+                        name.play();
+                    }, 1000);
+                });
+
+                var cardName = $rootScope.cardData[card].name;
+                //console.log('cardName:', cardName);
+                $scope.cardName = cardName;
+            });
+        }
+
         // Card click listener
         $scope.onCardClick = function ($event) {
             var e = $event;
@@ -74,56 +140,15 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
             }
         };
 
-        if ($rootScope.playerStatus === 'admin') {
+        /*if ($rootScope.playerStatus === 'admin') {
 
             gamePlayInterval = $interval(function () {
                 messageService.playCard(gameState.pullCard());
             }, 1000);
 
-        }
+        }*/
 
-        $scope.$on('playcard', function(e, card) {
-            var data = {};
 
-            if(playedCards.length > 0) {
-                data.lastCard = playedCards[playedCards.length - 1];
-            } else {
-                data.lastCard = 111;
-            }
-
-            data.card = card;
-            playedCards.push(card);
-
-            // Flip current card
-            var currentCard = document.getElementById('current-card'),
-                currentCardImage = document.getElementById('current-card-image');
-            currentCard.classList.add('animated', 'flipOutY');
-
-            $timeout(function() {
-                currentCard.classList.remove('animated', 'flipOutY');
-                currentCardImage.src = 'svg/cards/' + card + '.svg';
-                $scope.cardId = card;
-                currentCard.classList.add('animated', 'flipInY');
-            }, 500);
-
-            var riddle = new Audio('audio/cards/riddle/' + card + '.es.mp3');
-            riddle.play();
-            riddle.addEventListener('ended', function () {
-                $timeout(function() {
-                    var name = new Audio('audio/cards/name/' + card + '.es.mp3');
-                    name.play();
-                    name.addEventListener('ended', function () {
-                        // $timeout(function () {
-                        //     playCards();
-                        // }, 1000);
-                    })
-                }, 1000);
-            });
-
-            var cardName = $rootScope.cardData[card].name;
-            //console.log('cardName:', cardName);
-            $scope.cardName = cardName;
-        });
 
         $scope.loteria = function () {
             if ($scope.cardsSelected >= 16 && !$scope.lostGame) {
