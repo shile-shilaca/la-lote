@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" 
+	viewBox="0 0 195 293" enable-background="new 0 0 195 293" xml:space="preserve">
+<g id="bg">
+	<rect fill-rule="evenodd" clip-rule="evenodd" fill="#CDF197" width="195" height="293"/>
+</g>
+<g id="pino">
+	<ellipse fill="#6D8052" cx="97.259" cy="260.352" rx="79.799" ry="4.966"/>
+	<g>
+		<path fill="#613B16" d="M104,257c0,1.657-1.343,3-3,3h-8c-1.657,0-3-1.343-3-3v-27c0-1.657,1.343-3,3-3h8c1.657,0,3,1.343,3,3V257
+			z"/>
+	</g>
+	<polygon fill="#0A6A3B" points="97.468,87.131 13.791,232.43 181.209,232.509 	"/>
+	<polygon fill="#0F9546" points="97.732,60.232 17.46,199.618 178.066,199.694 	"/>
+	<polygon fill="#3BB54A" points="97.474,36.277 29.422,154.444 165.578,154.509 	"/>
+</g>
+</svg>
