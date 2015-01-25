@@ -1,5 +1,9 @@
+/*
 app.controller('createController', ['$scope', '$location', '$pusher', '$timeout', 'gameState', '$routeParams', '$rootScope',
     function($scope, $location, $pusher, $timeout, gameState, $routeParams, $rootScope) {
+*/
+app.controller('createController', ['$scope', '$location', '$timeout', 'gameState', '$routeParams', '$rootScope',
+    function($scope, $location, $timeout, gameState, $routeParams, $rootScope) {
         // Player status
         if($routeParams.action === 'start') {
             $rootScope.playerStatus = 'admin';
@@ -17,6 +21,7 @@ app.controller('createController', ['$scope', '$location', '$pusher', '$timeout'
         $scope.uuid = gameState.createGame();
         $scope.uuid = 12345;
 
+        // TODO: Remove these lines
 /*
         // Create Pusher room
         var pusher = new Pusher('f5656bd4670f11759284', {
@@ -34,13 +39,13 @@ app.controller('createController', ['$scope', '$location', '$pusher', '$timeout'
         );
 */
 
-        // Creatd Hydna channel/room
+        // Create Hydna channel/room
         var channel = new HydnaChannel('la-lote.hydna.net/' + $scope.uuid + ' /hello-world', 'rwe');
 
         // then register an event handler that alerts the data-part of messages
         // as they are received.
         channel.onmessage = function(event) {
-             console.log('channel.onmessage:', event.data);
+              console.log('channel.onmessage:', event.data);
         };
 
         // finally we add an event handler that sends a message as soon as
@@ -58,6 +63,8 @@ app.controller('createController', ['$scope', '$location', '$pusher', '$timeout'
             player.id = generateUID();
             $rootScope.uuid = player.id;
 
+
+            // TODO: Remove these lines
 /*
             // Trigger event
             myChannel.trigger('client-newplayer', player);
@@ -72,6 +79,7 @@ app.controller('createController', ['$scope', '$location', '$pusher', '$timeout'
             }, 1000);
             gameState.joinGame(player.id, player.name);
         };
+
         // Go to (Start Game or Exit)
         $scope.goTo = function (location) {
             $location.path('/' + location);

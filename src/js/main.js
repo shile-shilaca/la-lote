@@ -1,4 +1,7 @@
+/*
 var app = angular.module('lottery', ['ngRoute', 'pusher-angular']);
+ */
+var app = angular.module('lottery', ['ngRoute']);
 
 /** Routes Configuration **/
 app.config(function ($routeProvider) {
