@@ -5,6 +5,10 @@
             <h2 class="game-code">{{gameCode}}</h2>
         </section>
 
+        <section ng-show="playerStatus == 'player'">
+            <p>Waiting for admin to start the game...</p>
+        </section>
+
         <section id="players-list">
             Players:<br/>
             <ul>
