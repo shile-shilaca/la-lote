@@ -210,7 +210,14 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
                 $rootScope.lostGame = (--ownPlayer.hp) <= 0;
                 $scope.hp = ownPlayer.hp;
 
-                showToaster('Do not try to cheat');
+                if ($rootScope.lostGame) {
+                    showToaster('You have lost the game!');
+                }
+                else {
+                    showToaster('Not a winner, check your board!');
+                }
+
+                $scope.$apply();
             }
         });
 
@@ -222,7 +229,7 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
 
         $scope.$on('endgame', function (e, player) {
             console.log("Host has left the game");
-            showToaster('Host has left the game');
+            showToaster('The host player has left the game.');
             stopSounds();
             $scope.goTo('/');
         });
