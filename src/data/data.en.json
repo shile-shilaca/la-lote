@@ -11,6 +11,12 @@
             "title": "About",
             "desc": "We are the Shile Shilaka Team. We are based at Guadalajara, Jalisco, Mexico (Yeah! the land where Tequila and Mariachis comes from). We are a group of developers from different parts of Mexico: Chihuahua, Puebla, Mexico City, Guadalajara."
         },
+        "tech": {
+            "title": "Tech"
+        },
+        "why": {
+            "title": "Why?"
+        },
         "history": {
             "title": "History",
             "desc": " Loteria is a Mexican game of chance, similar to bingo, but using images on a deck of cards instead of plain numbers on ping pong balls. Every image has a name and an assigned number, but the number is usually ignored. Each player has at least one tabla, a board with a randomly created 4 x 4 grid of pictures with their corresponding name and number. Players choose what tabla they want to play with, from a variety of previously created tablas. Each one presents a different selection of images. Loteria is the Spanish word for lottery. The deck is composed of a set of 54 different images, each one in a card. To start the game, the caller (cantor, or singer) randomly selects a card from the deck and announces it to the players by its name, sometimes using a riddle or humorous patter instead of reading the card name. The players with a matching pictogram on their board mark it off with a chip or other kind of marker (many Mexican people traditionally use small rocks, crown corks or pinto beans as markers). The first player with four chips in a horizontal, vertical or diagonal row, squared pattern,any other previously specified pattern, or fills the tabla first shouts \"¡Lotería!\" (Lottery!) or \"¡Buenas!\" (Good!) and is the winner. History of Loteria The origin of lottery can be traced far back in history. The game originated in Italy in the 15th century and was brought to New Spain (Mexico) in 1769. In the beginning, Loteria was a hobby of the upper classes, but eventually it became a tradition at mexican fairs."
