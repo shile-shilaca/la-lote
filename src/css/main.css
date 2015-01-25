@@ -161,6 +161,13 @@ paper-input-decorator /deep/ .focused-underline {
        -moz-box-shadow: 2px 2px 2px 0 rgba(50, 50, 50, 0.75);
             box-shadow: 2px 2px 2px 0 rgba(50, 50, 50, 0.75);
 }
+.current-card-id {
+    left: 30px;
+    margin-top: 200px;
+    position: absolute;
+    top: 0px;
+    z-index: 9000;
+}
 .card {
     width: 105px;
     height: 150px;

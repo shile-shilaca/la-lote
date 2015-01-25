@@ -17,6 +17,8 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
         var card = document.getElementById('current-card');
         card.src = 'svg/cards/' + initialCard + '.svg';
 
+        $scope.cardId = initialCard;
+
         // Played cards
         var playedCards = [];
 
@@ -40,11 +42,11 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
         // }
 
         if ($rootScope.playerStatus === 'admin') {
-/*
+
             gamePlayInterval = $interval(function () {
                 messageService.playCard(gameState.pullCard());
             }, 1000);
-*/
+
         }
 
         $scope.$on('playcard', function(e, card) {
@@ -66,6 +68,7 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
             $timeout(function() {
                 currentCard.classList.remove('animated', 'flipOutY');
                 currentCard.src = 'svg/cards/' + card + '.svg';
+                $scope.cardId = card;
                 currentCard.classList.add('animated', 'flipInY');
             }, 500);
 
