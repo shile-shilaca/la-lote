@@ -44,12 +44,4 @@ app.run(function($rootScope, $location, $http) {
         $rootScope.cardData = result.cards;
         $rootScope.content = result.content;
     });
-
-    // Play background audio
-    var backgroundAudio = new Audio('audio/bg.mp3');
-    backgroundAudio.addEventListener('ended', function() {
-        this.currentTime = 0;
-        this.play();
-    }, false);
-    backgroundAudio.play();
 });
