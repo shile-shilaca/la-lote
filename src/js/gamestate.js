@@ -16,6 +16,8 @@ app.factory('gameState', function ($rootScope, $http, $interval) {
             currentRoom = generateUID().toUpperCase();
             this.started = true;
 
+            $rootScope.uuid = currentRoom;
+
             return currentRoom;
         },
 
