@@ -7,64 +7,16 @@
     visibility: visible;
 }
 .card {
-    width: 90px;
-    height: 135px;
     border: 7px solid white;
     -webkit-box-shadow: 2px 2px 2px 0 rgba(50, 50, 50, 0.75);
        -moz-box-shadow: 2px 2px 2px 0 rgba(50, 50, 50, 0.75);
             box-shadow: 2px 2px 2px 0 rgba(50, 50, 50, 0.75);
     float: left;
-    margin-left: 5px;
-    margin-top: 5px;
+    height: 135px;
+    margin: 5px 0 0 5px;
+    width: 90px;
 }
-.card01 {
-    background: url('../svg/cards/01.svg') no-repeat;
-}
-.card02 {
-    background: url('../svg/cards/02.svg') no-repeat;
-}
-.card03 {
-    background: url('../svg/cards/03.svg') no-repeat;
-}
-.card04 {
-    background: url('../svg/cards/04.svg') no-repeat;
-}
-.card05 {
-    background: url('../svg/cards/05.svg') no-repeat;
-}
-.card06 {
-    background: url('../svg/cards/06.svg') no-repeat;
-}
-.card07 {
-    background: url('../svg/cards/07.svg') no-repeat;
-}
-.card08 {
-    background: url('../svg/cards/08.svg') no-repeat;
-}
-.card09 {
-    background: url('../svg/cards/09.svg') no-repeat;
-}
-.card10 {
-    background: url('../svg/cards/10.svg') no-repeat;
-}
-.card11 {
-    background: url('../svg/cards/11.svg') no-repeat;
-}
-.card12 {
-    background: url('../svg/cards/12.svg') no-repeat;
-}
-.card13 {
-    background: url('../svg/cards/13.svg') no-repeat;
-}
-.card14 {
-    background: url('../svg/cards/14.svg') no-repeat;
-}
-.card15 {
-    background: url('../svg/cards/15.svg') no-repeat;
-}
-.card16 {
-    background: url('../svg/cards/16.svg') no-repeat;
-}
-.card19 {
-    background: url('../svg/cards/19.svg') no-repeat;
+.card .number {
+    position: absolute;
+    left: 5px;
 }

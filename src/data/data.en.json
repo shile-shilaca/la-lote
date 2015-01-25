@@ -1,4 +1,5 @@
 {
+    "lang": "en",
     "content": {
         "app": {
             "title": "La Lote"
@@ -31,7 +32,7 @@
     "cards": {
         "01": {
             "name": "The Rooster",
-            "riddle": "The one that sang to St. Peter will sing for him again"
+            "riddle": "The one which sang to St. Peter won't sing for him again"
         },
         "02": {
             "name": "The Devil",
@@ -55,7 +56,7 @@
         },
         "07": {
             "name": "The Ladder",
-            "riddle": "Climb me step by step You don't try to hop up"
+            "riddle": "Climb me step by step. Don't you try to hop up"
         },
         "08": {
             "name": "The Bottle",
@@ -67,7 +68,7 @@
         },
         "10": {
             "name": "The Tree",
-            "riddle": "He who nears a good tree, good shade blankets him"
+            "riddle": "The one who nears a good tree, good shade blankets will get from it"
         },
         "11": {
             "name": "The Melon",
@@ -79,15 +80,15 @@
         },
         "13": {
             "name": "The Bonnet",
-            "riddle": "Put the bonnet on the baby, lest he catch a cold"
+            "riddle": "Put the bonnet on the baby, lest he catches a cold"
         },
         "14": {
             "name": "The Death",
             "riddle": "Death, lank and skinny"
         },
         "15": {
-            "name": "the Pear",
-            "riddle": "He who waits despairs"
+            "name": "The Pear",
+            "riddle": "The one who waits despairs"
         },
         "16": {
             "name": "The Flag",
@@ -126,12 +127,12 @@
             "riddle": "Parrot parrot, put out your claw and start to talk"
         },
         "25": {
-            "name": "the Drunkard",
+            "name": "The Drunkard",
             "riddle": "I cannot put up with the foolish drunk"
         },
         "26": {
             "name": "The Negro",
-            "riddle": "He who ate the sugar"
+            "riddle": "The one who ate the sugar"
         },
         "27": {
             "name": "The Heart",
@@ -142,7 +143,7 @@
             "riddle": "Juan's swollen belly was due to eating too much watermelon"
         },
         "29": {
-            "name": "the Drum",
+            "name": "The Drum",
             "riddle": "Do not wrinkle, old leather, I want you for a drum"
         },
         "30": {
@@ -179,7 +180,7 @@
         },
         "38": {
             "name": "The Apache",
-            "riddle": "Ah, Chihuahua! So many Apaches with pants and huarache"
+            "riddle": "Ah, Chihuahua! So many Apaches with pants and huaraches"
         },
         "39": {
             "name": "The Cactus",
@@ -187,7 +188,7 @@
         },
         "40": {
             "name": "The Scorpion",
-            "riddle": "He who stings with his tail receives a beating"
+            "riddle": "The one who stings with his tail receives a beating"
         },
         "41": {
             "name": "The Rose",
@@ -211,7 +212,7 @@
         },
         "46": {
             "name": "The Sun",
-            "riddle": "The Sun is the blanket of the poor"
+            "riddle": "The sun is the blanket of the poor"
         },
         "47": {
             "name": "The Crown",
@@ -235,7 +236,7 @@
         },
         "52": {
             "name": "The Flowerpot",
-            "riddle": "He who is born to be a plant pot will not leave the hallway"
+            "riddle": "The one who has born to be a plant pot will not leave the hallway"
         },
         "53": {
             "name": "The Harp",
@@ -243,7 +244,7 @@
         },
         "54": {
             "name": "The Frog",
-            "riddle": "When she saw the green frog, how high your sister jumped!"
+            "riddle": "When she saw the green frog, how high your sister jumped?"
         }
     }
 }

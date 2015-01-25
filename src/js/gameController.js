@@ -10,14 +10,14 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
 
         // Selected cards
         $scope.cardsSelected = 0;
+
         // Set initial card
         var initialCard = gameState.getInitialCard();
+        //console.log('initialCard:', initialCard);
         var card = document.getElementById('current-card');
+        card.src = 'svg/cards/' + initialCard + '.svg';
 
-        //card.classList.remove('card00');
-        //card.classList.add('card' + initialCard);
-        card.src = 'svg/card.svg#c01'; // TODO: Set src dynamically
-        console.log(card);
+        $scope.cardId = initialCard;
 
         // Played cards
         var playedCards = [];
@@ -34,12 +34,37 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
         //             currentCard.classList.add('animated', 'flipOutY');
         //             $timeout(function () {
         //                 currentCard.classList.remove('animated', 'flipOutY');
-        //                 currentCard.src = 'svg/card.svg#c01'; // TODO: Set src dynamically
+        //                 currentCard.src = 'svg/cards/01.svg'; // TODO: Set src dynamically
         //                 currentCard.classList.add('animated', 'flipInY');
         //             }, 2000);
         //         }
         //     );
         // }
+
+        // Card click listener
+        $scope.onCardClick = function ($event) {
+            var e = $event;
+            var card = e.target;
+            var bean = card.$.bean;
+            // Firefox
+            /*bean.style.top = (e.layerY) + 'px';
+             bean.style.left = (e.layerX) + 'px';*/
+            // Chrome
+            bean.style.top = e.target.offsetTop + 'px';
+            bean.style.left = e.target.offsetLeft + 'px';
+
+            var a = Math.random() * 360;
+            bean.style.transform = 'rotate(' + a + 'deg)';
+
+            card.classList.toggle("active");
+            bean.classList.toggle("active");
+
+            if (bean.classList.contains('active')) {
+                $scope.cardsSelected++;
+            } else {
+                $scope.cardsSelected--;
+            }
+        };
 
         if ($rootScope.playerStatus === 'admin') {
 
@@ -49,10 +74,10 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
 
         }
 
-        $scope.$on('playcard', function (e, card) {
+        $scope.$on('playcard', function(e, card) {
             var data = {};
 
-            if (playedCards.length > 0) {
+            if(playedCards.length > 0) {
                 data.lastCard = playedCards[playedCards.length - 1];
             } else {
                 data.lastCard = 111;
@@ -61,20 +86,21 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
             data.card = card;
             playedCards.push(card);
 
-            // Flip Current Card
+            // Flip current card
             var currentCard = document.getElementById('current-card');
             currentCard.classList.add('animated', 'flipOutY');
 
-            $timeout(function () {
+            $timeout(function() {
                 currentCard.classList.remove('animated', 'flipOutY');
-                currentCard.src = 'svg/card.svg#c' + card; // TODO: Set src dynamically
+                currentCard.src = 'svg/cards/' + card + '.svg';
+                $scope.cardId = card;
                 currentCard.classList.add('animated', 'flipInY');
             }, 500);
 
             var riddle = new Audio('audio/cards/riddle/' + card + '.es.mp3');
             riddle.play();
             riddle.addEventListener('ended', function () {
-                $timeout(function () {
+                $timeout(function() {
                     var name = new Audio('audio/cards/name/' + card + '.es.mp3');
                     name.play();
                     name.addEventListener('ended', function () {
@@ -84,6 +110,10 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
                     })
                 }, 1000);
             });
+
+            var cardName = $rootScope.cardData[card].name;
+            //console.log('cardName:', cardName);
+            $scope.cardName = cardName;
         });
 
         $scope.loteria = function () {
@@ -97,7 +127,7 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
 
         $scope.$on('lose', function (e, player) {
             console.log("player", player, " failed an attempt");
-            
+
             var ownPlayer = gameState.getOwnPlayer();
 
             if (player.id == ownPlayer.id) {
@@ -119,7 +149,7 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
         };
 
         $scope.getCardSrc = function(card) {
-            return 'svg/card.svg#c' + card;
+            return 'svg/cards/' + card + '.svg';
         };
     }
 ]);
