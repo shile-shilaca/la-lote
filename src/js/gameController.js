@@ -16,7 +16,7 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
 
         //card.classList.remove('card00');
         //card.classList.add('card' + initialCard);
-        card.src = 'svg/card.svg#c01'; // TODO: Set src dynamically
+        card.src = 'svg/cards/01.svg'; // TODO: Set src dynamically
         console.log(card);
 
         // Played cards
@@ -34,7 +34,7 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
         //             currentCard.classList.add('animated', 'flipOutY');
         //             $timeout(function () {
         //                 currentCard.classList.remove('animated', 'flipOutY');
-        //                 currentCard.src = 'svg/card.svg#c01'; // TODO: Set src dynamically
+        //                 currentCard.src = 'svg/cards/01.svg'; // TODO: Set src dynamically
         //                 currentCard.classList.add('animated', 'flipInY');
         //             }, 2000);
         //         }
@@ -67,7 +67,7 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
 
             $timeout(function () {
                 currentCard.classList.remove('animated', 'flipOutY');
-                currentCard.src = 'svg/card.svg#c' + card; // TODO: Set src dynamically
+                currentCard.src = 'svg/cards/' + card + '.svg'; // TODO: Set src dynamically
                 currentCard.classList.add('animated', 'flipInY');
             }, 500);
 
@@ -97,7 +97,7 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
 
         $scope.$on('lose', function (e, player) {
             console.log("player", player, " failed an attempt");
-            
+
             var ownPlayer = gameState.getOwnPlayer();
 
             if (player.id == ownPlayer.id) {
@@ -119,7 +119,7 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
         };
 
         $scope.getCardSrc = function(card) {
-            return 'svg/card.svg#c' + card;
+            return 'svg/cards/' + card + '.svg';
         };
     }
 ]);

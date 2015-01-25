@@ -145,6 +145,17 @@ module.exports = function(grunt) {
                     'dist/svg/bean.svg': 'src/svg/bean.svg',
                     'dist/svg/card.svg': 'src/svg/card.svg'
                 }
+            },
+            cardsSvgFiles: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'src/svg/cards',
+                        filter: 'isFile',
+                        src: ['**'],
+                        dest: 'dist/svg/cards'
+                    }
+                ]
             }
         },
         svgstack: {
