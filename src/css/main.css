@@ -155,6 +155,7 @@ paper-input-decorator /deep/ .focused-underline {
 }
 /** Cards **/
 .current-card {
+    display: block;
     width: 200px;
     height: 293px;
     border: 7px solid white;
@@ -164,18 +165,17 @@ paper-input-decorator /deep/ .focused-underline {
             box-shadow: 2px 2px 2px 0 rgba(50, 50, 50, 0.75);
 }
 .current-card-id {
-    left: 30px;
-    margin-top: 200px;
+    display: block;
+    height: 30px;
+    left: 140px;
     position: absolute;
-    top: 0px;
-    z-index: 9000;
+    top: 15px;
+    width: 30px;
 }
 .current-card-name {
-    display: block;
     font-size: 25px;
     margin-top: 45px;
     text-align: center;
-    width: 195px;
 }
 .card {
     width: 105px;
