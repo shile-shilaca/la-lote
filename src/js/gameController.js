@@ -27,7 +27,7 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
         //var initialCard = gameState.getInitialCard();
         //console.log('initialCard:', initialCard);
         var cardImage = document.getElementById('current-card-image');
-        cardImage.src = 'svg/cards/back.svg';
+        cardImage.src = 'svg/back.svg';
 
         $scope.cardId = 0;
         $scope.tied = false;
