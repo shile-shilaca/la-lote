@@ -6,16 +6,6 @@ app.factory('gameState', function ($rootScope, $http, $interval) {
         players = $rootScope.players,
         currentRoom = null;
 
-    function generateRoomId() {
-        var d = new Date().getTime();
-        var uuid = 'xxxxx'.replace(/[xy]/g, function(c) {
-            var r = (d + Math.random()*16)%16 | 0;
-            d = Math.floor(d/16);
-            return (c=='x' ? r : (r&0x3|0x8)).toString(16);
-        });
-        return uuid;
-    };
-
     var service = {
         started: false,
 
@@ -23,7 +13,7 @@ app.factory('gameState', function ($rootScope, $http, $interval) {
         createGame: function () {
             players = {};
             currentGame = _.shuffle(cards);
-            currentRoom = generateRoomId().toUpperCase();
+            currentRoom = generateUID().toUpperCase();
             this.started = true;
 
             return currentRoom;
@@ -72,6 +62,6 @@ app.factory('gameState', function ($rootScope, $http, $interval) {
     $http.get('data/data.es.json').success(function (result) {
         $rootScope.cardData = result;
     });
-    
+
     return service;
 });

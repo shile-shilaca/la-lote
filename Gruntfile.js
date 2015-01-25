@@ -182,7 +182,7 @@ module.exports = function(grunt) {
                     banner: '<%= vars.banner %>' + grunt.util.linefeed
                 },
                 files: {
-                    'dist/js/app.min.js': ['src/js/main.js']
+                    'dist/js/app.min.js': ['src/js/*.js']
                 }
             }
         }
