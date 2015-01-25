@@ -4,7 +4,7 @@
             <h1>La Lote</h1>
             <ul>
                 <li class="active">
-                    <a href="#">Play</a>
+                    <a href="#">{{content.play.menu}}</a>
                 </li>
                 <li>
                     <a ng-click="scrollTo('about')" href="">{{content.about.title}}</a>
@@ -16,7 +16,7 @@
                     <a ng-click="scrollTo('why')" href="">{{content.why.title}}</a>
                 </li>
                 <li>
-                    <a ng-click="scrollTo('story')" href="">{{content.history.title}}</a>
+                    <a ng-click="scrollTo('history')" href="">{{content.history.title}}</a>
                 </li>
             </ul>
         </div>
@@ -42,39 +42,22 @@
         <!-- Tech -->
         <section id="tech">
             <h1>{{content.tech.title}}</h1>
-            <p>We built <span>La Lote</span> with lots of love and using some of our favorite technologies:</p>
-            <ul>
-                <li><a href="https://angularjs.org" target="_blank">AngularJS</a></li>
-                <li><a href="http://necolas.github.io/normalize.css" target="_blank">normalize.css</a></li>
-                <li><a href="http://daneden.github.io/animate.css" target="_blank">animate.css</a></li>
-                <li><a href="https://lodash.com" target="_blank">lodash</a></li>
-            </ul>
+            <p>{{content.tech.desc}}</p>
         </section>
         <!-- End Tech -->
 
         <!-- Why -->
         <section id="why">
             <h1>{{content.why.title}}</h1>
-            <p>Lorem ipsum</p>
+            <p>{{content.why.desc}}</p>
         </section>
         <!-- End Why -->
 
-        <!-- Story -->
-        <section id="story">
+        <!-- History -->
+        <section id="history">
             <h1>{{content.history.title}}</h1>
-
-            <h3>What is Loteria?</h3>
-            <p>
-                Loteria is a Mexican game of chance, similar to bingo, but using images on a deck of cards instead of plain numbers on ping pong balls. Every image has a name and an assigned number, but the number is usually ignored. Each player has at least one tabla, a board with a randomly created 4 x 4 grid of pictures with their corresponding name and number. Players choose what tabla they want to play with, from a variety of previously created tablas. Each one presents a different selection of images.<br/><br/>
-                Loteria is the Spanish word for lottery. The deck is composed of a set of 54 different images, each one in a card. To start the game, the caller (cantor, or singer) randomly selects a card from the deck and announces it to the players by its name, sometimes using a riddle or humorous patter instead of reading the card name. The players with a matching pictogram on their board mark it off with a chip or other kind of marker (many Mexican people traditionally use small rocks, crown corks or pinto beans as markers). The first player with four chips in a horizontal, vertical or diagonal row, squared pattern,any other previously specified pattern, or fills the tabla first shouts "¡Lotería!" (Lottery!) or "¡Buenas!" (Good!) and is the winner.
-            </p>
-
-            <h3>History of Loteria</h3>
-            <p>
-                The origin of lottery can be traced far back in history. The game originated in Italy in the 15th century and was brought to New Spain (Mexico) in 1769. In the beginning, Loteria was a hobby of the upper classes, but eventually it became a tradition at mexican fairs.
-            </p>
-
+            <p ng-bind-html="content.history.desc"></p>
         </section>
-        <!-- End Story -->
+        <!-- End History -->
     </div>
 </div>
