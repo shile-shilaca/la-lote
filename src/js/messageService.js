@@ -25,6 +25,8 @@ app.factory('messageService', function ($rootScope, $http, $interval, gameState)
                     if (playerRole == 'admin') {
                         gameState.joinGame(message.data.id, message.data.name);
                     }
+
+                    $rootScope.$broadcast('join', message.data);
                     break;
 
                     case 'loteria':
@@ -40,18 +42,18 @@ app.factory('messageService', function ($rootScope, $http, $interval, gameState)
                     break;
 
                     case 'win':
-                    console.log("win", message.data);
-                    $rootScope.$broadcast("win", message.data);
+                    console.log('win', message.data);
+                    $rootScope.$broadcast('win', message.data);
                     break;
 
                     case 'lose':
-                    console.log("lose", message.data);
-                    $rootScope.$broadcast("lose", message.data);
+                    console.log('lose', message.data);
+                    $rootScope.$broadcast('lose', message.data);
                     break;
 
                     case 'playCard':
-                    console.log("playcard ", message.data);
-                    $rootScope.$broadcast("playcard", message.data);
+                    console.log('playcard ', message.data);
+                    $rootScope.$broadcast('playcard', message.data);
                     break;
 
                     default:
