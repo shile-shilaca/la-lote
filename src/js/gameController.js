@@ -1,5 +1,11 @@
 app.controller('gameController', ['$scope', '$location', '$document', '$timeout', 'gameState', '$rootScope', '$interval',
     function ($scope, $location, $document, $timeout, gameState, $rootScope, $interval) {
+        // Return if the game isn't started yet
+        if (!gameState.started) {
+            $location.path('/');
+            return;
+        }
+
         // Play background audio
         var backgroundAudio = new Audio('audio/bg.mp3');
         backgroundAudio.addEventListener('ended', function () {
@@ -15,7 +21,7 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
         console.log(card);
         //card.classList.remove('card00');
         //card.classList.add('card' + initialCard);
-        card.src = 'svg/card.svg#c' + initialCard();
+        card.src = 'svg/card.svg#c' + initialCard;
 
         // Played cards
         var playedCards = [];

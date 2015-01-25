@@ -13,6 +13,8 @@ app.controller('createController', ['$scope', '$location', '$timeout', 'gameStat
         // Player name
         $scope.playerName = null;
 
+        $scope.canStartGame = false;
+
         // UID
         $scope.uuid = gameState.createGame();
 
@@ -35,11 +37,19 @@ app.controller('createController', ['$scope', '$location', '$timeout', 'gameStat
                 nameInput.parentNode.removeChild(nameInput);
                 $scope.players.push(player);
             }, 1000);
+
+            $scope.canStartGame = true;
         };
 
         // Go to (Start Game or Exit)
         $scope.goTo = function (location) {
             $location.path('/' + location);
         };
+
+        $scope.startGame = function () {
+            if ($scope.canStartGame) {
+                $scope.goTo('game');
+            }
+        }
     }
 ]);
