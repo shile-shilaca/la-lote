@@ -10,14 +10,12 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
 
         // Selected cards
         $scope.cardsSelected = 0;
+
         // Set initial card
         var initialCard = gameState.getInitialCard();
+        //console.log('initialCard:', initialCard);
         var card = document.getElementById('current-card');
-
-        //card.classList.remove('card00');
-        //card.classList.add('card' + initialCard);
-        card.src = 'svg/cards/01.svg'; // TODO: Set src dynamically
-        console.log(card);
+        card.src = 'svg/cards/' + initialCard + '.svg';
 
         // Played cards
         var playedCards = [];
@@ -67,7 +65,7 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
 
             $timeout(function () {
                 currentCard.classList.remove('animated', 'flipOutY');
-                currentCard.src = 'svg/cards/' + card + '.svg'; // TODO: Set src dynamically
+                currentCard.src = 'svg/cards/' + card + '.svg';
                 currentCard.classList.add('animated', 'flipInY');
             }, 500);
 

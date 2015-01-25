@@ -42,7 +42,7 @@ app.factory('gameState', function ($rootScope, $http, $interval) {
         },
 
         getInitialCard: function () {
-            return '00';
+            return '01';
         },
 
         removeHp: function () {
