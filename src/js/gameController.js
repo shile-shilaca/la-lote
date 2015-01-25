@@ -2,6 +2,9 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
     function ($scope, $location, $document, $timeout, gameState, messageService, $rootScope, $interval) {
         $scope.currentPlayerName = gameState.currentPlayerName;
 
+        var riddleSound = null,
+            cardSound = null;
+
         // Return if the game isn't started yet
         if (!gameState.started) {
             $location.path('/');
@@ -62,13 +65,13 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
 
             messageService.playCard(card);
 
-            var riddle = new Audio('audio/cards/riddle/' + card + '.es.mp3');
-            riddle.play();
-            riddle.addEventListener('ended', function () {
+            riddleSound = new Audio('audio/cards/riddle/' + card + '.es.mp3');
+            riddleSound.play();
+            riddleSound.addEventListener('ended', function () {
                 $timeout(function() {
-                    var name = new Audio('audio/cards/name/' + card + '.es.mp3');
-                    name.play();
-                    name.addEventListener('ended', function () {
+                    cardSound = new Audio('audio/cards/name/' + card + '.es.mp3');
+                    cardSound.play();
+                    cardSound.addEventListener('ended', function () {
                         $timeout(function () {
                             playCards();
                         }, 1000);
@@ -97,12 +100,12 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
                     currentCard.classList.add('animated', 'flipInY');
                 }, 500);
 
-                var riddle = new Audio('audio/cards/riddle/' + card + '.es.mp3');
-                riddle.play();
-                riddle.addEventListener('ended', function () {
+                riddleSound = new Audio('audio/cards/riddle/' + card + '.es.mp3');
+                riddleSound.play();
+                riddleSound.addEventListener('ended', function () {
                     $timeout(function() {
-                        var name = new Audio('audio/cards/name/' + card + '.es.mp3');
-                        name.play();
+                        cardSound = new Audio('audio/cards/name/' + card + '.es.mp3');
+                        cardSound.play();
                     }, 1000);
                 });
 
@@ -148,7 +151,14 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
 
         }*/
 
-
+        function stopSounds () {
+            if (!riddleSound.paused) {
+                riddleSound.pause();
+            }
+            if (!cardSound.paused) {
+                cardSound.pause();
+            }
+        }
 
         $scope.loteria = function () {
             if ($scope.cardsSelected >= 16 && !$scope.lostGame) {
@@ -158,6 +168,7 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
 
         $scope.$on('win', function (e, player) {
             $rootScope.winner = player.name;
+            stopSounds();
             $scope.goTo('winner');
         });
 
@@ -182,6 +193,7 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
         $scope.$on('endgame', function (e, player) {
             console.log("Host has left the game");
             showToaster('Host has left the game');
+            stopSounds();
             $scope.goTo('/');
         });
 
