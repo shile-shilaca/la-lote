@@ -1,5 +1,5 @@
-app.controller('playersController', ['$scope', '$location', 'messageService', '$rootScope', 'gameState',
-    function($scope, $location, messageService, $rootScope, gameState) {
+app.controller('playersController', ['$scope', '$location', 'messageService', '$rootScope', '$timeout', 'gameState',
+    function($scope, $location, messageService, $rootScope, $timeout, gameState) {
         // Play background audio
         var backgroundAudio = new Audio('audio/bg.mp3');
         backgroundAudio.addEventListener('ended', function() {
@@ -30,6 +30,14 @@ app.controller('playersController', ['$scope', '$location', 'messageService', '$
 
             $scope.$apply();
         });
+
+        $scope.$on('start', function () {
+             gameState.started = true;
+             $timeout(function () {
+                 $scope.goTo('game');
+                 // $scope.$apply();
+             });
+         });
 
         $scope.players = [];
 
