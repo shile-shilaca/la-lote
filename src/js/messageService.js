@@ -21,10 +21,10 @@ app.factory('messageService', function ($rootScope, $http, $interval, gameState)
                     case 'join':
                     console.log('joined', message);
 
-                    // only admin keeps track of player cards
-                    if (playerRole == 'admin') {
+                    // // only admin keeps track of player cards
+                    // if (playerRole == 'admin') {
                         gameState.joinGame(message.data.id, message.data.name);
-                    }
+                    // }
 
                     $rootScope.$broadcast('join', message.data);
                     break;
@@ -51,9 +51,21 @@ app.factory('messageService', function ($rootScope, $http, $interval, gameState)
                     $rootScope.$broadcast('lose', message.data);
                     break;
 
+                    case 'start':
+                    console.log('start');
+                    $rootScope.$broadcast('start');
+                    break;
+
                     case 'playCard':
                     console.log('playcard ', message.data);
-                    $rootScope.$broadcast('playcard', message.data);
+                    
+                    if (!!message.data) {
+                        $rootScope.$broadcast('playcard', message.data);
+                    }
+                    else {
+                        $rootScope.$broadcast('tie', message.data);
+                    }
+                    
                     break;
 
                     default:
@@ -73,6 +85,10 @@ app.factory('messageService', function ($rootScope, $http, $interval, gameState)
 
         playCard: function (card) {
             sendMessage('playCard', card);
+        },
+
+        startGame: function () {
+            sendMessage('start');
         }
     };
 

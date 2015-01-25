@@ -1,6 +1,3 @@
-/*
-var app = angular.module('lottery', ['ngRoute', 'pusher-angular']);
- */
 var app = angular.module('lottery', ['ngRoute']);
 
 /** Routes Configuration **/
@@ -47,4 +44,12 @@ app.run(function($rootScope, $location, $http) {
         $rootScope.cardData = result.cards;
         $rootScope.content = result.content;
     });
+
+    // Play background audio
+    var backgroundAudio = new Audio('audio/bg.mp3');
+    backgroundAudio.addEventListener('ended', function() {
+        this.currentTime = 0;
+        this.play();
+    }, false);
+    backgroundAudio.play();
 });
