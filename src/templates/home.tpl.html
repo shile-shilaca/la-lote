@@ -4,7 +4,7 @@
             <h1>La Lote</h1>
             <ul>
                 <li class="active">
-                    <a href="#">{{content.play.menu}}</a>
+                    <a ng-click="scrollTo('main')" href="">{{content.play.menu}}</a>
                 </li>
                 <li>
                     <a ng-click="scrollTo('about')" href="">{{content.about.title}}</a>
@@ -23,7 +23,7 @@
     </div>
     <div class="col-lg-4 col-lg-push-2 col-md-4 col-md-push-4 col-sm-6 col-sm-push-4 col-xs-6 col-xs-push-4" id="home-main">
         <!-- Get Ready -->
-        <section>
+        <section id="main">
             <h1>{{content.play.title}}</h1>
             <p>{{content.play.desc1}}</p>
             <paper-button class="button" ng-click="goTo('create')">{{content.play.start}}</paper-button>
