@@ -40,8 +40,10 @@ app.controller('playersController', ['$scope', '$location', 'messageService', '$
          });
 
         $scope.$on('gamealreadystarted', function () {
+            // TODO: Create view for this
+
              console.log('Game has already started');
-             
+
              $timeout(function () {
                  $scope.goTo('/');
              });
