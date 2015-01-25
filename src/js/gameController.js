@@ -1,18 +1,13 @@
-app.controller('gameController', ['$scope', '$location', '$document', '$timeout', 'gameState', '$rootScope', '$interval',
-    function ($scope, $location, $document, $timeout, gameState, $rootScope, $interval) {
+app.controller('gameController', ['$scope', '$location', '$document', '$timeout', 'gameState', 'messageService', '$rootScope', '$interval',
+    function ($scope, $location, $document, $timeout, gameState, messageService, $rootScope, $interval) {
         // Return if the game isn't started yet
         if (!gameState.started) {
             $location.path('/');
             return;
         }
 
-        // Play background audio
-        var backgroundAudio = new Audio('audio/bg.mp3');
-        backgroundAudio.addEventListener('ended', function () {
-            this.currentTime = 0;
-            this.play();
-        }, false);
-        backgroundAudio.play();
+        var gamePlayInterval = null;
+
         // Selected cards
         $scope.cardsSelected = 0;
         // Set initial card
@@ -25,59 +20,54 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
 
         // Played cards
         var playedCards = [];
+        
         // Get cards for player
-        $scope.cards = $rootScope.players[$rootScope.uuid].board;
-        // UUID
-        $scope.uuid = gameState.createGame();
-        $scope.uuid = 12345;
+        $scope.cards = gameState.getOwnPlayer().board;
 
-/*
-        // Create Pusher room
-        var pusher = new Pusher('f5656bd4670f11759284', {
-            authEndpoint: 'http://127.0.0.1:5000/pusher/auth'
-        });
-        // Create channel
-        var myChannel = pusher.subscribe('private-' + $scope.uuid + '');
-*/
         // Subscribe to new card event
-        if ($rootScope.playerStatus === 'player') {
-            myChannel.bind('client-newcard',
-                function (data) {
-                    console.log(data);
-                    var currentCard = document.getElementById('current-card');
-                    currentCard.classList.add('animated', 'flipOutY');
-                    $timeout(function () {
-                        currentCard.classList.remove('animated', 'flipOutY');
-                        currentCard.src = 'svg/card.svg#c01'; // TODO: Set src dynamically
-                        currentCard.classList.add('animated', 'flipInY');
-                    }, 2000);
-                }
-            );
-        }
+        // if ($rootScope.playerStatus === 'player') {
+        //     myChannel.bind('client-newcard',
+        //         function (data) {
+        //             console.log(data);
+        //             var currentCard = document.getElementById('current-card');
+        //             currentCard.classList.add('animated', 'flipOutY');
+        //             $timeout(function () {
+        //                 currentCard.classList.remove('animated', 'flipOutY');
+        //                 currentCard.src = 'svg/card.svg#c01'; // TODO: Set src dynamically
+        //                 currentCard.classList.add('animated', 'flipInY');
+        //             }, 2000);
+        //         }
+        //     );
+        // }
 
         if ($rootScope.playerStatus === 'admin') {
-            playCards();
+            gamePlayInterval = $interval(function () {
+                messageService.playCard(gameState.pullCard());
+            }, 1000);
         }
 
-        function playCards () {
-            var card = gameState.pullCard();
+        $rootScope.$on('playcard', function (e, card) {
             var data = {};
+
             if (playedCards.length > 0) {
                 data.lastCard = playedCards[playedCards.length - 1];
             } else {
                 data.lastCard = 111;
             }
+
             data.card = card;
             playedCards.push(card);
-            //myChannel.trigger('client-newcard', data);
+
             // Flip Current Card
             var currentCard = document.getElementById('current-card');
             currentCard.classList.add('animated', 'flipOutY');
+
             $timeout(function () {
                 currentCard.classList.remove('animated', 'flipOutY');
                 currentCard.src = 'svg/card.svg#c01'; // TODO: Set src dynamically
                 currentCard.classList.add('animated', 'flipInY');
             }, 500);
+
             var riddle = new Audio('audio/cards/riddle/' + card + '.es.mp3');
             riddle.play();
             riddle.addEventListener('ended', function () {
@@ -85,13 +75,32 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
                     var name = new Audio('audio/cards/name/' + card + '.es.mp3');
                     name.play();
                     name.addEventListener('ended', function () {
-                        $timeout(function () {
-                            playCards();
-                        }, 1000);
+                        // $timeout(function () {
+                        //     playCards();
+                        // }, 1000);
                     })
                 }, 1000);
             });
+        });
+
+        $scope.loteria = function () {
+            messageService.loteria(gameState.getOwnPlayer());
         }
+
+        $rootScope.$on('win', function (e, player) {
+            $interval.cancel(gamePlayInterval);
+            $scope.goTo('winner', player);
+        });
+
+        $rootScope.$on('lose', function (e, player) {
+            console.log("You haven't won yet!");
+        });
+
+        $rootScope.$on('tie', function (e, player) {
+            $interval.cancel(gamePlayInterval);
+            console.log("It's a tie!");
+        });
+
         // Go to (Exit or Loteria)
         $scope.goTo = function (location) {
             $location.path('/' + location);

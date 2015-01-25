@@ -53,7 +53,14 @@ app.factory('messageService', function ($rootScope, $http, $interval, gameState)
 
                     case 'playCard':
                     console.log('playcard ', message.data);
-                    $rootScope.$broadcast('playcard', message.data);
+                    
+                    if (!!message.data) {
+                        $rootScope.$broadcast('playcard', message.data);
+                    }
+                    else {
+                        $rootScope.$broadcast('tie', message.data);
+                    }
+                    
                     break;
 
                     default:

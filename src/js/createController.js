@@ -15,7 +15,7 @@ app.controller('createController', ['$scope', '$location', '$timeout', 'gameStat
 
         $scope.canStartGame = false;
 
-        // UID
+        // TODO: UID should be set only when playerstatus == admin
         $scope.uuid = gameState.createGame();
 
         messageService.connect($scope.uuid, $rootScope.playerStatus);
@@ -23,23 +23,24 @@ app.controller('createController', ['$scope', '$location', '$timeout', 'gameStat
         // New player submits his name
         $scope.addPlayer = function() {
             // Create player object
-            var player = {};
-            player.name = $scope.playerName;
-            player.id = $rootScope.uuid;
-
-            messageService.join(player);
+            gameState.createOwnPlayer($scope.playerName);
 
             // Fade out text input
             var nameInput = document.getElementById('name-input-component');
             nameInput.classList.add('animated', 'fadeOut');
+
             // Update players list and remove text input
             $timeout(function () {
                 nameInput.parentNode.removeChild(nameInput);
-                $scope.players.push(player);
             }, 1000);
 
             $scope.canStartGame = true;
         };
+
+        $rootScope.$on('join', function (e, player) {
+            console.log("player ", player, " has joined");
+            $scope.players.push(player);
+        });
 
         // Go to (Start Game or Exit)
         $scope.goTo = function (location) {

@@ -1,10 +1,11 @@
 app.factory('gameState', function ($rootScope, $http, $interval) {
-    $rootScope.players = [];
+    // $rootScope.players = [];
 
     var cards = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53'],
         currentGame = [],
-        players = $rootScope.players,
-        currentRoom = null;
+        players = [],
+        currentRoom = null,
+        playerId = null;
 
     var service = {
         started: false,
@@ -16,9 +17,18 @@ app.factory('gameState', function ($rootScope, $http, $interval) {
             currentRoom = generateUID().toUpperCase();
             this.started = true;
 
-            $rootScope.uuid = currentRoom;
+            // $rootScope.uuid = currentRoom;
 
             return currentRoom;
+        },
+
+        createOwnPlayer: function (name) {
+            playerId = generateUID();
+            this.joinGame(playerId, name);
+        },
+
+        getOwnPlayer: function () {
+            return players[playerId];
         },
 
         getInitialCard: function () {
@@ -26,8 +36,9 @@ app.factory('gameState', function ($rootScope, $http, $interval) {
         },
 
         // Adds a player to the current room
-        joinGame: function (playerId, name) {
-            $rootScope.players[playerId] = {
+        joinGame: function (id, name) {
+            players[id] = {
+                id: id,
                 name: name,
                 board: _.chain(cards)
                     .shuffle()
@@ -40,8 +51,8 @@ app.factory('gameState', function ($rootScope, $http, $interval) {
             return currentGame.shift();
         },
 
-        hasWon: function (playerId) {
-            return _.intersection(players[playerId].board, currentGame).length == 0;
+        hasWon: function (id) {
+            return _.intersection(players[id].board, currentGame).length == 0;
         },
 
         shoutCards: function () {
