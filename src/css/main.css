@@ -168,6 +168,13 @@ paper-input-decorator /deep/ .focused-underline {
     top: 0px;
     z-index: 9000;
 }
+.current-card-name {
+    display: block;
+    font-size: 25px;
+    margin-top: 45px;
+    text-align: center;
+    width: 195px;
+}
 .card {
     width: 105px;
     height: 150px;
