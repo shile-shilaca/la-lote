@@ -12,10 +12,7 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
         // Set initial card
         var initialCard = gameState.getInitialCard();
         var card = document.getElementById('current-card');
-        console.log(card);
-        //card.classList.remove('card00');
-        //card.classList.add('card' + initialCard);
-        card.src = 'svg/card.svg#c' + initialCard();
+        card.src = 'svg/card.svg#c01'; // TODO: Set src dynamically
 
         // Played cards
         var playedCards = [];
@@ -42,9 +39,7 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
                     currentCard.classList.add('animated', 'flipOutY');
                     $timeout(function () {
                         currentCard.classList.remove('animated', 'flipOutY');
-                        //currentCard.classList.remove('card' + data.lastCard);
-                        //currentCard.classList.add('card' + data.card);
-                        currentCard.src = 'svg/card.svg#c' + data.card;
+                        currentCard.src = 'svg/card.svg#c01'; // TODO: Set src dynamically
                         currentCard.classList.add('animated', 'flipInY');
                     }, 2000);
                 }
@@ -71,9 +66,7 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
             currentCard.classList.add('animated', 'flipOutY');
             $timeout(function () {
                 currentCard.classList.remove('animated', 'flipOutY');
-                //currentCard.classList.remove('card' + data.lastCard);
-                //currentCard.classList.add('card' + data.card);
-                currentCard.src = 'svg/card.svg#c' + data.card;
+                currentCard.src = 'svg/card.svg#c01'; // TODO: Set src dynamically
                 currentCard.classList.add('animated', 'flipInY');
             }, 500);
             var riddle = new Audio('audio/cards/riddle/' + card + '.es.mp3');
