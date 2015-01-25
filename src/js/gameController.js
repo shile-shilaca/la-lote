@@ -39,6 +39,31 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
         //     );
         // }
 
+        // Card click listener
+        $scope.onCardClick = function ($event) {
+            var e = $event;
+            var card = e.target;
+            var bean = card.$.bean;
+            // Firefox
+            /*bean.style.top = (e.layerY) + 'px';
+             bean.style.left = (e.layerX) + 'px';*/
+            // Chrome
+            bean.style.top = e.target.offsetTop + 'px';
+            bean.style.left = e.target.offsetLeft + 'px';
+
+            var a = Math.random() * 360;
+            bean.style.transform = 'rotate(' + a + 'deg)';
+
+            card.classList.toggle("active");
+            bean.classList.toggle("active");
+
+            if (bean.classList.contains('active')) {
+                $scope.cardsSelected++;
+            } else {
+                $scope.cardsSelected--;
+            }
+        };
+
         if ($rootScope.playerStatus === 'admin') {
 /*
             gamePlayInterval = $interval(function () {
