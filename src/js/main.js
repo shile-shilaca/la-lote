@@ -2,16 +2,22 @@ var app = angular.module('lottery', ['ngRoute']);
 
 /** Routes Configuration **/
 app.config(function ($routeProvider) {
-    /** Home **/
     $routeProvider.when('/', {
         templateUrl : './templates/home.tpl.html',
         controller  : 'homeController'
     })
-    /** Join **/
-    .when('/create/:action', {
+    .when('/create', {
         templateUrl : './templates/create.tpl.html',
         controller  : 'createController'
     })
+        .when('/join', {
+            templateUrl : './templates/join.tpl.html',
+            controller  : 'joinController'
+        })
+        .when('/players', {
+            templateUrl : './templates/players.tpl.html',
+            controller  : 'playersController'
+        })
     .when('/game', {
         templateUrl : './templates/game.tpl.html',
         controller  : 'gameController'
@@ -20,7 +26,6 @@ app.config(function ($routeProvider) {
         templateUrl : './templates/winner.tpl.html',
         controller  : 'winnerController'
     })
-    /** Error View **/
     .when('/error', {
         templateUrl : './templates/error.tpl.html'
     }).otherwise({

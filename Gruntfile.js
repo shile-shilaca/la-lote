@@ -199,6 +199,8 @@ module.exports = function(grunt) {
                         'src/js/gamestate.js',
                         'src/js/homeController.js',
                         'src/js/createController.js',
+                        'src/js/joinController.js',
+                        'src/js/playersController.js',
                         'src/js/gameController.js',
                         'src/js/winnerController.js',
                         'src/js/utils.js'
