@@ -16,7 +16,20 @@ app.controller('playersController', ['$scope', '$location', 'messageService', '$
             $scope.gameCode = gameState.currentGameUID;
             messageService.connect(gameState.currentGameUID, $rootScope.playerStatus);
         }
-        //messageService.join(gameState.createOwnPlayer($scope.playerName));
+
+        $scope.$on('open', function () {
+            messageService.join(gameState.createOwnPlayer(gameState.currentPlayerName));
+        });
+
+        $scope.$on('players', function (e, players) {
+            console.log("players sync");
+
+            $scope.players = _.union(_.map($scope.players, function (player) {
+                return player;
+            }), players);
+
+            // $scope.$apply();
+        });
 
         $scope.players = [];
 

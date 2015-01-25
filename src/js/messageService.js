@@ -1,4 +1,4 @@
-app.factory('messageService', function ($rootScope, $http, $interval, gameState) {
+app.factory('messageService', ['$rootScope', '$interval', 'gameState', function ($rootScope, $interval, gameState) {
     var channel = null,
         role = null,
         sendMessage = function (action, data) {
@@ -13,6 +13,10 @@ app.factory('messageService', function ($rootScope, $http, $interval, gameState)
             // Create Hydna channel/room
             role = role;
             channel = new HydnaChannel('la-lote.hydna.net/' + roomId, 'rwe');
+
+            channel.onopen = function () {
+                $rootScope.$broadcast("open");
+            };
 
             channel.onmessage = function(event) {
                 var message = JSON.parse(event.data);
@@ -106,4 +110,4 @@ app.factory('messageService', function ($rootScope, $http, $interval, gameState)
     };
 
     return service;
-});
+}]);
