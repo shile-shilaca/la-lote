@@ -35,7 +35,7 @@
         <!-- About -->
         <section id="about">
             <h1>{{content.about.title}}</h1>
-            <p>{{content.about.desc}}</p>
+            <p ng-bind-html="content.about.desc | rawHtml"></p>
         </section>
         <!-- End About -->
 
@@ -56,7 +56,7 @@
         <!-- History -->
         <section id="history">
             <h1>{{content.history.title}}</h1>
-            <p ng-bind-html="content.history.desc"></p>
+            <p ng-bind-html="content.history.desc | rawHtml"></p>
         </section>
         <!-- End History -->
     </div>

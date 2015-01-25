@@ -50,3 +50,9 @@ app.run(function($rootScope, $location, $http) {
         $rootScope.content = result.content;
     });
 });
+
+app.filter('rawHtml', ['$sce', function($sce){
+    return function(htmlString) {
+        return $sce.trustAsHtml(htmlString);
+    };
+}]);
