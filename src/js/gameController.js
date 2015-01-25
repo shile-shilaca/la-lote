@@ -62,6 +62,11 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
             // Flip current card
             var currentCard = document.getElementById('current-card'),
                 currentCardImage = document.getElementById('current-card-image');
+
+            if (!currentCard) {
+                return;
+            }
+
             currentCard.classList.add('animated', 'flipOutY');
 
             $timeout(function() {
@@ -107,6 +112,11 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
                 // Flip current card
                 var currentCard = document.getElementById('current-card'),
                     currentCardImage = document.getElementById('current-card-image');
+
+                if (!currentCard) {
+                    return;
+                }
+
                 currentCard.classList.add('animated', 'flipOutY');
 
                 $timeout(function() {
