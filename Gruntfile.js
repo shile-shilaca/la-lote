@@ -90,7 +90,7 @@ module.exports = function(grunt) {
                 dest: 'dist/css/card.css'
             }
         },
-        'divshot-push': {
+        'divshot:push': {
             development: {
             },
             production: {
@@ -147,14 +147,15 @@ module.exports = function(grunt) {
                 }
             }
         },
-        svgstore: {
+        svgstack: {
             options: {
+                cleanup: ['viewBox'],
                 formatting: {
                     indent_char: " ",
                     indent_size : 4
                 },
                 includeTitleElement: false,
-                prefix: 'card',
+                prefix: 'c',
                 svg: {
                     viewBox: '0 0 195 293',
                     xmlns: 'http://www.w3.org/2000/svg'
@@ -202,20 +203,19 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-svgmin');
     grunt.loadNpmTasks('grunt-svgstore');
 
+    grunt.loadTasks('tasks');
+
     /*===============================================================
      Tasks Aliases
      ===============================================================*/
 
-    grunt.registerTask('svgsprite', [
-        'svgstore'
-    ]);
     grunt.registerTask('deploydev', [
         'dist',
-        'divshot-push:development'
+        'divshot:push:development'
     ]);
     grunt.registerTask('deployprod', [
         'dist',
-        'divshot-push:production'
+        'divshot:push:production'
     ]);
     grunt.registerTask('dist', [
         'clean',
@@ -224,7 +224,7 @@ module.exports = function(grunt) {
         'jsonmin',
         'cssmin',
         'uglify',
-        'svgsprite',
+        'svgstack',
         'svgmin',
         'copy'
     ]);

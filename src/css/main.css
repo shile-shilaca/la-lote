@@ -182,55 +182,55 @@ paper-input-decorator /deep/ .focused-underline {
             box-shadow: 2px 2px 2px 0 rgba(50, 50, 50, 0.75);
 }
 .card01 {
-    background: url('../svg/cards/01.svg') no-repeat;
+    background: url('../svg/card.svg#c01') no-repeat;
 }
 .card02 {
-    background: url('../svg/cards/02.svg') no-repeat;
+    background: url('../svg/card.svg#c02') no-repeat;
 }
 .card03 {
-    background: url('../svg/cards/03.svg') no-repeat;
+    background: url('../svg/card.svg#c03') no-repeat;
 }
 .card04 {
-    background: url('../svg/cards/04.svg') no-repeat;
+    background: url('../svg/card.svg#c04') no-repeat;
 }
 .card05 {
-    background: url('../svg/cards/05.svg') no-repeat;
+    background: url('../svg/card.svg#c05') no-repeat;
 }
 .card06 {
-    background: url('../svg/cards/06.svg') no-repeat;
+    background: url('../svg/card.svg#c06') no-repeat;
 }
 .card07 {
-    background: url('../svg/cards/07.svg') no-repeat;
+    background: url('../svg/card.svg#c07') no-repeat;
 }
 .card08 {
-    background: url('../svg/cards/08.svg') no-repeat;
+    background: url('../svg/card.svg#c08') no-repeat;
 }
 .card09 {
-    background: url('../svg/cards/09.svg') no-repeat;
+    background: url('../svg/card.svg#c09') no-repeat;
 }
 .card10 {
-    background: url('../svg/cards/10.svg') no-repeat;
+    background: url('../svg/card.svg#c10') no-repeat;
 }
 .card11 {
-    background: url('../svg/cards/11.svg') no-repeat;
+    background: url('../svg/card.svg#c11') no-repeat;
 }
 .card12 {
-    background: url('../svg/cards/12.svg') no-repeat;
+    background: url('../svg/card.svg#c12') no-repeat;
 }
 .card13 {
-    background: url('../svg/cards/13.svg') no-repeat;
+    background: url('../svg/card.svg#c13') no-repeat;
 }
 .card14 {
-    background: url('../svg/cards/14.svg') no-repeat;
+    background: url('../svg/card.svg#c14') no-repeat;
 }
 .card15 {
-    background: url('../svg/cards/15.svg') no-repeat;
+    background: url('../svg/card.svg#c15') no-repeat;
 }
 .card16 {
-    background: url('../svg/cards/16.svg') no-repeat;
+    background: url('../svg/card.svg#c16') no-repeat;
 }
 .card19 {
-    background: url('../svg/cards/19.svg') no-repeat;
+    background: url('../svg/card.svg#c19') no-repeat;
 }
 /** End Cards **/
 /** End Game **/
