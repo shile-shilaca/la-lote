@@ -1,5 +1,10 @@
 app.controller('playersController', ['$scope', '$location', 'messageService', '$rootScope', '$timeout', 'gameState',
     function($scope, $location, messageService, $rootScope, $timeout, gameState) {
+        if (!$rootScope.playerStatus) {
+            $location.path('/');
+            return;
+        }
+
         // Play background audio
         var backgroundAudio = new Audio('audio/bg.mp3');
         backgroundAudio.addEventListener('ended', function() {
@@ -8,6 +13,8 @@ app.controller('playersController', ['$scope', '$location', 'messageService', '$
         }, false);
         // TODO: Decomment this line
         //backgroundAudio.play();
+
+        $scope.hasPlayers = false;
 
         if($rootScope.playerStatus === 'admin') {
             $scope.gameCode = gameState.createGame();
@@ -27,6 +34,8 @@ app.controller('playersController', ['$scope', '$location', 'messageService', '$
             $scope.players = _.union(_.map($scope.players, function (player) {
                 return player;
             }), players);
+
+            $scope.hasPlayers = true;
 
             $scope.$apply();
         });
@@ -52,7 +61,9 @@ app.controller('playersController', ['$scope', '$location', 'messageService', '$
         $rootScope.lostGame = false;
 
         $scope.startGame = function() {
-            messageService.startGame();
+            if ($scope.hasPlayers) {
+                messageService.startGame();
+            }
         };
 
         $scope.goTo = function(location) {

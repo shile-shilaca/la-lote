@@ -7,11 +7,13 @@ app.controller('createController', ['$scope', '$location', 'messageService', 'ga
         };
 
         $scope.create = function() {
-            $rootScope.playerStatus = 'admin';
+            if ($scope.playerName.length > 0) {
+                $rootScope.playerStatus = 'admin';
 
-            gameState.currentPlayerName = $scope.playerName;
+                gameState.currentPlayerName = $scope.playerName;
 
-            $scope.goTo('players');
+                $scope.goTo('players');
+            }
         };
     }
 ]);
