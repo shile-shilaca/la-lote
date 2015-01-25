@@ -12,8 +12,11 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
         // Set initial card
         var initialCard = gameState.getInitialCard();
         var card = document.getElementById('current-card');
-        card.classList.remove('card00');
-        card.classList.add('card' + initialCard);
+        console.log(card);
+        //card.classList.remove('card00');
+        //card.classList.add('card' + initialCard);
+        card.src = 'svg/card.svg#c' + initialCard();
+
         // Played cards
         var playedCards = [];
         // Get cards for player
@@ -39,8 +42,9 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
                     currentCard.classList.add('animated', 'flipOutY');
                     $timeout(function () {
                         currentCard.classList.remove('animated', 'flipOutY');
-                        currentCard.classList.remove('card' + data.lastCard);
-                        currentCard.classList.add('card' + data.card);
+                        //currentCard.classList.remove('card' + data.lastCard);
+                        //currentCard.classList.add('card' + data.card);
+                        currentCard.src = 'svg/card.svg#c' + data.card;
                         currentCard.classList.add('animated', 'flipInY');
                     }, 2000);
                 }
@@ -67,8 +71,9 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
             currentCard.classList.add('animated', 'flipOutY');
             $timeout(function () {
                 currentCard.classList.remove('animated', 'flipOutY');
-                currentCard.classList.remove('card' + data.lastCard);
-                currentCard.classList.add('card' + data.card);
+                //currentCard.classList.remove('card' + data.lastCard);
+                //currentCard.classList.add('card' + data.card);
+                currentCard.src = 'svg/card.svg#c' + data.card;
                 currentCard.classList.add('animated', 'flipInY');
             }, 500);
             var riddle = new Audio('audio/cards/riddle/' + card + '.es.mp3');
