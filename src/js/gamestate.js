@@ -42,6 +42,10 @@ app.factory('gameState', function ($rootScope, $http, $interval) {
             return players[playerId];
         },
 
+        getPlayers : function () {
+            return players;
+        },
+
         getInitialCard: function () {
             return '01';
         },

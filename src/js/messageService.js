@@ -20,13 +20,18 @@ app.factory('messageService', function ($rootScope, $http, $interval, gameState)
                 switch (message.action) {
                     case 'join':
                     console.log('joined', message);
-
-                    // // only admin keeps track of player cards
-                    // if (playerRole == 'admin') {
-                        gameState.joinGame(message.data.id, message.data.name);
-                    // }
+                    gameState.joinGame(message.data.id, message.data.name);
 
                     $rootScope.$broadcast('join', message.data);
+
+                    sendMessage('players', _.map(gameState.getPlayers(), function (player) {
+                            // return {
+                            //     name: player.name,
+                            //     id: player.id
+                            // }
+                            return player.name;
+                        })
+                    );
                     break;
 
                     case 'loteria':
@@ -54,13 +59,18 @@ app.factory('messageService', function ($rootScope, $http, $interval, gameState)
                     $rootScope.$broadcast('lose', message.data);
                     break;
 
+                    case 'players':
+                    console.log('players sync', message.data);
+                    $rootScope.$broadcast('players', message.data);
+                    break;
+
                     case 'start':
                     console.log('start');
                     $rootScope.$broadcast('start');
                     break;
 
                     case 'playCard':
-                    console.log('playcard ', message.data);
+                    // console.log('playcard ', message.data);
                     
                     if (!!message.data) {
                         $rootScope.$broadcast('playcard', message.data);

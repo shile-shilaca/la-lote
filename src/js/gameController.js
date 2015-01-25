@@ -120,12 +120,13 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
         });
 
         $scope.loteria = function () {
-            messageService.loteria(gameState.getOwnPlayer());
+            if ($scope.cardsSelected >= 16 && !$scope.lostGame) {
+                messageService.loteria(gameState.getOwnPlayer());
+            }
         };
 
         $scope.$on('win', function (e, player) {
-            $interval.cancel(gamePlayInterval);
-            $scope.goTo('winner', player);
+            $scope.goTo('winner');
         });
 
         $scope.$on('lose', function (e, player) {
@@ -134,7 +135,7 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
             var ownPlayer = gameState.getOwnPlayer();
 
             if (player.id == ownPlayer.id) {
-                $rootScope.lostGame = (ownPlayer.hp--) == 0;
+                $rootScope.lostGame = (--ownPlayer.hp) <= 0;
             }
         });
 
@@ -145,7 +146,7 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
 
         $scope.goTo = function (location) {
             $timeout(function() {
-                console.log('changing location');
+                $interval.cancel(gamePlayInterval);
                 $location.path('/' + location);
             });
         };
