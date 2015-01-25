@@ -19,6 +19,9 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
 
         $scope.cardId = initialCard;
 
+        // current player HP
+        $scope.hp = gameState.getOwnPlayer().hp;
+
         // Played cards
         var playedCards = [];
 
@@ -133,6 +136,7 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
 
             if (player.id == ownPlayer.id) {
                 $rootScope.lostGame = (--ownPlayer.hp) <= 0;
+                $scope.hp = ownPlayer.hp;
             }
         });
 
@@ -152,5 +156,9 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
         $scope.getCardSrc = function(card) {
             return 'svg/cards/' + card + '.svg';
         };
+
+        $scope.range = function (n) {
+            return Array(n);
+        }
     }
 ]);

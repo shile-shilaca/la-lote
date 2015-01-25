@@ -1,4 +1,4 @@
-app.factory('messageService', function ($rootScope, $http, $interval, gameState) {
+app.factory('messageService', ['$rootScope', '$interval', 'gameState', function ($rootScope, $interval, gameState) {
     var channel = null,
         role = null,
         sendMessage = function (action, data) {
@@ -106,4 +106,4 @@ app.factory('messageService', function ($rootScope, $http, $interval, gameState)
     };
 
     return service;
-});
+}]);
