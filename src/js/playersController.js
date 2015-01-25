@@ -11,8 +11,7 @@ app.controller('playersController', ['$scope', '$location', 'messageService', '$
             this.currentTime = 0;
             this.play();
         }, false);
-        // TODO: Decomment this line
-        //backgroundAudio.play();
+        backgroundAudio.play();
 
         $scope.hasPlayers = false;
 
