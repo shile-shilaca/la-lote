@@ -40,18 +40,20 @@ app.controller('createController', ['$scope', '$location', '$timeout', 'gameStat
 */
 
         // Create Hydna channel/room
-        var channel = new HydnaChannel('la-lote.hydna.net/' + $scope.uuid + ' /hello-world', 'rwe');
+        var channel = new HydnaChannel('la-lote.hydna.net/' + $scope.uuid, 'rwe');
+        //console.dir(channel);
 
         // then register an event handler that alerts the data-part of messages
         // as they are received.
         channel.onmessage = function(event) {
-              console.log('channel.onmessage:', event.data);
+            console.log('channel.onmessage:', JSON.parse(event.data));
         };
 
         // finally we add an event handler that sends a message as soon as
         // the channel has been opened.
         channel.onopen = function() {
-            channel.send('Hello there!');
+            console.log('channel.onopen');
+            channel.send(JSON.stringify({msg: 'Hello', action: 'createuser'}));
         };
 
 
