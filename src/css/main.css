@@ -12,7 +12,8 @@ body {
   font-family: 'montserrat';
 }
 a:link, a:visited, a:active, a:hover {
-  text-decoration: none;
+    color: #fff;
+    text-decoration: none;
 }
 /** End General Styles **/
 
