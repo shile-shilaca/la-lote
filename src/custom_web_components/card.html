@@ -2,10 +2,10 @@
 <link rel="import" href="../bower_components/core-image/core-image.html"/>
 <link rel="import" href="../bower_components/paper-ripple/paper-ripple.html"/>
 
-<polymer-element name="lottery-card" attributes="cardnumber">
+<polymer-element name="lottery-card" attributes="src">
     <template>
         <link rel="stylesheet" href="../css/card.css"/>
-        <core-image class="card {{cardnumber}}" sizing="cover" preload fade>
+        <core-image class="card" src="{{src}}" sizing="cover" preload fade>
             <paper-ripple class="recenteringTouch" fit></paper-ripple>
             <core-image id="bean" class="bean" preload fade src="../img/bean.png"></core-image>
         </core-image>
