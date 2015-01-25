@@ -42,14 +42,14 @@
         <!-- Tech -->
         <section id="tech">
             <h1>{{content.tech.title}}</h1>
-            <p>{{content.tech.desc}}</p>
+            <p ng-bind-html="content.tech.desc | rawHtml"></p>
         </section>
         <!-- End Tech -->
 
         <!-- Why -->
         <section id="why">
             <h1>{{content.why.title}}</h1>
-            <p>{{content.why.desc}}</p>
+            <p ng-bind-html="content.why.desc | rawHtml"></p>
         </section>
         <!-- End Why -->
 
@@ -60,5 +60,6 @@
         </section>
         <!-- End History -->
     </div>
+
     <paper-toast id="toaster" text=""></paper-toast>
 </div>
