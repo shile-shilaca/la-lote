@@ -33,12 +33,15 @@ app.factory('messageService', function ($rootScope, $http, $interval, gameState)
                     console.log('loteria ', message.data.name);
                     
                     // if player won, send a win message
-                    if (playerRole == 'admin' && gameState.hasWon(message.data.id)) {
-                        sendMessage('win', message.data);
+                    if (playerRole == 'admin') {
+                        if (gameState.hasWon(message.data.id)) {
+                            sendMessage('win', message.data);
+                        }
+                        else {
+                            sendMessage('lose', message.data);
+                        }
                     } 
-                    else {
-                        sendMessage('lose', message.data);
-                    }
+                    
                     break;
 
                     case 'win':
@@ -89,7 +92,7 @@ app.factory('messageService', function ($rootScope, $http, $interval, gameState)
 
         startGame: function () {
             sendMessage('start');
-        }
+        },
     };
 
     return service;

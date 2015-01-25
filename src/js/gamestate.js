@@ -27,6 +27,7 @@ app.factory('gameState', function ($rootScope, $http, $interval) {
             return {
                 id: playerId,
                 name: name,
+                hp: 3,
                 board: _.chain(cards)
                     .shuffle()
                     .first(16)
@@ -41,7 +42,11 @@ app.factory('gameState', function ($rootScope, $http, $interval) {
         },
 
         getInitialCard: function () {
-            return currentGame[currentGame.length - 1];
+            return '00';
+        },
+
+        removeHp: function () {
+            return --this.getOwnPlayer().hp;
         },
 
         // Adds a player to the current room
@@ -49,6 +54,7 @@ app.factory('gameState', function ($rootScope, $http, $interval) {
             players[id] = {
                 id: id,
                 name: name,
+                hp: 3,
                 board: _.chain(cards)
                     .shuffle()
                     .first(16)
