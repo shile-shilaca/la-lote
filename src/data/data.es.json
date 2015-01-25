@@ -1,218 +1,237 @@
 {
-    "01": {
-        "name": "El Gallo",
-        "riddle": "El que le canto a San Pedro no le volvera a cantar"
+    "content": {
+        "play": {
+            "title": "Preparate!",
+            "desc1": "...y juega Loteria con tus amigos!",
+            "desc2": "...o deslizate hacia abajo de esta pagina para dar un vistazo.",
+            "start": "Iniciar un Nuevo Juego",
+            "join": "Ingresar a un Juego"
+        },
+        "about": {
+            "title": "Acerca De",
+            "desc": "Nosotros somos el equipo Shile Shilaka. Estamos asentados en Guadalajara, Jalisco, Mexico (La tierra del tequila y el mariachi). We are a group of developers from different parts of Mexico: Chihuahua, Puebla, Mexico City, Guadalajara."
+        },
+        "history": {
+            "title": "Historia",
+            "desc": " Loteria is a Mexican game of chance, similar to bingo, but using images on a deck of cards instead of plain numbers on ping pong balls. Every image has a name and an assigned number, but the number is usually ignored. Each player has at least one tabla, a board with a randomly created 4 x 4 grid of pictures with their corresponding name and number. Players choose what tabla they want to play with, from a variety of previously created tablas. Each one presents a different selection of images. Loteria is the Spanish word for lottery. The deck is composed of a set of 54 different images, each one in a card. To start the game, the caller (cantor, or singer) randomly selects a card from the deck and announces it to the players by its name, sometimes using a riddle or humorous patter instead of reading the card name. The players with a matching pictogram on their board mark it off with a chip or other kind of marker (many Mexican people traditionally use small rocks, crown corks or pinto beans as markers). The first player with four chips in a horizontal, vertical or diagonal row, squared pattern,any other previously specified pattern, or fills the tabla first shouts \"¡Lotería!\" (Lottery!) or \"¡Buenas!\" (Good!) and is the winner. History of Loteria The origin of lottery can be traced far back in history. The game originated in Italy in the 15th century and was brought to New Spain (Mexico) in 1769. In the beginning, Loteria was a hobby of the upper classes, but eventually it became a tradition at mexican fairs."
+        }
     },
-    "02": {
-        "name": "El Diablito",
-        "riddle": "Portate bien cuatito, si no te lleva el coloradito"
-    },
-    "03": {
-        "name": "La Dama",
-        "riddle": "Puliendo el paso, por toda la calle real"
-    },
-    "04": {
-        "name": "El Catrin",
-        "riddle": "Don Ferruco en la alameda, su baston queria tirar"
-    },
-    "05": {
-        "name": "El Paraguas",
-        "riddle": "Para el sol y para el agua"
-    },
-    "06": {
-        "name": "La Sirena",
-        "riddle": "Con los cantos de sirena, no te vayas a marear"
-    },
-    "07": {
-        "name": "La Escalera",
-        "riddle": "Subeme paso a pasito, no quieras pegar brinquitos"
-    },
-    "08": {
-        "name": "La Botella",
-        "riddle": "La hermienta del borracho"
-    },
-    "09": {
-        "name": "El Barril",
-        "riddle": "Tanto bebio el albanil, que quedo como barril"
-    },
-    "10": {
-        "name": "El Arbol",
-        "riddle": "El que a buen arbol se arrima, buena sombra le cobija"
-    },
-    "11": {
-        "name": "El Melon",
-        "riddle": "Me lo das o me lo quitas"
-    },
-    "12": {
-        "name": "El Valiente",
-        "riddle": "Por que le corres cobarde, trayendo tan buen punal"
-    },
-    "13": {
-        "name": "El Gorrito",
-        "riddle": "Ponle su gorrito al nene, no se nos vaya a resfriar"
-    },
-    "14": {
-        "name": "La Muerte",
-        "riddle": "La muerte tilica y flaca"
-    },
-    "15": {
-        "name": "La Pera",
-        "riddle": "El que espera, desespera"
-    },
-    "16": {
-        "name": "La Bandera",
-        "riddle": "Verde blanco y colorado, la bandera del soldado"
-    },
-    "17": {
-        "name": "El Bandolon",
-        "riddle": "Tocando su bandolon, esta el mariachi Simon"
-    },
-    "18": {
-        "name": "El Violoncello",
-        "riddle": "Creciendo se fue hasta el cielo, y como no fue violin, tuvo que ser violoncello"
-    },
-    "19": {
-        "name": "La Garza",
-        "riddle": "Al otro lado del rio tengo mi banco de arena, donde se sienta mi chata pico de garza morena"
-    },
-    "20": {
-        "name": "El Pajaro",
-        "riddle": "Tu me traes a puros brincos, como pajaro en la rama"
-    },
-    "21": {
-        "name": "La Mano",
-        "riddle": "La mano de un criminal"
-    },
-    "22": {
-        "name": "La Bota",
-        "riddle": "Una bota igual que la otra"
-    },
-    "23": {
-        "name": "La Luna",
-        "riddle": "El farol de los enamorados"
-    },
-    "24": {
-        "name": "El Cotorro",
-        "riddle": "Cotorro cotorro saca la pata, y empiezame a platicar"
-    },
-    "25": {
-        "name": "El Borracho",
-        "riddle": "A que borracho tan necio ya no lo puedo aguantar"
-    },
-    "26": {
-        "name": "El Negrito",
-        "riddle": "El que se comio el azucar"
-    },
-    "27": {
-        "name": "El Corazon",
-        "riddle": "No me extranes corazon, que regreso en el camion"
-    },
-    "28": {
-        "name": "La Sandia",
-        "riddle": "La barriga que Juan tenia, era empacho de sandia"
-    },
-    "29": {
-        "name": "El Tambor",
-        "riddle": "No te arruges, cuero viejo, que te quiero pa'tambor"
-    },
-    "30": {
-        "name": "El Camaron",
-        "riddle": "Camaron durmiente, se lo lleva la corriente"
-    },
-    "31": {
-        "name": "Las Aras",
-        "riddle": "Las jaras del indio Adan, donde pegan, dan"
-    },
-    "32": {
-        "name": "El Musico",
-        "riddle": "El musico trompas de hule, ya no me quiere tocar"
-    },
-    "33": {
-        "name": "La Arana",
-        "riddle": "Atarantamela a palos, no me la dejes llegar"
-    },
-    "34": {
-        "name": "El Soldado",
-        "riddle": "Uno, dos y tres, el soldado p'al cuartel"
-    },
-    "35": {
-        "name": "La Estrella",
-        "riddle": "La guia de los marineros"
-    },
-    "36": {
-        "name": "El Cazo",
-        "riddle": "El caso que te hago es poco"
-    },
-    "37": {
-        "name": "El Mundo",
-        "riddle": "Este mundo es una bola, y nosotros un bolon"
-    },
-    "38": {
-        "name": "El Apache",
-        "riddle": "Ah, Chihuahua! Cuanto apache con pantalon y huarache"
-    },
-    "39": {
-        "name": "El Nopal",
-        "riddle": "Al nopal lo van a ver, nomas cuando tiene tunas"
-    },
-    "40": {
-        "name": "El Alacran",
-        "riddle": "El que con la cola pica, le dan una paliza"
-    },
-    "41": {
-        "name": "La Rosa",
-        "riddle": "Rosita, Rosaura, ven que te quiero ahora"
-    },
-    "42": {
-        "name": "La Calavera",
-        "riddle": "Al pasar por el panteon, me encontre un calaveron"
-    },
-    "43": {
-        "name": "La Campana",
-        "riddle": "Tu con la campana y yo con tu hermana"
-    },
-    "44": {
-        "name": "El Cantarito",
-        "riddle": "Tanto va el cantaro al agua, que se quiebra y te moja las enaguas"
-    },
-    "45": {
-        "name": "El Venado",
-        "riddle": "Saltando va buscando, pero no ve nada"
-    },
-    "46": {
-        "name": "El Sol",
-        "riddle": "La cobija de los pobres"
-    },
-    "47": {
-        "name": "La Corona",
-        "riddle": "El sombrero de los reyes"
-    },
-    "48": {
-        "name": "La Chalupa",
-        "riddle": "Rema que rema Lupita, sentada en su chalupita"
-    },
-    "49": {
-        "name": "El Pino",
-        "riddle": "Fresco y oloroso, en todo tiempo hermoso"
-    },
-    "50": {
-        "name": "El Pescado",
-        "riddle": "El que por la boca muere, aunque mudo fuere"
-    },
-    "51": {
-        "name": "La Palma",
-        "riddle": "Palmero, sube a la palma y bajame un coco real"
-    },
-    "52": {
-        "name": "La Maceta",
-        "riddle": "El que nace pa'maceta, no sale del corredor"
-    },
-    "53": {
-        "name": "El Arpa",
-        "riddle": "Arpa vieja de mi suegra, ya no sirves pa'tocar"
-    },
-    "54": {
-        "name": "La Rana",
-        "riddle": "Al ver a la verde rana, que brinco pego tu hermana"
+    "cards": {
+        "01": {
+            "name": "El Gallo",
+            "riddle": "El que le canto a San Pedro no le volvera a cantar"
+        },
+        "02": {
+            "name": "El Diablito",
+            "riddle": "Portate bien cuatito, si no te lleva el coloradito"
+        },
+        "03": {
+            "name": "La Dama",
+            "riddle": "Puliendo el paso, por toda la calle real"
+        },
+        "04": {
+            "name": "El Catrin",
+            "riddle": "Don Ferruco en la alameda, su baston queria tirar"
+        },
+        "05": {
+            "name": "El Paraguas",
+            "riddle": "Para el sol y para el agua"
+        },
+        "06": {
+            "name": "La Sirena",
+            "riddle": "Con los cantos de sirena, no te vayas a marear"
+        },
+        "07": {
+            "name": "La Escalera",
+            "riddle": "Subeme paso a pasito, no quieras pegar brinquitos"
+        },
+        "08": {
+            "name": "La Botella",
+            "riddle": "La herramienta del borracho"
+        },
+        "09": {
+            "name": "El Barril",
+            "riddle": "Tanto bebio el albanil, que quedo como barril"
+        },
+        "10": {
+            "name": "El Arbol",
+            "riddle": "El que a buen arbol se arrima, buena sombra le cobija"
+        },
+        "11": {
+            "name": "El Melon",
+            "riddle": "Me lo das o me lo quitas"
+        },
+        "12": {
+            "name": "El Valiente",
+            "riddle": "Por que le corres cobarde, trayendo tan buen punal"
+        },
+        "13": {
+            "name": "El Gorrito",
+            "riddle": "Ponle su gorrito al nene, no se nos vaya a resfriar"
+        },
+        "14": {
+            "name": "La Muerte",
+            "riddle": "La muerte tilica y flaca"
+        },
+        "15": {
+            "name": "La Pera",
+            "riddle": "El que espera, desespera"
+        },
+        "16": {
+            "name": "La Bandera",
+            "riddle": "Verde blanco y colorado, la bandera del soldado"
+        },
+        "17": {
+            "name": "El Bandolon",
+            "riddle": "Tocando su bandolon, esta el mariachi Simon"
+        },
+        "18": {
+            "name": "El Violoncello",
+            "riddle": "Creciendo se fue hasta el cielo, y como no fue violin, tuvo que ser violoncello"
+        },
+        "19": {
+            "name": "La Garza",
+            "riddle": "Al otro lado del rio tengo mi banco de arena, donde se sienta mi chata pico de garza morena"
+        },
+        "20": {
+            "name": "El Pajaro",
+            "riddle": "Tu me traes a puros brincos, como pajaro en la rama"
+        },
+        "21": {
+            "name": "La Mano",
+            "riddle": "La mano de un criminal"
+        },
+        "22": {
+            "name": "La Bota",
+            "riddle": "Una bota igual que la otra"
+        },
+        "23": {
+            "name": "La Luna",
+            "riddle": "El farol de los enamorados"
+        },
+        "24": {
+            "name": "El Cotorro",
+            "riddle": "Cotorro cotorro saca la pata, y empiezame a platicar"
+        },
+        "25": {
+            "name": "El Borracho",
+            "riddle": "A que borracho tan necio ya no lo puedo aguantar"
+        },
+        "26": {
+            "name": "El Negrito",
+            "riddle": "El que se comio el azucar"
+        },
+        "27": {
+            "name": "El Corazon",
+            "riddle": "No me extranes corazon, que regreso en el camion"
+        },
+        "28": {
+            "name": "La Sandia",
+            "riddle": "La barriga que Juan tenia, era empacho de sandia"
+        },
+        "29": {
+            "name": "El Tambor",
+            "riddle": "No te arruges, cuero viejo, que te quiero pa' tambor"
+        },
+        "30": {
+            "name": "El Camaron",
+            "riddle": "Camaron durmiente, se lo lleva la corriente"
+        },
+        "31": {
+            "name": "Las Aras",
+            "riddle": "Las jaras del indio Adan, donde pegan, dan"
+        },
+        "32": {
+            "name": "El Musico",
+            "riddle": "El musico trompas de hule, ya no me quiere tocar"
+        },
+        "33": {
+            "name": "La Arana",
+            "riddle": "Atarantamela a palos, no me la dejes llegar"
+        },
+        "34": {
+            "name": "El Soldado",
+            "riddle": "Uno, dos y tres, el soldado p'al cuartel"
+        },
+        "35": {
+            "name": "La Estrella",
+            "riddle": "La guia de los marineros"
+        },
+        "36": {
+            "name": "El Cazo",
+            "riddle": "El caso que te hago es poco"
+        },
+        "37": {
+            "name": "El Mundo",
+            "riddle": "Este mundo es una bola, y nosotros un bolon"
+        },
+        "38": {
+            "name": "El Apache",
+            "riddle": "Ah, Chihuahua! Cuanto apache con pantalon y huarache"
+        },
+        "39": {
+            "name": "El Nopal",
+            "riddle": "Al nopal lo van a ver, nomas cuando tiene tunas"
+        },
+        "40": {
+            "name": "El Alacran",
+            "riddle": "El que con la cola pica, le dan una paliza"
+        },
+        "41": {
+            "name": "La Rosa",
+            "riddle": "Rosita, Rosaura, ven que te quiero ahora"
+        },
+        "42": {
+            "name": "La Calavera",
+            "riddle": "Al pasar por el panteon, me encontre un calaveron"
+        },
+        "43": {
+            "name": "La Campana",
+            "riddle": "Tu con la campana y yo con tu hermana"
+        },
+        "44": {
+            "name": "El Cantarito",
+            "riddle": "Tanto va el cantaro al agua, que se quiebra y te moja las enaguas"
+        },
+        "45": {
+            "name": "El Venado",
+            "riddle": "Saltando va buscando, pero no ve nada"
+        },
+        "46": {
+            "name": "El Sol",
+            "riddle": "La cobija de los pobres"
+        },
+        "47": {
+            "name": "La Corona",
+            "riddle": "El sombrero de los reyes"
+        },
+        "48": {
+            "name": "La Chalupa",
+            "riddle": "Rema que rema Lupita, sentada en su chalupita"
+        },
+        "49": {
+            "name": "El Pino",
+            "riddle": "Fresco y oloroso, en todo tiempo hermoso"
+        },
+        "50": {
+            "name": "El Pescado",
+            "riddle": "El que por la boca muere, aunque mudo fuere"
+        },
+        "51": {
+            "name": "La Palma",
+            "riddle": "Palmero, sube a la palma y bajame un coco real"
+        },
+        "52": {
+            "name": "La Maceta",
+            "riddle": "El que nace pa' maceta, no sale del corredor"
+        },
+        "53": {
+            "name": "El Arpa",
+            "riddle": "Arpa vieja de mi suegra, ya no sirves pa' tocar"
+        },
+        "54": {
+            "name": "La Rana",
+            "riddle": "Al ver a la verde rana, que brinco pego tu hermana"
+        }
     }
 }

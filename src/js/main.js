@@ -31,14 +31,20 @@ app.config(function ($routeProvider) {
     });
 });
 
-app.run(function ($rootScope, $location) {
-    $rootScope.$on('$routeChangeError', function () {
+app.run(function($rootScope, $location, $http) {
+    $rootScope.$on('$routeChangeError', function() {
         $location.path('/error');
     });
-    $rootScope.$on('$routeChangeStart', function () {
+    $rootScope.$on('$routeChangeStart', function() {
         $rootScope.isLoading = true;
     });
-    $rootScope.$on('$routeChangeSuccess', function () {
+    $rootScope.$on('$routeChangeSuccess', function() {
         $rootScope.isLoading = false;
+    });
+
+    var lang = 'en'; // TODO: Set this dynamically
+    $http.get('data/data.' + lang + '.json').success(function(result) {
+        $rootScope.cardData = result.cards;
+        $rootScope.content = result.content;
     });
 });
