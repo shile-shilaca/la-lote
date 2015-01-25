@@ -47,10 +47,10 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
 */
         }
 
-        $scope.$on('playcard', function (e, card) {
+        $scope.$on('playcard', function(e, card) {
             var data = {};
 
-            if (playedCards.length > 0) {
+            if(playedCards.length > 0) {
                 data.lastCard = playedCards[playedCards.length - 1];
             } else {
                 data.lastCard = 111;
@@ -59,11 +59,11 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
             data.card = card;
             playedCards.push(card);
 
-            // Flip Current Card
+            // Flip current card
             var currentCard = document.getElementById('current-card');
             currentCard.classList.add('animated', 'flipOutY');
 
-            $timeout(function () {
+            $timeout(function() {
                 currentCard.classList.remove('animated', 'flipOutY');
                 currentCard.src = 'svg/cards/' + card + '.svg';
                 currentCard.classList.add('animated', 'flipInY');
@@ -72,7 +72,7 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
             var riddle = new Audio('audio/cards/riddle/' + card + '.es.mp3');
             riddle.play();
             riddle.addEventListener('ended', function () {
-                $timeout(function () {
+                $timeout(function() {
                     var name = new Audio('audio/cards/name/' + card + '.es.mp3');
                     name.play();
                     name.addEventListener('ended', function () {
@@ -82,6 +82,10 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
                     })
                 }, 1000);
             });
+
+            var cardName = $rootScope.cardData[card].name;
+            //console.log('cardName:', cardName);
+            $scope.cardName = cardName;
         });
 
         $scope.loteria = function () {
