@@ -1,12 +1,12 @@
 app.controller('createController', ['$scope', '$location', '$timeout', 'gameState', 'messageService', '$routeParams', '$rootScope',
     function($scope, $location, $timeout, gameState, messageService, $routeParams, $rootScope) {
         // Play background audio
-        var backgroundAudio = new Audio('audio/bg.mp3');
-        backgroundAudio.addEventListener('ended', function() {
+        $scope.backgroundAudio = new Audio('audio/bg.mp3');
+        $scope.backgroundAudio.addEventListener('ended', function() {
             this.currentTime = 0;
             this.play();
         }, false);
-        backgroundAudio.play();
+        $scope.backgroundAudio.play();
 
         // Players list
         $scope.players = [];
@@ -63,7 +63,10 @@ app.controller('createController', ['$scope', '$location', '$timeout', 'gameStat
         });
 
         // Go to (Start Game or Exit)
-        $scope.goTo = function (location) {
+        $scope.goTo = function(location) {
+            $scope.backgroundAudio.pause();
+            $scope.backgroundAudio.currentTime = 0;
+
             $location.path('/' + location);
             $scope.$apply();
         };
