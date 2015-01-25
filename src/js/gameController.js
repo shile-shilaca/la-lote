@@ -16,8 +16,8 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
         // Set initial card
         var initialCard = gameState.getInitialCard();
         //console.log('initialCard:', initialCard);
-        var card = document.getElementById('current-card');
-        card.src = 'svg/cards/' + initialCard + '.svg';
+        var cardImage = document.getElementById('current-card-image');
+        cardImage.src = 'svg/cards/' + initialCard + '.svg';
 
         $scope.cardId = initialCard;
 
@@ -95,12 +95,13 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
             playedCards.push(card);
 
             // Flip current card
-            var currentCard = document.getElementById('current-card');
+            var currentCard = document.getElementById('current-card'),
+                currentCardImage = document.getElementById('current-card-image');
             currentCard.classList.add('animated', 'flipOutY');
 
             $timeout(function() {
                 currentCard.classList.remove('animated', 'flipOutY');
-                currentCard.src = 'svg/cards/' + card + '.svg';
+                currentCardImage.src = 'svg/cards/' + card + '.svg';
                 $scope.cardId = card;
                 currentCard.classList.add('animated', 'flipInY');
             }, 500);
