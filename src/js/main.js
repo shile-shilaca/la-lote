@@ -8,7 +8,7 @@ app.config(function ($routeProvider) {
         controller  : 'homeController'
     })
     /** Join **/
-    .when('/create', {
+    .when('/create/:action', {
         templateUrl : './templates/create.tpl.html',
         controller  : 'createController'
     })
@@ -51,54 +51,74 @@ app.controller('homeController', ['$scope', '$location', '$anchorScroll',
             $anchorScroll();
         };
         // Go to (New Game or Join an Existing Game)
-        $scope.goTo = function (location) {
-            $location.path('/' + location);
+        $scope.goTo = function (location, action) {
+            if (action) {
+                $location.path('/' + location + '/' + action);
+            } else {
+                $location.path('/' + location);
+            }
         };
     }
 ]);
 
 // Create Game Controller
-app.controller('createController', ['$scope', '$location', '$pusher',
-    function ($scope, $location, $pusher) {
-        function generateUUID() {
-            var d = new Date().getTime();
-            var uuid = 'xxxxx'.replace(/[xy]/g, function(c) {
-                var r = (d + Math.random() * 16) % 16 | 0;
-                d = Math.floor(d / 16);
-                return (c=='x' ? r : (r&0x3|0x8)).toString(16);
-            });
-            return uuid;
+app.controller('createController', ['$scope', '$location', '$pusher', '$timeout', 'gameState', '$routeParams', '$rootScope',
+    function ($scope, $location, $pusher, $timeout, gameState, $routeParams, $rootScope) {
+        // Player status
+        if ($routeParams.action === 'start') {
+            $rootScope.playerStatus = 'admin';
+        } else {
+            $rootScope.playerStatus = 'player';
         }
+        // Players list
+        $scope.players = [];
+        // Player name
+        $scope.playerName = null;
         // UUID
-        $scope.uuid = generateUUID();
+        $scope.uuid = gameState.createGame();
         $scope.uuid = 12345;
-
+        // Create Pusher room
         var pusher = new Pusher('f5656bd4670f11759284', {
             authEndpoint: 'http://127.0.0.1:5000/pusher/auth'
         });
-
+        // Create channel
         var myChannel = pusher.subscribe('private-' + $scope.uuid + '');
-        $scope.players = [];
-        $scope.playerName = null;
-
+        // Subscribe to new player event
         myChannel.bind('client-newplayer',
             function(data) {
-                console.log(data);
                 $scope.$apply(function () {
                     $scope.players.push(data);
                 });
-
-                console.log($scope.players);
             }
         );
-
-
+        // Generate UUID
+        function generateUUID() {
+            var d = new Date().getTime();
+            var uuid = 'xxxxx' . replace(/[xy]/g, function (c) {
+                var r = (d + Math.random() * 16) % 16 | 0;
+                d = Math.floor(d / 16);
+                return (c == 'x' ? r : (r&0x3|0x8)).toString(16);
+            });
+            return uuid;
+        }
+        // New player submits his name
         $scope.addPlayer = function () {
-            console.log($scope.playerName);
+            // Create player object
             var player = {};
             player.name = $scope.playerName;
-            player.id = 100;
+            player.id = generateUUID();
+            $rootScope.uuid = player.id;
+            // Trigger event
             myChannel.trigger('client-newplayer', player);
+            // Fade out text input
+            var nameInput = document.getElementById('name-input-component');
+            nameInput.classList.add('animated', 'fadeOut');
+            // Update players list and remove text input
+            $timeout(function () {
+                nameInput.parentNode.removeChild(nameInput);
+                $scope.players.push(player);
+            }, 1000);
+            gameState.joinGame(player.id, player.name);
         };
         // Go to (Start Game or Exit)
         $scope.goTo = function (location) {
@@ -108,75 +128,94 @@ app.controller('createController', ['$scope', '$location', '$pusher',
 ]);
 
 // Game Controller
-app.controller('gameController', ['$scope', '$location', '$document', '$timeout',
-    function ($scope, $location, $document, $timeout) {
+app.controller('gameController', ['$scope', '$location', '$document', '$timeout', 'gameState', '$rootScope', '$interval',
+    function ($scope, $location, $document, $timeout, gameState, $rootScope, $interval) {
+        // Play background audio
         var backgroundAudio = new Audio('audio/bg.mp3');
         backgroundAudio.addEventListener('ended', function () {
             this.currentTime = 0;
             this.play();
         }, false);
-        //backgroundAudio.play();
-
+        backgroundAudio.play();
+        // Selected cards
         $scope.cardsSelected = 0;
-
-        // Go to (Exit or Loteria)
-        $scope.goTo = function (location) {
-            $location.path('/' + location);
-        };
-
-        var riddle = new Audio('audio/cards/riddle/19.es.mp3');
-        //riddle.play();
-        riddle.addEventListener('ended', function () {
-            $timeout(function () {
-                var name = new Audio('audio/cards/name/19.es.mp3');
-                name.play();
-            }, 500);
+        // Set initial card
+        var initialCard = gameState.getInitialCard();
+        var card = document.getElementById('current-card');
+        card.classList.remove('card00');
+        card.classList.add('card' + initialCard);
+        // Played cards
+        var playedCards = [];
+        // Get cards for player
+        $scope.cards = $rootScope.players[$rootScope.uuid].board;
+        // UUID
+        $scope.uuid = gameState.createGame();
+        $scope.uuid = 12345;
+        // Create Pusher room
+        var pusher = new Pusher('f5656bd4670f11759284', {
+            authEndpoint: 'http://127.0.0.1:5000/pusher/auth'
         });
+        // Create channel
+        var myChannel = pusher.subscribe('private-' + $scope.uuid + '');
+        // Subscribe to new card event
+        if ($rootScope.playerStatus === 'player') {
+            myChannel.bind('client-newcard',
+                function (data) {
+                    console.log(data);
+                    var currentCard = document.getElementById('current-card');
+                    currentCard.classList.add('animated', 'flipOutY');
+                    $timeout(function () {
+                        currentCard.classList.remove('animated', 'flipOutY');
+                        currentCard.classList.remove('card' + data.lastCard);
+                        currentCard.classList.add('card' + data.card);
+                        currentCard.classList.add('animated', 'flipInY');
+                    }, 2000);
+                }
+            );
+        }
 
-        $scope.cards = [1, 5, 8, 3, 2, 9, 10, 16, 12, 4, 6, 11, 7, 13, 15, 14];
+        if ($rootScope.playerStatus === 'admin') {
+            playCards();
+        }
 
-        $scope.nextCard = function () {
+        function playCards () {
+            var card = gameState.pullCard();
+            var data = {};
+            if (playedCards.length > 0) {
+                data.lastCard = playedCards[playedCards.length - 1];
+            } else {
+                data.lastCard = 111;
+            }
+            data.card = card;
+            playedCards.push(card);
+            //myChannel.trigger('client-newcard', data);
+            // Flip Current Card
             var currentCard = document.getElementById('current-card');
             currentCard.classList.add('animated', 'flipOutY');
             $timeout(function () {
                 currentCard.classList.remove('animated', 'flipOutY');
-                currentCard.classList.remove('card01');
-                currentCard.classList.add('card02');
+                currentCard.classList.remove('card' + data.lastCard);
+                currentCard.classList.add('card' + data.card);
                 currentCard.classList.add('animated', 'flipInY');
-            }, 2000);
+            }, 500);
+            var riddle = new Audio('audio/cards/riddle/' + card + '.es.mp3');
+            riddle.play();
+            riddle.addEventListener('ended', function () {
+                $timeout(function () {
+                    var name = new Audio('audio/cards/name/' + card + '.es.mp3');
+                    name.play();
+                    name.addEventListener('ended', function () {
+                        $timeout(function () {
+                            playCards();
+                        }, 1000);
+                    })
+                }, 1000);
+            });
+        }
+        // Go to (Exit or Loteria)
+        $scope.goTo = function (location) {
+            $location.path('/' + location);
         };
-
-        // Card click listener
-        $scope.onCardClick = function ($event) {
-            var e = $event;
-            var card = e.target;
-            var bean = card.$.bean;
-            // Firefox
-            /*bean.style.top = (e.layerY) + 'px';
-            bean.style.left = (e.layerX) + 'px';*/
-            // Chrome
-            bean.style.top = e.target.offsetTop + 'px';
-            bean.style.left = e.target.offsetLeft + 'px';
-
-            var a = Math.random() * 360;
-            bean.style.transform = 'rotate(' + a + 'deg)';
-
-            card.classList.toggle("active");
-            bean.classList.toggle("active");
-
-            if (bean.classList.contains('active')) {
-                $scope.cardsSelected++;
-            } else {
-                $scope.cardsSelected--;
-            }
-        };
-        /*// Get cards
-        var cards = document.getElementsByTagName('lottery-card');
-        // Assign event listener
-        for (var i = 0, l = cards.length; i < l; i++) {
-            var card = cards[i];
-            card.addEventListener('click', onCardClick, false);
-        }*/
     }
 ]);
 
@@ -186,3 +225,17 @@ app.controller('winnerController', ['$scope',
 
     }
 ]);
+
+app.directive('ngEnter', function () {
+    return function (scope, element, attrs) {
+        element.bind("keydown keypress", function (event) {
+            if(event.which === 13) {
+                scope.$apply(function (){
+                    scope.$eval(attrs.ngEnter);
+                });
+
+                event.preventDefault();
+            }
+        });
+    };
+});

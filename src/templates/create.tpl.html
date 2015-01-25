@@ -9,22 +9,17 @@
         <!-- End Join Message -->
 
         <!-- Players List -->
-        {{players}}
         <section id="players-list">
-            <ul>
-                <li class="active">
-                    <paper-input-decorator class="custom-input" label="Your Name" floatinglabel layout vertical>
-                        <input is="core-input" placeholder="Your Name" ng-model="playerName" ng-blur="addPlayer()">
-                    </paper-input-decorator>
-                </li>
-            </ul>
+            <paper-input-decorator class="custom-input" label="Your Name (press Enter when done)" floatinglabel layout vertical id="name-input-component">
+                <input is="core-input" placeholder="Your Name (press Enter when done)" ng-model="playerName" ng-enter="addPlayer()">
+            </paper-input-decorator>
             <ul>
                 <li ng-repeat="player in players">
                     {{player.name}}
                 </li>
             </ul>
             <paper-button class="button small-button">Exit</paper-button>
-            <paper-button class="button small-button" ng-click="goTo('game')">Start</paper-button>
+            <paper-button class="button small-button" ng-click="goTo('game')" ng-show="playerStatus == 'admin'" >Start</paper-button>
         </section>
         <!-- End Players List -->
         <h4 class="footer">Shile <br/> Shilaca</h4>
