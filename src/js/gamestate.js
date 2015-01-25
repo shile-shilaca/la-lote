@@ -95,6 +95,12 @@ app.factory('gameState', ['$rootScope', '$interval', function ($rootScope, $inte
                 console.log("broadcast", card);
                 return card;
             }, 100);
+        },
+
+        restart: function () {
+            players = [];
+            currentGame = [];
+            this.started = false;
         }
     };
 

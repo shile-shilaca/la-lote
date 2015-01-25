@@ -3,7 +3,7 @@ app.controller('homeController', ['$scope', '$location', '$anchorScroll', '$root
     	$rootScope.playerStatus = null;
 
     	messageService.disconnect();
-    	gameState.started = false;
+    	gameState.restart();
 
     	if (!!$rootScope.toast) {
     		showToaster($rootScope.toast);
