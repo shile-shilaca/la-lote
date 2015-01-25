@@ -78,7 +78,7 @@ a:link, a:visited, a:active, a:hover {
 #winner-main h1 {
   text-align: center;
 }
-#create-main .game-code {
+.game-code {
     font-size: 1.8em;
     text-align: center;
     letter-spacing: 5px;
@@ -137,11 +137,13 @@ paper-input-decorator /deep/ .focused-underline {
 #winner-main h3,
 #game-main p,
 #game-card-main p,
-#winner-main p {
+#winner-main p,
+#players-main p {
     text-align: center;
 }
 #game-main,
-#game-card-main {
+#game-card-main,
+#players-main {
     margin-top: 30px;
 }
 #game-main .player-name {
