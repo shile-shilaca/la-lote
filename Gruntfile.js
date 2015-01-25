@@ -146,7 +146,8 @@ module.exports = function(grunt) {
                 files: {
                     'dist/svg/back.svg': 'src/svg/back.svg',
                     'dist/svg/bean.svg': 'src/svg/bean.svg',
-                    'dist/svg/card.svg': 'src/svg/card.svg'
+                    'dist/svg/card.svg': 'src/svg/card.svg',
+                    'dist/svg/win.svg': 'src/svg/win.svg'
                 }
             },
             cardsSvgFiles: {
