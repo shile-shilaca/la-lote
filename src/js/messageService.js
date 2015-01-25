@@ -14,6 +14,10 @@ app.factory('messageService', ['$rootScope', '$interval', 'gameState', function 
             role = role;
             channel = new HydnaChannel('la-lote.hydna.net/' + roomId, 'rwe');
 
+            channel.onopen = function () {
+                $rootScope.$broadcast("open");
+            };
+
             channel.onmessage = function(event) {
                 var message = JSON.parse(event.data);
 

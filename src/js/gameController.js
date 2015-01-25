@@ -49,9 +49,12 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
             var e = $event;
             var card = e.target;
             var bean = card.$.bean;
+
+            // TODO: Decomment these
             // Firefox
             /*bean.style.top = (e.layerY) + 'px';
              bean.style.left = (e.layerX) + 'px';*/
+
             // Chrome
             bean.style.top = e.target.offsetTop + 'px';
             bean.style.left = e.target.offsetLeft + 'px';
@@ -145,7 +148,6 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
             console.log("It's a tie!");
         });
 
-        // Go to (Exit or Loteria)
         $scope.goTo = function (location) {
             $timeout(function() {
                 $interval.cancel(gamePlayInterval);
