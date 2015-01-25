@@ -24,12 +24,12 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
         $scope.cardsSelected = 0;
 
         // Set initial card
-        var initialCard = gameState.getInitialCard();
+        //var initialCard = gameState.getInitialCard();
         //console.log('initialCard:', initialCard);
         var cardImage = document.getElementById('current-card-image');
-        cardImage.src = 'svg/cards/' + initialCard + '.svg';
+        cardImage.src = 'svg/back.svg';
 
-        $scope.cardId = initialCard;
+        $scope.cardId = 0;
         $scope.tied = false;
 
         // current player HP
@@ -62,6 +62,11 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
             // Flip current card
             var currentCard = document.getElementById('current-card'),
                 currentCardImage = document.getElementById('current-card-image');
+
+            if (!currentCard) {
+                return;
+            }
+
             currentCard.classList.add('animated', 'flipOutY');
 
             $timeout(function() {
@@ -107,6 +112,11 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
                 // Flip current card
                 var currentCard = document.getElementById('current-card'),
                     currentCardImage = document.getElementById('current-card-image');
+
+                if (!currentCard) {
+                    return;
+                }
+
                 currentCard.classList.add('animated', 'flipOutY');
 
                 $timeout(function() {
@@ -200,7 +210,14 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
                 $rootScope.lostGame = (--ownPlayer.hp) <= 0;
                 $scope.hp = ownPlayer.hp;
 
-                showToaster('Do not try to cheat');
+                if ($rootScope.lostGame) {
+                    showToaster('You have lost the game!');
+                }
+                else {
+                    showToaster('Not a winner, check your board!');
+                }
+
+                $scope.$apply();
             }
         });
 
@@ -212,7 +229,7 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
 
         $scope.$on('endgame', function (e, player) {
             console.log("Host has left the game");
-            showToaster('Host has left the game');
+            showToaster('The host player has left the game.');
             stopSounds();
             $scope.goTo('/');
         });

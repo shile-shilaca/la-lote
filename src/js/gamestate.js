@@ -21,6 +21,7 @@ app.factory('gameState', ['$rootScope', '$interval', function ($rootScope, $inte
             players = {};
             currentGame = _.shuffle(cards);
             currentRoom = generateUID().toUpperCase();
+            playerId = null;
 
             // $rootScope.uuid = currentRoom;
 
