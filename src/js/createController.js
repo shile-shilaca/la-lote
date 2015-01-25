@@ -48,8 +48,8 @@ app.controller('createController', ['$scope', '$location', '$timeout', 'gameStat
             switch (message.action) {
                 case 'join':
                 // $rootscope.$broadcast("playerJoin");
-                console.log("joined", message.data);
-                gameState.joinGame(message.data.name);
+                console.log("joined", message);
+                gameState.joinGame(message.data.id, message.data.name);
                 break;
 
                 default:
@@ -58,24 +58,17 @@ app.controller('createController', ['$scope', '$location', '$timeout', 'gameStat
             }
         };
 
-        // the admin joins the game automatically
-        channel.onopen = function(event) {
-            if ($rootScope.playerStatus == 'admin') {
-                channel.send(JSON.stringify({
-                    action: "join",
-                    data: {
-                        id: $scope.playerId,
-                        name: "admin"
-                    }
-                }));
-            }
-        };
-
         // New player submits his name
         $scope.addPlayer = function() {
             // Create player object
             var player = {};
             player.name = $scope.playerName;
+            player.id = $rootScope.uuid;
+
+            channel.send(JSON.stringify({
+                action: "join",
+                data: player
+            }));
 
 
             // TODO: Remove these lines
@@ -91,7 +84,6 @@ app.controller('createController', ['$scope', '$location', '$timeout', 'gameStat
                 nameInput.parentNode.removeChild(nameInput);
                 $scope.players.push(player);
             }, 1000);
-            gameState.joinGame(player.id, player.name);
         };
 
         // Go to (Start Game or Exit)
