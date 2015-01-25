@@ -13,14 +13,15 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
         // Set initial card
         var initialCard = gameState.getInitialCard();
         var card = document.getElementById('current-card');
-        console.log(card);
+
         //card.classList.remove('card00');
         //card.classList.add('card' + initialCard);
-        card.src = 'svg/card.svg#c' + initialCard;
+        card.src = 'svg/card.svg#c01'; // TODO: Set src dynamically
+        console.log(card);
 
         // Played cards
         var playedCards = [];
-        
+
         // Get cards for player
         $scope.cards = gameState.getOwnPlayer().board;
 
@@ -41,9 +42,11 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
         // }
 
         if ($rootScope.playerStatus === 'admin') {
+/*
             gamePlayInterval = $interval(function () {
                 messageService.playCard(gameState.pullCard());
             }, 1000);
+*/
         }
 
         $scope.$on('playcard', function (e, card) {
@@ -64,7 +67,7 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
 
             $timeout(function () {
                 currentCard.classList.remove('animated', 'flipOutY');
-                currentCard.src = 'svg/card.svg#c01'; // TODO: Set src dynamically
+                currentCard.src = 'svg/card.svg#c' + card; // TODO: Set src dynamically
                 currentCard.classList.add('animated', 'flipInY');
             }, 500);
 
@@ -85,7 +88,7 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
 
         $scope.loteria = function () {
             messageService.loteria(gameState.getOwnPlayer());
-        }
+        };
 
         $scope.$on('win', function (e, player) {
             $interval.cancel(gamePlayInterval);
@@ -113,6 +116,10 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
                 console.log('changing location');
                 $location.path('/' + location);
             });
+        };
+
+        $scope.getCardSrc = function(card) {
+            return 'svg/card.svg#c' + card;
         };
     }
 ]);

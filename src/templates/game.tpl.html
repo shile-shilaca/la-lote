@@ -3,7 +3,7 @@
         <p class="player-name">Evert</p>
         <!-- Players List -->
         <section id="board" class="clearfix">
-            <lottery-card ng-repeat="card in cards" cardnumber="card{{card}}" src="svg/card.svg#c{{card}}" ng-click="onCardClick($event)"></lottery-card>
+            <lottery-card ng-repeat="card in cards" src="{{getCardSrc(card)}}" ng-click="onCardClick($event)"></lottery-card>
         </section>
         <paper-button class="button small-button exit-button" ng-click="goTo('')">Exit</paper-button>
         <paper-button class="button small-button" ng-click="loteria()" ng-class="{ 'disabled-button' : (cardsSelected < 16 || lostGame) }">Loteria</paper-button>
