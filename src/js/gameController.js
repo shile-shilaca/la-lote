@@ -1,5 +1,7 @@
 app.controller('gameController', ['$scope', '$location', '$document', '$timeout', 'gameState', 'messageService', '$rootScope', '$interval',
     function ($scope, $location, $document, $timeout, gameState, messageService, $rootScope, $interval) {
+        $scope.currentPlayerName = gameState.currentPlayerName;
+
         // Return if the game isn't started yet
         if (!gameState.started) {
             $location.path('/');

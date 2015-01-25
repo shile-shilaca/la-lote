@@ -6,14 +6,14 @@
 </div>
 <div class="row">
     <div class="col-lg-4 col-lg-push-2" id="game-main">
-        <p class="player-name">Evert</p>
-        <!-- Players List -->
+        <p class="player-name">{{currentPlayerName}}</p>
+
         <section id="board" class="clearfix">
             <lottery-card ng-repeat="card in cards" cardid="{{card}}" src="{{getCardSrc(card)}}" ng-click="onCardClick($event)"></lottery-card>
         </section>
         <paper-button class="button small-button exit-button" ng-click="goTo('')">Exit</paper-button>
         <paper-button class="button small-button" ng-click="loteria()" ng-class="{ 'disabled-button' : (cardsSelected < 16 || lostGame) }">Loteria</paper-button>
-        <!-- End Players List -->
+
     </div>
     <div class="col-lg-4 col-lg-push-2" id="game-card-main">
         <!-- Current Card -->
@@ -23,10 +23,5 @@
             <div class="current-card-name">{{cardName}}</div>
         </section>
         <!-- End Current Card -->
-    </div>
-</div>
-<div class="row">
-    <div class="col-lg-4 col-lg-push-4">
-        <h4 class="footer">Shile <br/> Shilaca</h4>
     </div>
 </div>

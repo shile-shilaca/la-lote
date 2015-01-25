@@ -40,7 +40,7 @@ app.factory('messageService', ['$rootScope', '$interval', 'gameState', function 
 
                     case 'loteria':
                     console.log('loteria ', message.data.name);
-                    
+
                     // if player won, send a win message
                     if (playerRole == 'admin') {
                         if (gameState.hasWon(message.data.id)) {
@@ -49,8 +49,8 @@ app.factory('messageService', ['$rootScope', '$interval', 'gameState', function 
                         else {
                             sendMessage('lose', message.data);
                         }
-                    } 
-                    
+                    }
+
                     break;
 
                     case 'win':
@@ -75,14 +75,14 @@ app.factory('messageService', ['$rootScope', '$interval', 'gameState', function 
 
                     case 'playCard':
                     // console.log('playcard ', message.data);
-                    
+
                     if (!!message.data) {
                         $rootScope.$broadcast('playcard', message.data);
                     }
                     else {
                         $rootScope.$broadcast('tie', message.data);
                     }
-                    
+
                     break;
 
                     default:
@@ -106,7 +106,7 @@ app.factory('messageService', ['$rootScope', '$interval', 'gameState', function 
 
         startGame: function () {
             sendMessage('start');
-        },
+        }
     };
 
     return service;
