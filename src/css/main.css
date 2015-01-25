@@ -16,6 +16,13 @@ a:link, a:visited, a:active, a:hover {
 }
 /** End General Styles **/
 
+#winner-main {
+    margin-top: 30px;
+}
+#winner-main img {
+    margin: 0 auto;
+    display: block;
+}
 
 /** Home **/
 .menu > div {
