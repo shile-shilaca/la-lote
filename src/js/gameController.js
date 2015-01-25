@@ -42,11 +42,11 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
         // }
 
         if ($rootScope.playerStatus === 'admin') {
-/*
+
             gamePlayInterval = $interval(function () {
                 messageService.playCard(gameState.pullCard());
             }, 1000);
-*/
+
         }
 
         $scope.$on('playcard', function (e, card) {

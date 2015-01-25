@@ -53,7 +53,20 @@ app.controller('createController', ['$scope', '$location', '$timeout', 'gameStat
 
         $scope.$on('join', function (e, player) {
             console.log("player ", player, " has joined");
-            $scope.players.push(player);
+            // $scope.$apply();
+        });
+
+        $scope.$on('players', function (e, players) {
+            console.log("players sync");
+
+            $scope.players = _.union(_.map($scope.players, function (player) {
+                // return {
+                //     name: player.name,
+                //     id: player.id
+                // }
+                return player;
+            }), players);
+
             $scope.$apply();
         });
 
@@ -68,7 +81,10 @@ app.controller('createController', ['$scope', '$location', '$timeout', 'gameStat
             $scope.backgroundAudio.currentTime = 0;
 
             $location.path('/' + location);
-            $scope.$apply();
+
+            $timeout(function () {
+                $scope.$apply();
+            });
         };
 
         $scope.startGame = function () {
