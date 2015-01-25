@@ -182,7 +182,16 @@ module.exports = function(grunt) {
                     banner: '<%= vars.banner %>' + grunt.util.linefeed
                 },
                 files: {
-                    'dist/js/app.min.js': ['src/js/*.js']
+                    'dist/js/app.min.js': [
+                        'src/js/main.js',
+                        'src/js/ngEnter.js',
+                        'src/js/gamestate.js',
+                        'src/js/homeController.js',
+                        'src/js/createController.js',
+                        'src/js/gameController.js',
+                        'src/js/winnerController.js',
+                        'src/js/utils.js'
+                    ]
                 }
             }
         }
