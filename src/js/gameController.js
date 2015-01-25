@@ -21,12 +21,15 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
         // UUID
         $scope.uuid = gameState.createGame();
         $scope.uuid = 12345;
+
+/*
         // Create Pusher room
         var pusher = new Pusher('f5656bd4670f11759284', {
             authEndpoint: 'http://127.0.0.1:5000/pusher/auth'
         });
         // Create channel
         var myChannel = pusher.subscribe('private-' + $scope.uuid + '');
+*/
         // Subscribe to new card event
         if ($rootScope.playerStatus === 'player') {
             myChannel.bind('client-newcard',

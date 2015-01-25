@@ -16,10 +16,10 @@ app.controller('createController', ['$scope', '$location', '$timeout', 'gameStat
         // UID
         $scope.uuid = gameState.createGame();
         $scope.uuid = 12345;
-
         // current player ID
         $rootScope.uuid = generateUID();
 
+        // TODO: Remove these lines
 /*
         // Create Pusher room
         var pusher = new Pusher('f5656bd4670f11759284', {
@@ -56,7 +56,6 @@ app.controller('createController', ['$scope', '$location', '$timeout', 'gameStat
                 console.log("default", message);
                 break;
             }
-
         };
 
         // the admin joins the game automatically
@@ -78,6 +77,8 @@ app.controller('createController', ['$scope', '$location', '$timeout', 'gameStat
             var player = {};
             player.name = $scope.playerName;
 
+
+            // TODO: Remove these lines
 /*
             // Trigger event
             myChannel.trigger('client-newplayer', player);
@@ -92,6 +93,7 @@ app.controller('createController', ['$scope', '$location', '$timeout', 'gameStat
             }, 1000);
             gameState.joinGame(player.id, player.name);
         };
+
         // Go to (Start Game or Exit)
         $scope.goTo = function (location) {
             $location.path('/' + location);
