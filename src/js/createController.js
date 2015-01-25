@@ -32,7 +32,7 @@ app.controller('createController', ['$scope', '$location', '$pusher', '$timeout'
             // Create player object
             var player = {};
             player.name = $scope.playerName;
-            player.id = generateUUID();
+            player.id = generateUID();
             $rootScope.uuid = player.id;
             // Trigger event
             myChannel.trigger('client-newplayer', player);
