@@ -110,6 +110,8 @@ module.exports = function(grunt) {
                     'dist/templates/create.tpl.html': 'src/templates/create.tpl.html',
                     'dist/templates/game.tpl.html': 'src/templates/game.tpl.html',
                     'dist/templates/home.tpl.html': 'src/templates/home.tpl.html',
+                    'dist/templates/join.tpl.html': 'src/templates/join.tpl.html',
+                    'dist/templates/players.tpl.html': 'src/templates/players.tpl.html',
                     'dist/templates/winner.tpl.html': 'src/templates/winner.tpl.html',
                     'dist/index.html': 'dist/index.html'
                 }
@@ -129,7 +131,7 @@ module.exports = function(grunt) {
                 },
                 files: {
                     'dist/data/data.en.json': 'src/data/data.en.json',
-                    'dist/data/data.es.json': 'src/data/data.en.json'
+                    'dist/data/data.es.json': 'src/data/data.es.json'
                 }
             }
         },
@@ -142,6 +144,7 @@ module.exports = function(grunt) {
             },
             svgFiles: {
                 files: {
+                    'dist/svg/back.svg': 'src/svg/back.svg',
                     'dist/svg/bean.svg': 'src/svg/bean.svg',
                     'dist/svg/card.svg': 'src/svg/card.svg'
                 }
@@ -197,6 +200,7 @@ module.exports = function(grunt) {
                         'src/js/main.js',
                         'src/js/ngEnter.js',
                         'src/js/gamestate.js',
+                        'src/js/messageService.js',
                         'src/js/homeController.js',
                         'src/js/createController.js',
                         'src/js/joinController.js',
