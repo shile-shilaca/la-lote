@@ -11,6 +11,10 @@ app.factory('gameState', ['$rootScope', '$interval', function ($rootScope, $inte
         currentPlayerName: null,
         currentGameUID: null,
 
+        startGame: function () {
+            this.started = true;
+        },
+
         // Initializes a room and returns the new room ID
         createGame: function () {
             players = {};

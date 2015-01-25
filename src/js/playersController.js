@@ -32,10 +32,18 @@ app.controller('playersController', ['$scope', '$location', 'messageService', '$
         });
 
         $scope.$on('start', function () {
-             gameState.started = true;
+             gameState.startGame();
+
              $timeout(function () {
                  $scope.goTo('game');
-                 // $scope.$apply();
+             });
+         });
+
+        $scope.$on('gamealreadystarted', function () {
+             console.log('Game has already started');
+             
+             $timeout(function () {
+                 $scope.goTo('/');
              });
          });
 

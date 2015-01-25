@@ -23,15 +23,21 @@ app.factory('messageService', ['$rootScope', '$interval', 'gameState', function 
 
                 switch (message.action) {
                     case 'join':
-                    console.log('joined', message);
-                    gameState.joinGame(message.data.id, message.data.name);
+                    if (gameState.started) {
+                        sendMessage('gamealreadystarted');
+                    }
+                    else {
+                        console.log('joined', message);
+                        gameState.joinGame(message.data.id, message.data.name);
 
-                    $rootScope.$broadcast('join', message.data);
+                        $rootScope.$broadcast('join', message.data);
 
-                    sendMessage('players', _.map(gameState.getPlayers(), function (player) {
-                            return player.name;
-                        })
-                    );
+                        sendMessage('players', _.map(gameState.getPlayers(), function (player) {
+                                return player.name;
+                            })
+                        );
+                    }
+
                     break;
 
                     case 'loteria':
@@ -47,6 +53,11 @@ app.factory('messageService', ['$rootScope', '$interval', 'gameState', function 
                         }
                     }
 
+                    break;
+
+                    case 'gamealreadystarted':
+                    console.log('gamealreadystarted');
+                    $rootScope.$broadcast('gamealreadystarted');
                     break;
 
                     case 'win':
@@ -106,7 +117,9 @@ app.factory('messageService', ['$rootScope', '$interval', 'gameState', function 
         },
 
         join: function (player) {
-            sendMessage('join', player);
+            if (!gameState.started) {
+                sendMessage('join', player);
+            }
         },
 
         loteria: function (player) {
