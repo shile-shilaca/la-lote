@@ -16,7 +16,7 @@ app.controller('createController', ['$scope', '$location', '$timeout', 'gameStat
         // UID
         $scope.uuid = gameState.createGame();
 
-        messageService.connect($scope.uuid);
+        messageService.connect($scope.uuid, $rootScope.playerStatus);
 
         // New player submits his name
         $scope.addPlayer = function() {
