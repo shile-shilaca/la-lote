@@ -11,7 +11,7 @@ app.factory('messageService', ['$rootScope', '$interval', 'gameState', function 
     var service = {
         connect: function (roomId, playerRole) {
             // Create Hydna channel/room
-            role = role;
+            role = playerRole;
             channel = new HydnaChannel('la-lote.hydna.net/' + roomId, 'rwe');
 
             channel.onopen = function () {
