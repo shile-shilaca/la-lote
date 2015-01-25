@@ -1,6 +1,3 @@
-/*
-var app = angular.module('lottery', ['ngRoute', 'pusher-angular']);
- */
 var app = angular.module('lottery', ['ngRoute']);
 
 /** Routes Configuration **/
@@ -31,22 +28,20 @@ app.config(function ($routeProvider) {
     });
 });
 
-app.run(function ($rootScope, $location) {
-    $rootScope.$on('$routeChangeError', function () {
+app.run(function($rootScope, $location, $http) {
+    $rootScope.$on('$routeChangeError', function() {
         $location.path('/error');
     });
-    $rootScope.$on('$routeChangeStart', function () {
+    $rootScope.$on('$routeChangeStart', function() {
         $rootScope.isLoading = true;
     });
-    $rootScope.$on('$routeChangeSuccess', function () {
+    $rootScope.$on('$routeChangeSuccess', function() {
         $rootScope.isLoading = false;
     });
 
-    // Play background audio
-    var backgroundAudio = new Audio('audio/bg.mp3');
-    backgroundAudio.addEventListener('ended', function () {
-        this.currentTime = 0;
-        this.play();
-    }, false);
-    backgroundAudio.play();
+    var lang = 'en'; // TODO: Set this dynamically
+    $http.get('data/data.' + lang + '.json').success(function(result) {
+        $rootScope.cardData = result.cards;
+        $rootScope.content = result.content;
+    });
 });

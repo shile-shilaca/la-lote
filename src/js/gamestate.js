@@ -87,9 +87,5 @@ app.factory('gameState', function ($rootScope, $http, $interval) {
         }
     };
 
-    $http.get('data/data.es.json').success(function (result) {
-        $rootScope.cardData = result;
-    });
-
     return service;
 });
