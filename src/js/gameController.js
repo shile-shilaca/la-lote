@@ -131,7 +131,7 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
             var ownPlayer = gameState.getOwnPlayer();
 
             if (player.id == ownPlayer.id) {
-                $rootScope.lostGame = (ownPlayer.hp--) == 0;
+                $rootScope.lostGame = (--ownPlayer.hp) <= 0;
             }
         });
 
