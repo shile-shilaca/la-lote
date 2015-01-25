@@ -7,17 +7,16 @@
     visibility: visible;
 }
 .card {
-    width: 90px;
-    height: 135px;
     border: 7px solid white;
     -webkit-box-shadow: 2px 2px 2px 0 rgba(50, 50, 50, 0.75);
        -moz-box-shadow: 2px 2px 2px 0 rgba(50, 50, 50, 0.75);
             box-shadow: 2px 2px 2px 0 rgba(50, 50, 50, 0.75);
     float: left;
-    margin-left: 5px;
-    margin-top: 5px;
+    height: 135px;
+    margin: 5px 0 0 5px;
+    width: 90px;
 }
-.card-number {
-    font-weight: bold;
-    color: #fff;
+.card .number {
+    position: absolute;
+    left: 5px;
 }
