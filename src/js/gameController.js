@@ -151,10 +151,21 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
             console.log("It's a tie!");
         });
 
+        $scope.$on('endgame', function (e, player) {
+            console.log("The host has left the game");
+            $scope.goTo('/');
+        });
+
         $scope.goTo = function (location) {
             $timeout(function() {
                 $interval.cancel(gamePlayInterval);
+
+                if ($rootScope.playerStatus == 'admin') {
+                    messageService.endGame();
+                }
+
                 $location.path('/' + location);
+                messageService.disconnect();
             });
         };
 

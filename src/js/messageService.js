@@ -29,10 +29,6 @@ app.factory('messageService', ['$rootScope', '$interval', 'gameState', function 
                     $rootScope.$broadcast('join', message.data);
 
                     sendMessage('players', _.map(gameState.getPlayers(), function (player) {
-                            // return {
-                            //     name: player.name,
-                            //     id: player.id
-                            // }
                             return player.name;
                         })
                     );
@@ -63,6 +59,12 @@ app.factory('messageService', ['$rootScope', '$interval', 'gameState', function 
                     $rootScope.$broadcast('lose', message.data);
                     break;
 
+                    case 'endgame':
+                    console.log('endgame');
+                    $rootScope.$broadcast('endgame');
+                    service.disconnect();
+                    break;
+
                     case 'players':
                     console.log('players sync', message.data);
                     $rootScope.$broadcast('players', message.data);
@@ -90,6 +92,17 @@ app.factory('messageService', ['$rootScope', '$interval', 'gameState', function 
                     break;
                 }
             };
+        },
+
+        disconnect: function () {
+            if (!!channel) {
+                channel.close();
+                channel = role = null;
+            }
+        },
+
+        endGame: function () {
+            sendMessage('endgame');
         },
 
         join: function (player) {
