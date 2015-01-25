@@ -24,12 +24,12 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
         $scope.cardsSelected = 0;
 
         // Set initial card
-        var initialCard = gameState.getInitialCard();
+        //var initialCard = gameState.getInitialCard();
         //console.log('initialCard:', initialCard);
         var cardImage = document.getElementById('current-card-image');
-        cardImage.src = 'svg/cards/' + initialCard + '.svg';
+        cardImage.src = 'svg/cards/back.svg';
 
-        $scope.cardId = initialCard;
+        $scope.cardId = 0;
         $scope.tied = false;
 
         // current player HP
@@ -210,7 +210,12 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
                 $rootScope.lostGame = (--ownPlayer.hp) <= 0;
                 $scope.hp = ownPlayer.hp;
 
-                showToaster('Not a winner, check your board!');
+                if ($rootScope.lostGame) {
+                    showToaster('You have lost the game!');
+                }
+                else {
+                    showToaster('Not a winner, check your board!');
+                }
 
                 $scope.$apply();
             }
