@@ -52,7 +52,8 @@ app.controller('playersController', ['$scope', '$location', 'messageService', '$
              console.log('Game has already started');
              
              $timeout(function () {
-                 $scope.goTo('/');
+                $rootScope.toast = 'Game has already started';
+                $scope.goTo('/');
              });
          });
 

@@ -11,7 +11,7 @@ app.controller('joinController', ['$scope', '$location', 'messageService', 'game
             $rootScope.playerStatus = 'player';
 
             gameState.currentPlayerName = $scope.playerName;
-            gameState.currentGameUID = $scope.gameCode;
+            gameState.currentGameUID = $scope.gameCode.toUpperCase();
 
             $scope.goTo('players');
         };

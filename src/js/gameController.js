@@ -20,6 +20,7 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
         cardImage.src = 'svg/cards/' + initialCard + '.svg';
 
         $scope.cardId = initialCard;
+        $scope.tied = false;
 
         // current player HP
         $scope.hp = gameState.getOwnPlayer().hp;
@@ -176,6 +177,7 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
 
         $scope.$on('tie', function (e, player) {
             $interval.cancel(gamePlayInterval);
+            $scope.tied = true;
             showToaster("It's a tie!");
         });
 
@@ -205,11 +207,5 @@ app.controller('gameController', ['$scope', '$location', '$document', '$timeout'
         $scope.range = function (n) {
             return Array(n);
         };
-
-        function showToaster(msg) {
-            var toaster = document.getElementById('toaster');
-            toaster.text = msg;
-            toaster.show();
-        }
     }
 ]);
