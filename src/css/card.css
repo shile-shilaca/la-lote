@@ -12,9 +12,9 @@
        -moz-box-shadow: 2px 2px 2px 0 rgba(50, 50, 50, 0.75);
             box-shadow: 2px 2px 2px 0 rgba(50, 50, 50, 0.75);
     float: left;
-    height: 135px;
+    height: 180px;
     margin: 5px 0 0 5px;
-    width: 90px;
+    width: calc((100% / 5) - 5px);
 }
 .card .number {
     position: absolute;
