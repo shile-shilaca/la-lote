@@ -107,7 +107,7 @@ paper-input-decorator /deep/ .focused-underline {
     padding: 0;
 }
 #players-list ul > li {
-    background: #F18CB8;
+    background: #ffffff;
     padding: 15px 10px;
     margin-bottom: 5px;
     color: #BE5B85;
@@ -122,6 +122,12 @@ paper-input-decorator /deep/ .focused-underline {
 }
 #players-list .custom-input {
     color: #333333;
+    background: #ffffff;
+    padding: 10px 15px;
+    border-radius: 3px;
+    -webkit-box-shadow: 2px 2px 2px 0 rgba(50, 50, 50, 0.75);
+       -moz-box-shadow: 2px 2px 2px 0 rgba(50, 50, 50, 0.75);
+            box-shadow: 2px 2px 2px 0 rgba(50, 50, 50, 0.75);
 }
 /** End Create New Game **/
 
@@ -175,31 +181,31 @@ paper-input-decorator /deep/ .focused-underline {
        -moz-box-shadow: 2px 2px 2px 0 rgba(50, 50, 50, 0.75);
             box-shadow: 2px 2px 2px 0 rgba(50, 50, 50, 0.75);
 }
-.card1 {
+.card01 {
     background: url('../svg/cards/01.svg') no-repeat;
 }
-.card2 {
+.card02 {
     background: url('../svg/cards/02.svg') no-repeat;
 }
-.card3 {
+.card03 {
     background: url('../svg/cards/03.svg') no-repeat;
 }
-.card4 {
+.card04 {
     background: url('../svg/cards/04.svg') no-repeat;
 }
-.card5 {
+.card05 {
     background: url('../svg/cards/05.svg') no-repeat;
 }
-.card6 {
+.card06 {
     background: url('../svg/cards/06.svg') no-repeat;
 }
-.card7 {
+.card07 {
     background: url('../svg/cards/07.svg') no-repeat;
 }
-.card8 {
+.card08 {
     background: url('../svg/cards/08.svg') no-repeat;
 }
-.card9 {
+.card09 {
     background: url('../svg/cards/09.svg') no-repeat;
 }
 .card10 {
