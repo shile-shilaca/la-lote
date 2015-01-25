@@ -90,7 +90,7 @@ module.exports = function(grunt) {
                 dest: 'dist/css/card.css'
             }
         },
-        'divshot-push': {
+        'divshot:push': {
             development: {
             },
             production: {
@@ -211,11 +211,11 @@ module.exports = function(grunt) {
     ]);
     grunt.registerTask('deploydev', [
         'dist',
-        'divshot-push:development'
+        'divshot:push:development'
     ]);
     grunt.registerTask('deployprod', [
         'dist',
-        'divshot-push:production'
+        'divshot:push:production'
     ]);
     grunt.registerTask('dist', [
         'clean',
