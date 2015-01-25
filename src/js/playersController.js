@@ -28,7 +28,7 @@ app.controller('playersController', ['$scope', '$location', 'messageService', '$
                 return player;
             }), players);
 
-            // $scope.$apply();
+            $scope.$apply();
         });
 
         $scope.players = [];
