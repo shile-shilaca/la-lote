@@ -147,7 +147,7 @@ module.exports = function(grunt) {
                 }
             }
         },
-        svgstore: {
+        svgstack: {
             options: {
                 formatting: {
                     indent_char: " ",
@@ -202,13 +202,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-svgmin');
     grunt.loadNpmTasks('grunt-svgstore');
 
+    grunt.loadTasks('tasks');
+
     /*===============================================================
      Tasks Aliases
      ===============================================================*/
 
-    grunt.registerTask('svgsprite', [
-        'svgstore'
-    ]);
     grunt.registerTask('deploydev', [
         'dist',
         'divshot:push:development'
@@ -224,7 +223,7 @@ module.exports = function(grunt) {
         'jsonmin',
         'cssmin',
         'uglify',
-        'svgsprite',
+        'svgstack',
         'svgmin',
         'copy'
     ]);
