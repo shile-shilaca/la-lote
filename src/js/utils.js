@@ -7,3 +7,9 @@ function generateUID() {
         });
     return uid;
 }
+
+function showToaster(msg) {
+    var toaster = document.getElementById('toaster');
+    toaster.text = msg;
+    toaster.show();
+}
